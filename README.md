@@ -20,3 +20,18 @@ For this competition, we have provided 11 days worth of Avazu data to build and 
 7. L1, L2 tuning
 8. meta data
 9. ensemble models
+
+##### p.s.
+alpha=.15
+beta=1.1
+L1=1.1
+L2=1.1
+D=2**22
+LB score: 0.3992365
+
+alpha=.1
+beta=1.
+L1=1.
+L2=1.
+D=2**20 (24)
+LB score: 0.392 (0.3977417)
