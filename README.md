@@ -35,3 +35,11 @@ L1=1.
 L2=1.
 D=2**20 (24)
 LB score: 0.392 (0.3977417)
+
+##### latest findings
+31.10 = Halloween being qualitatively different from the rest of the sample
+
+maybe training specifically on 24 (Friday) and/or 25-26 (weekend ~ holiday) would help?
+Holdout 2 days of data for CV, just 1 gives poorer performance (around 0.006 as you mentioned above)
+Split the data in one file per day
+Refactor the training and validation logic so I can pass a range of days I want to train/validate on.

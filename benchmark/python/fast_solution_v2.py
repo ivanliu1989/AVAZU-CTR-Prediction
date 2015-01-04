@@ -14,20 +14,20 @@ from math import exp, log, sqrt
 # A, paths
 train = 'train.csv'               # path to training file
 test = 'test.csv'                 # path to testing file
-submission = 'submission_0391171.csv'  # path of to be outputted submission file
+submission = 'submission_0390955.csv'  # path of to be outputted submission file
 
 # B, model
 alpha = .1  # learning rate
 beta = 1   # smoothing parameter for adaptive learning rate
-L1 = 1.1     # L1 regularization, larger value means more regularized
-L2 = 1.1    # L2 regularization, larger value means more regularized
+L1 = 1     # L1 regularization, larger value means more regularized
+L2 = 1    # L2 regularization, larger value means more regularized
 
 # C, feature/hash trick
 D = 2 ** 28              # number of weights to use
 do_interactions = False  # whether to enable poly2 feature interactions
 
 # D, training/validation
-epoch = 1      # learn training data for N passes
+epoch = 5      # learn training data for N passes
 holdout = 100  # use every N training instance for holdout validation
 
 
