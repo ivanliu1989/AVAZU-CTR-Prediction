@@ -23,7 +23,7 @@ L1 = 1.     # L1 regularization, larger value means more regularized
 L2 = 1.     # L2 regularization, larger value means more regularized
 
 # C, feature/hash trick
-D = 2 ** 20             # number of weights to use
+D = 2 ** 24             # number of weights to use
 interaction = False     # whether to enable poly2 feature interactions
 
 # D, training/validation

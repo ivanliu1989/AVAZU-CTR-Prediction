@@ -14,13 +14,13 @@ from math import exp, log, sqrt
 # A, paths
 train = 'train.csv'               # path to training file
 test = 'test.csv'                 # path to testing file
-submission = 'submission1234.csv'  # path of to be outputted submission file
+submission = 'submission_0391033.csv'  # path of to be outputted submission file
 
 # B, model
-alpha = .1  # learning rate
-beta = 1.   # smoothing parameter for adaptive learning rate
-L1 = 1.     # L1 regularization, larger value means more regularized
-L2 = 1.     # L2 regularization, larger value means more regularized
+alpha = .15  # learning rate
+beta = 1.1   # smoothing parameter for adaptive learning rate
+L1 = 1.1     # L1 regularization, larger value means more regularized
+L2 = 1.1    # L2 regularization, larger value means more regularized
 
 # C, feature/hash trick
 D = 2 ** 24              # number of weights to use
