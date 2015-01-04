@@ -14,7 +14,7 @@ from math import exp, log, sqrt
 # A, paths
 train = 'train.csv'               # path to training file
 test = 'test.csv'                 # path to testing file
-submission = 'submission1234.csv'  # path of to be outputted submission file
+submission = 'submission_0391337.csv'  # path of to be outputted submission file
 
 # B, model
 alpha = .1  # learning rate
