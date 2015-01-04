@@ -43,3 +43,5 @@ maybe training specifically on 24 (Friday) and/or 25-26 (weekend ~ holiday) woul
 Holdout 2 days of data for CV, just 1 gives poorer performance (around 0.006 as you mentioned above)
 Split the data in one file per day
 Refactor the training and validation logic so I can pass a range of days I want to train/validate on.
+
+http://cran.at.r-project.org/web/packages/FeatureHashing/index.html

@@ -1,12 +1,3 @@
-# -*- coding: UTF-8 -*-
-
-########################################################
-# __Author__: Xueer Chen <snowwing922@gmail.com>             #
-# Kaggle competition "Display Advertising Challenge":  #
-# https://www.kaggle.com/c/avazu-ctr-prediction #
-# Credit: Triskelion <info@mlwave.com>            #
-########################################################
-
 from datetime import datetime
 from csv import DictReader
 
@@ -47,5 +38,5 @@ def csv_to_vw(loc_csv, loc_output, train=True):
 
   print("\n %s Task execution time:\n\t%s"%(e, str(datetime.now() - start)))
 
-csv_to_vw("train.csv", "train.vw",train=True)
-csv_to_vw("test.csv", "test.vw",train=False)
+csv_to_vw("data/train", "vw/train.vw",train=True)
+csv_to_vw("data/test", "vw/test.vw",train=False)
