@@ -1,20 +1,3 @@
-'''
-           DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
-                   Version 2, December 2004
-
-Copyright (C) 2004 Sam Hocevar <sam@hocevar.net>
-
-Everyone is permitted to copy and distribute verbatim or modified
-copies of this license document, and changing it is allowed as long
-as the name is changed.
-
-           DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
-  TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
-
- 0. You just DO WHAT THE FUCK YOU WANT TO.
-'''
-
-
 from datetime import datetime
 from csv import DictReader
 from math import exp, log, sqrt
@@ -29,8 +12,8 @@ from math import exp, log, sqrt
 ##############################################################################
 
 # A, paths
-train = 'train_rev2'               # path to training file
-test = 'test_rev2'                 # path to testing file
+train = 'train.csv'               # path to training file
+test = 'test.csv'                 # path to testing file
 submission = 'submission1234.csv'  # path of to be outputted submission file
 
 # B, model
