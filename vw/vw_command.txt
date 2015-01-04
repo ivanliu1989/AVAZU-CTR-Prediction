@@ -1,0 +1,24 @@
+vw test.vw -t -i model_holdout.vw -p avazu.preds.txt
+
+vw -d train.vw --loss_function logistic -b 28 -l 0.1 -q :: -c -k --passes 10 -f model_holdout.vw --holdout_period 90
+
+vw -d train.vw --loss_function logistic -b 29 -q :: -c -k --passes 20 -f model_holdout_poly.vw --holdout_off --decay_learning_rate 0.9 --stage_poly --batch_sz 800000 --batch_sz_no_doubling --sched_exponent 1.96 --save_resume --l2 6e-8 --l1 1.2e-8 -l 0.1 --compressed --feature_mask model_holdout.vw --adaptive --invariant --power_t 0.5 -C
+
+vw -d train.vw --loss_function logistic -b 28 -l 0.1 -q hh -q hb -q hp -q hr -c -k --passes 3 -f model_nn.vw --nn 60
+
+##################################################################################################
+vw -d train.vw --loss_function logistic -b 28 -l 0.1 -q :: -c -k --passes 10 -f model_holdout.vw --holdout_period 90
+Score:
+
+vw -d train.vw --loss_function logistic -b 28 -l 0.15 -q :: -c -k --passes 30 -f model_nn.vw --holdout_period 100 --nn 60
+Score:
+
+vw -d train.vw --loss_function logistic -b 28 -l 0.1 -q :: -c -k --passes 30 -f model_decay.vw --holdout_period 100 --decay_learning_rate 0.9
+Score:
+
+vw -d train.vw --loss_function logistic -b 29 -q :: -c -k --passes 20 -f model_poly.vw --holdout_period 100 --stage_poly --batch_sz 800000 --batch_sz_no_doubling --sched_exponent 1.96 --save_resume --l2 6e-8 --l1 1.2e-8 -l 0.1 --compressed
+Score:
+
+vw -d train.vw --loss_function logistic -b 29 -q :: -c -k --passes 20 -f model_mask.vw --holdout_period 100 -l 0.1 --compressed --feature_mask model_holdout.vw --adaptive --invariant --power_t 0.5 -C
+Score:
+
