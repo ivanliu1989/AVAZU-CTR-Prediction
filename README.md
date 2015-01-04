@@ -21,21 +21,6 @@ For this competition, we have provided 11 days worth of Avazu data to build and 
 8. meta data
 9. ensemble models
 
-##### p.s.
-alpha=.15
-beta=1.1
-L1=1.1
-L2=1.1
-D=2**22
-LB score: 0.3992365
-
-alpha=.1
-beta=1.
-L1=1.
-L2=1.
-D=2**20 (24)
-LB score: 0.392 (0.3977417)
-
 ##### latest findings
 31.10 = Halloween being qualitatively different from the rest of the sample
 
@@ -45,3 +30,16 @@ Split the data in one file per day
 Refactor the training and validation logic so I can pass a range of days I want to train/validate on.
 
 http://cran.at.r-project.org/web/packages/FeatureHashing/index.html
+
+#### preprocessing
+1. add columns for <b>Hour</b> , <b>Weekday</b> , <b>Public Holiday</b>
+2. Hash / one-hotted
+3. Split train based on different days
+
+#### modeling
+1. python fast learning
+2. vw
+3. xgboost
+4. caret adaptive (svm)
+5. meta
+6. ensembles
