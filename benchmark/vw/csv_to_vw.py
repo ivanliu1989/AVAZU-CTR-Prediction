@@ -47,5 +47,5 @@ def csv_to_vw(loc_csv, loc_output, train=True):
 
   print("\n %s Task execution time:\n\t%s"%(e, str(datetime.now() - start)))
 
-csv_to_vw("../data/train", "train.vw",train=True)
-csv_to_vw("../data/test", "test.vw",train=False)
+csv_to_vw("train.csv", "train.vw",train=True)
+csv_to_vw("test.csv", "test.vw",train=False)

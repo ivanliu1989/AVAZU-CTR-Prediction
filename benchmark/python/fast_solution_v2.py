@@ -17,10 +17,10 @@ test = 'test.csv'                 # path to testing file
 submission = 'submission_0390955.csv'  # path of to be outputted submission file
 
 # B, model
-alpha = .1  # learning rate
+alpha = .05  # learning rate
 beta = 1   # smoothing parameter for adaptive learning rate
-L1 = 1     # L1 regularization, larger value means more regularized
-L2 = 1    # L2 regularization, larger value means more regularized
+L1 = 1.1     # L1 regularization, larger value means more regularized
+L2 = 1.1    # L2 regularization, larger value means more regularized
 
 # C, feature/hash trick
 D = 2 ** 28              # number of weights to use
