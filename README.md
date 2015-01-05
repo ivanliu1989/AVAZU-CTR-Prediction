@@ -41,5 +41,10 @@ http://cran.at.r-project.org/web/packages/FeatureHashing/index.html
 2. vw
 3. xgboost
 4. caret adaptive (svm)
-5. meta
+5. solution below
 6. ensembles
+
+#### solution
+1. GBDT - feature generation
+2. Hashing tricks - feature generation for FM(Factorization Machine)
+3. Factorization Machine
