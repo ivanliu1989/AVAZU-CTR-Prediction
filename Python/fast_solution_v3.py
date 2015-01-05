@@ -12,19 +12,19 @@ from math import exp, log, sqrt
 ##############################################################################
 
 # A, paths
-train = 'data/train'               # path to training file
-test = 'data/test'                 # path to testing file
+train = 'train.csv'               # path to training file
+test = 'test.csv'                 # path to testing file
 submission = 'submission1234.csv'  # path of to be outputted submission file
 
 # B, model
-alpha = .05  # learning rate
-beta = 1.1   # smoothing parameter for adaptive learning rate
+alpha = .1  # learning rate
+beta = 1   # smoothing parameter for adaptive learning rate
 L1 = 1.1     # L1 regularization, larger value means more regularized
 L2 = 1.1     # L2 regularization, larger value means more regularized
 
 # C, feature/hash trick
 D = 2 ** 28             # number of weights to use
-interaction = False     # whether to enable poly2 feature interactions
+interaction = True     # whether to enable poly2 feature interactions
 
 # D, training/validation
 epoch = 1       # learn training data for N passes
