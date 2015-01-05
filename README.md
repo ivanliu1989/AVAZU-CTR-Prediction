@@ -43,6 +43,7 @@ http://cran.at.r-project.org/web/packages/FeatureHashing/index.html
 4. caret adaptive (svm)
 5. solution below
 6. ensembles
+7. calibration (-0.000x)
 
 #### solution
 1. GBDT - feature generation
