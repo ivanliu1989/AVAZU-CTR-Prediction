@@ -4,7 +4,7 @@ Major Planning
 ##### Step 1 Preprocessing-A
 Feature Engineering, generate features for GBDT<br>
 	- DOW, Hour, Holiday<br>
-	- One-hot encoding<br>
+	- One-hot encoding(factor() | sparse.model.matrix())<br>
 	- Summary<br>
 
 ##### Step 2 Gradient Boosting Decision Tree
