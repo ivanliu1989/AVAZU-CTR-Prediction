@@ -36,26 +36,26 @@ with open('data/train_df.csv',"wb") as outfile:
     outfile.write('ID, click,hour,C1,banner_pos,site_id,site_domain,site_category,app_id,app_domain,app_category,device_id,device_ip,device_model,device_type,device_conn_type,C14,C15,C16,C17,C18,C19,C20,C21,dow,holiday\n')
     for t, row in enumerate(DictReader(open(train))):
         # turn hour really into hour, it was originally YYMMDDHH
-        if row['hour'][4:6] in [19,26]:
+        if row['hour'][4:6] in ['19','26']:
             dow = 1
-        elif row['hour'][4:6] in [20,27]:
+        elif row['hour'][4:6] in ['20','27']:
             dow = 2
-        elif row['hour'][4:6] in [21,28]:
+        elif row['hour'][4:6] in ['21','28']:
             dow = 3
-        elif row['hour'][4:6] in [22,29]:
+        elif row['hour'][4:6] in ['22','29']:
             dow = 4
-        elif row['hour'][4:6] in [23,30]:
+        elif row['hour'][4:6] in ['23','30']:
             dow = 5
-        elif row['hour'][4:6] in [18,25]:
+        elif row['hour'][4:6] in ['18','25']:
             dow = 7
-        elif row['hour'][4:6] in [24,31]:
+        elif row['hour'][4:6] in ['24','31']:
             dow = 6
             
         if dow in [6,7]: # Sun sat
             holiday = 1
-        elif row['hour'][4:6] == 30: # Hallowin
+        elif row['hour'][4:6] in ['30']: # Hallowin
             holiday = 1
-        else:
+        elif dow in [1,2,3,4,5]:
             holiday = 0
         
         ID = row['id']
@@ -88,7 +88,63 @@ with open('data/train_df.csv',"wb") as outfile:
             print("%s\t%s"%(t, str(datetime.now() - start)))
         
         
+ # -- test data -- #
+start = datetime.now()
+with open('data/test_df_2.csv',"wb") as outfile:
+    outfile.write('ID,hour,C1,banner_pos,site_id,site_domain,site_category,app_id,app_domain,app_category,device_id,device_ip,device_model,device_type,device_conn_type,C14,C15,C16,C17,C18,C19,C20,C21,dow,holiday\n')
+    for t, row in enumerate(DictReader(open(test))):
+        # turn hour really into hour, it was originally YYMMDDHH
+        if row['hour'][4:6] in ['19','26']:
+            dow = 1
+        elif row['hour'][4:6] in ['20','27']:
+            dow = 2
+        elif row['hour'][4:6] in ['21','28']:
+            dow = 3
+        elif row['hour'][4:6] in ['22','29']:
+            dow = 4
+        elif row['hour'][4:6] in ['23','30']:
+            dow = 5
+        elif row['hour'][4:6] in ['18','25']:
+            dow = 7
+        elif row['hour'][4:6] in ['24','31']:
+            dow = 6
+            
+        if dow in [6,7]: # Sun sat
+            holiday = 1
+        elif row['hour'][4:6] in ['30']: # Hallowin
+            holiday = 1
+        elif dow in [1,2,3,4,5]:
+            holiday = 0
         
+        ID = row['id']
+        hour = row['hour'][6:]
+        C1 = row['C1']
+        banner_pos = row['banner_pos']
+        site_id = row['site_id']
+        site_domain = row['site_domain']
+        site_category = row['site_category']
+        app_id = row['app_id']
+        app_domain = row['app_domain']
+        app_category = row['app_category']
+        device_id = row['device_id']
+        device_ip = row['device_ip']
+        device_model = row['device_model']
+        device_type = row['device_type']
+        device_conn_type = row['device_conn_type']
+        C14 = row['C14']
+        C15 = row['C15']
+        C16 = row['C16']
+        C17 = row['C17']
+        C18 = row['C18']
+        C19 = row['C19']
+        C20 = row['C20']
+        C21 = row['C21']
+        
+        outfile.write('%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n' % (str(ID),str(hour),str(C1),str(banner_pos),str(site_id),str(site_domain),str(site_category),str(app_id),str(app_domain),str(app_category),str(device_id),str(device_ip),str(device_model),str(device_type),str(device_conn_type),str(C14),str(C15),str(C16),str(C17),str(C18),str(C19),str(C20),str(C21),str(dow),str(holiday)))
+        if t % 100000 == 0:
+            print("%s\t%s"%(t, str(datetime.now() - start)))
+        
+       
         
         
         
