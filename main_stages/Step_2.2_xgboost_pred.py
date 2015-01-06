@@ -8,7 +8,7 @@ from datetime import datetime
 from csv import DictReader
 import pandas as pd
 
-xgboost_file = 'xgboost/pred.txt'
+xgboost_file = 'xgboost/pred_005.txt'
 pred = pd.read_csv(xgboost_file,index_col = False, header = None)
 pred.head()
 
@@ -17,4 +17,4 @@ submit = pd.read_csv(submit_file)
 
 submit['click'] = pred
 
-submit.to_csv('xgboost/submit_xgboost.csv',index=False)
+submit.to_csv('xgboost/submit_xgboost_005.csv',index=False)
