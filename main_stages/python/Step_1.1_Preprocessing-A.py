@@ -9,7 +9,7 @@ from datetime import datetime
 from csv import DictReader
 
 train = 'data/train.csv'               # path to training file
-test = 'data/test' 
+test = 'data/test.csv' 
 
 # -- test data -- #
 """
