@@ -26,11 +26,9 @@ test_df.to_csv('data/test_df.csv',index=False)
 test_df = pd.read_csv('data/test_df.csv')
 del test_df['Unnamed: 0']
 del test_df
-
-
-# -- train data -- #
 list(test_df.columns.values)
 
+# -- train data -- #
 start = datetime.now()
 with open('data/train_df.csv',"wb") as outfile:
     outfile.write('ID, click,hour,C1,banner_pos,site_id,site_domain,site_category,app_id,app_domain,app_category,device_id,device_ip,device_model,device_type,device_conn_type,C14,C15,C16,C17,C18,C19,C20,C21,dow,holiday\n')
@@ -51,7 +49,7 @@ with open('data/train_df.csv',"wb") as outfile:
         elif row['hour'][4:6] in [24,31]:
             dow = 6
         else:
-            dow = 0
+            dow = 'dow'
             
         if dow in [6,7]: # Sun sat
             holiday = 1
@@ -60,33 +58,11 @@ with open('data/train_df.csv',"wb") as outfile:
         else:
             holiday = 0
         
-        ID = row['id']
-        click = row['click']
-        hour = row['hour'][6:]
-        C1 = row['C1']
-        banner_pos = row['banner_pos']
-        site_id = row['site_id']
-        site_domain = row['site_domain']
-        site_category = row['site_category']
-        app_id = row['app_id']
-        app_domain = row['app_domain']
-        app_category = row['app_category']
-        device_id = row['device_id']
-        device_ip = row['device_ip']
-        device_model = row['device_model']
-        device_type = row['device_type']
-        device_conn_type = row['device_conn_type']
-        C14 = row['C14']
-        C15 = row['C15']
-        C16 = row['C16']
-        C17 = row['C17']
-        C18 = row['C18']
-        C19 = row['C19']
-        C20 = row['C20']
-        C21 = row['C21']
+        row['hour'] = row['hour'][6:]
+        
         
         outfile.write('%s,%s,%s\n' % (row, dow, holiday))
-        if t % 100000 == 0:
+        if t % 1000000 == 0:
             print("%s\t%s"%(t, str(datetime.now() - start)))
         
         
