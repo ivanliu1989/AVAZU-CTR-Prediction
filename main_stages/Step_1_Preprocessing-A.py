@@ -13,6 +13,7 @@ train = 'data/train.csv'               # path to training file
 test = 'data/test' 
 
 # -- test data -- #
+"""
 test_df = pd.read_csv(test)
 
 test_df['dow'] = test_df['hour'].map(lambda x: str(x)[4:6])
@@ -26,7 +27,7 @@ test_df.to_csv('data/test_df.csv',index=False)
 test_df = pd.read_csv('data/test_df.csv')
 del test_df['Unnamed: 0']
 del test_df
-
+"""
 
 # -- train data -- #
 list(test_df.columns.values)
@@ -90,7 +91,7 @@ with open('data/train_df.csv',"wb") as outfile:
         
  # -- test data -- #
 start = datetime.now()
-with open('data/test_df_2.csv',"wb") as outfile:
+with open('data/test_df.csv',"wb") as outfile:
     outfile.write('id,hour,C1,banner_pos,site_id,site_domain,site_category,app_id,app_domain,app_category,device_id,device_ip,device_model,device_type,device_conn_type,C14,C15,C16,C17,C18,C19,C20,C21,dow,holiday\n')
     for t, row in enumerate(DictReader(open(test))):
         # turn hour really into hour, it was originally YYMMDDHH

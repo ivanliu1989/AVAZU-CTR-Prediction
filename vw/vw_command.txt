@@ -1,8 +1,8 @@
 alias vw=/Users/ivan/Work_directory/vowpal_wabbit/vowpalwabbit/vw
 ====================
-vw test.vw -t -i model_holdout.vw -p avazu.preds.txt
+vw test_df.vw -t -i model_naive.vw -p avazu.preds.txt
 
-vw -d train.vw --loss_function logistic -b 28 -l 0.1 -q :: -c -k --passes 10 -f model_holdout.vw --holdout_period 100
+vw -d train_df.vw --loss_function logistic -b 28 -l 0.1 -c -k --passes 3 -f model_naive.vw --holdout_period 100
 
 vw -d train.vw --loss_function logistic -b 29 -q :: -c -k --passes 20 -f model_holdout_poly.vw --holdout_off --decay_learning_rate 0.9 --stage_poly --batch_sz 800000 --batch_sz_no_doubling --sched_exponent 1.96 --save_resume --l2 6e-8 --l1 1.2e-8 -l 0.1 --compressed --feature_mask model_holdout.vw --adaptive --invariant --power_t 0.5 -C
 
