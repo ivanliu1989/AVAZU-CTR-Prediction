@@ -29,11 +29,11 @@ del test_df
 """
 
 # -- train data -- #
-list(test_df.columns.values)
+# list(test_df.columns.values)
 
 start = datetime.now()
 with open('data/train_df.csv',"wb") as outfile:
-    outfile.write('id,click,hour,C1,banner_pos,site_id,site_domain,site_category,app_id,app_domain,app_category,device_id,device_ip,device_model,device_type,device_conn_type,C14,C15,C16,C17,C18,C19,C20,C21,dow,holiday\n')
+    outfile.write('id,click,hour,C1,banner_pos,site_id,site_domain,site_category,app_id,app_domain,app_category,device_id,device_ip,device_model,device_type,device_conn_type,C14,C15,C16,C17,C18,C19,C20,C21,dow\n')
     for t, row in enumerate(DictReader(open(train))):
         # turn hour really into hour, it was originally YYMMDDHH
         if row['hour'][4:6] in ['19','26']:
@@ -50,13 +50,6 @@ with open('data/train_df.csv',"wb") as outfile:
             dow = 7
         elif row['hour'][4:6] in ['24','31']:
             dow = 6
-            
-        if dow in [6,7]: # Sun sat
-            holiday = 1
-        elif row['hour'][4:6] in ['30']: # Hallowin
-            holiday = 1
-        elif dow in [1,2,3,4,5]:
-            holiday = 0
         
         ID = row['id']
         click = row['click']
@@ -83,7 +76,7 @@ with open('data/train_df.csv',"wb") as outfile:
         C20 = row['C20']
         C21 = row['C21']
         
-        outfile.write('%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n' % (str(ID), str(click),str(hour),str(C1),str(banner_pos),str(site_id),str(site_domain),str(site_category),str(app_id),str(app_domain),str(app_category),str(device_id),str(device_ip),str(device_model),str(device_type),str(device_conn_type),str(C14),str(C15),str(C16),str(C17),str(C18),str(C19),str(C20),str(C21),str(dow),str(holiday)))
+        outfile.write('%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n' % (str(ID), str(click),str(hour),str(C1),str(banner_pos),str(site_id),str(site_domain),str(site_category),str(app_id),str(app_domain),str(app_category),str(device_id),str(device_ip),str(device_model),str(device_type),str(device_conn_type),str(C14),str(C15),str(C16),str(C17),str(C18),str(C19),str(C20),str(C21),str(dow)))
         if t % 100000 == 0:
             print("%s\t%s"%(t, str(datetime.now() - start)))
         
@@ -91,7 +84,7 @@ with open('data/train_df.csv',"wb") as outfile:
  # -- test data -- #
 start = datetime.now()
 with open('data/test_df.csv',"wb") as outfile:
-    outfile.write('id,hour,C1,banner_pos,site_id,site_domain,site_category,app_id,app_domain,app_category,device_id,device_ip,device_model,device_type,device_conn_type,C14,C15,C16,C17,C18,C19,C20,C21,dow,holiday\n')
+    outfile.write('id,hour,C1,banner_pos,site_id,site_domain,site_category,app_id,app_domain,app_category,device_id,device_ip,device_model,device_type,device_conn_type,C14,C15,C16,C17,C18,C19,C20,C21,dow\n')
     for t, row in enumerate(DictReader(open(test))):
         # turn hour really into hour, it was originally YYMMDDHH
         if row['hour'][4:6] in ['19','26']:
@@ -109,13 +102,6 @@ with open('data/test_df.csv',"wb") as outfile:
         elif row['hour'][4:6] in ['24','31']:
             dow = 6
             
-        if dow in [6,7]: # Sun sat
-            holiday = 1
-        elif row['hour'][4:6] in ['30']: # Hallowin
-            holiday = 1
-        elif dow in [1,2,3,4,5]:
-            holiday = 0
-        
         ID = row['id']
         hour = row['hour'][6:]
         C1 = row['C1']
@@ -140,7 +126,7 @@ with open('data/test_df.csv',"wb") as outfile:
         C20 = row['C20']
         C21 = row['C21']
         
-        outfile.write('%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n' % (str(ID),str(hour),str(C1),str(banner_pos),str(site_id),str(site_domain),str(site_category),str(app_id),str(app_domain),str(app_category),str(device_id),str(device_ip),str(device_model),str(device_type),str(device_conn_type),str(C14),str(C15),str(C16),str(C17),str(C18),str(C19),str(C20),str(C21),str(dow),str(holiday)))
+        outfile.write('%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n' % (str(ID),str(hour),str(C1),str(banner_pos),str(site_id),str(site_domain),str(site_category),str(app_id),str(app_domain),str(app_category),str(device_id),str(device_ip),str(device_model),str(device_type),str(device_conn_type),str(C14),str(C15),str(C16),str(C17),str(C18),str(C19),str(C20),str(C21),str(dow)))
         if t % 100000 == 0:
             print("%s\t%s"%(t, str(datetime.now() - start)))
         
