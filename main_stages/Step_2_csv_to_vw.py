@@ -20,13 +20,13 @@ def csv_to_vw(loc_csv, loc_output, train=True):
       numerical_features = ""
       categorical_features = ""
       for k,v in row.items():
-        if k not in ["id","click"]:
+        if k not in ["id"," click"]:
           if len(str(v)) > 0:
            categorical_features += " %s" % v
 			  
 	  #Creating the labels		  
       if train: #we care about labels
-        if row['click'] == "1":
+        if row[' click'] == '1':
           label = 1
         else:
           label = -1 #we set negative label to -1
@@ -43,4 +43,4 @@ def csv_to_vw(loc_csv, loc_output, train=True):
 
 
 csv_to_vw("data/train_df.csv", "vw/train_df.vw",train=True)
-csv_to_vw("data/test_df.csv", "vw/test_df.vw",train=False)
+csv_to_vw("data/test_df_2.csv", "vw/test_df.vw",train=False)

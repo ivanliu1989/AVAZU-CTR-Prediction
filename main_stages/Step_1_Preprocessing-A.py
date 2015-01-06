@@ -33,7 +33,7 @@ list(test_df.columns.values)
 
 start = datetime.now()
 with open('data/train_df.csv',"wb") as outfile:
-    outfile.write('ID, click,hour,C1,banner_pos,site_id,site_domain,site_category,app_id,app_domain,app_category,device_id,device_ip,device_model,device_type,device_conn_type,C14,C15,C16,C17,C18,C19,C20,C21,dow,holiday\n')
+    outfile.write('id,click,hour,C1,banner_pos,site_id,site_domain,site_category,app_id,app_domain,app_category,device_id,device_ip,device_model,device_type,device_conn_type,C14,C15,C16,C17,C18,C19,C20,C21,dow,holiday\n')
     for t, row in enumerate(DictReader(open(train))):
         # turn hour really into hour, it was originally YYMMDDHH
         if row['hour'][4:6] in ['19','26']:
@@ -91,7 +91,7 @@ with open('data/train_df.csv',"wb") as outfile:
  # -- test data -- #
 start = datetime.now()
 with open('data/test_df_2.csv',"wb") as outfile:
-    outfile.write('ID,hour,C1,banner_pos,site_id,site_domain,site_category,app_id,app_domain,app_category,device_id,device_ip,device_model,device_type,device_conn_type,C14,C15,C16,C17,C18,C19,C20,C21,dow,holiday\n')
+    outfile.write('id,hour,C1,banner_pos,site_id,site_domain,site_category,app_id,app_domain,app_category,device_id,device_ip,device_model,device_type,device_conn_type,C14,C15,C16,C17,C18,C19,C20,C21,dow,holiday\n')
     for t, row in enumerate(DictReader(open(test))):
         # turn hour really into hour, it was originally YYMMDDHH
         if row['hour'][4:6] in ['19','26']:
