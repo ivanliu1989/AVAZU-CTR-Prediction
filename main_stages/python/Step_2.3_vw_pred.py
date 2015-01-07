@@ -8,8 +8,8 @@ from datetime import datetime
 from csv import DictReader
 import pandas as pd
 
-xgboost_file = 'xgboost/GBTR_D8_01.txt'
-pred = pd.read_csv(xgboost_file,index_col = False, header = None)
+vw_file = 'submission.csv'
+pred = pd.read_csv(vw_file,index_col = False,names=list('ab'))
 pred.head()
 
 submit_file = 'xgboost/submission.csv'
