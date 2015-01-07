@@ -17,8 +17,9 @@ test = 'data/test_df.csv'
 test_df = pd.read_csv(test)
 train_df = pd.read_csv(train)
 
-train_click_id = train_df['id','click']
-del train_df['id','click']
+train_click_id = train_df[['id','click']]
+del train_df['id']
+del train_df['click']
 test_click_id = test_df['id']
 del test_df['id']
 
@@ -33,7 +34,7 @@ del test_df
 # -- modification -- #
 ######################
 df_col=list(train_df.columns.values)
-train_df['counts'] = train_df.groupby(['click']).transform(len)
+train_df['counts'] = train_df.groupby(['hour']).transform(len)
 
 test_df.ix[(test_df.counts <= 5),'hour'] = 25 # ??
 
@@ -44,8 +45,8 @@ test_df.ix[(test_df.counts <= 5),'hour'] = 25 # ??
 ################
 # -- output -- #
 ################
-test_df = comb_df.ix[400000:,:]
-del com_df[].ix[400000:,:]
+test_df = comb_df.ix[40428967:,:]
+del com_df[].ix[40428967:,:]
 
 pd.merge(train_click_id, com_df)
 pd.merge(test_click_id, test_df)
