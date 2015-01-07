@@ -1,0 +1,15 @@
+alias vw=/Users/ivan/Work_directory/vowpal_wabbit/vowpalwabbit/vw
+
+vw -d train_df.vw --loss_function logistic -b 28 -l 0.1 -c -k --passes 3 -f model_holdout.vw --holdout_period 100
+
+vw test_df.vw -t -i model_naive.vw -p avazu.preds.txt
+
+
+../../xgboost Step_2.1_xgboost.conf
+
+../../xgboost Step_2.1_xgboost.conf task=pred model_in=0003.model
+
+../../xgboost Step_2.1_xgboost.conf task=dump model_in=0003.model name_dump=dump.raw.txt 
+../../xgboost Step_2.1_xgboost.conf task=dump model_in=0003.model fmap=featmap.txt name_dump=dump.nice.txt
+
+../../xgboost Step_2.1_xgboost.conf model_in=0002.model num_round=2 model_out=continue.model

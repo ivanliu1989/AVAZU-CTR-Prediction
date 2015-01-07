@@ -43,4 +43,4 @@ def csv_to_vw(loc_csv, loc_output, train=True):
 
 
 csv_to_vw("data/train_df.csv", "vw/train_df.vw",train=True)
-csv_to_vw("data/test_df_2.csv", "vw/test_df.vw",train=False)
+csv_to_vw("data/test_df.csv", "vw/test_df.vw",train=False)
