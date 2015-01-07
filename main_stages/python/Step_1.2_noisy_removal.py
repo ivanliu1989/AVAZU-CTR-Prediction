@@ -46,7 +46,7 @@ test_df.ix[(test_df.counts <= 5),'hour'] = 25 # ??
 # -- output -- #
 ################
 test_df = comb_df.ix[40428967:,:]
-del com_df[].ix[40428967:,:]
+del com_df.ix[40428967:,:]
 
 pd.merge(train_click_id, com_df)
 pd.merge(test_click_id, test_df)
