@@ -33,15 +33,14 @@ with open(output_file,"wb") as outfile:
         del row['click']
         
         j = 0
-        
+
         for i, item in row.items():
             
-            if i in ['site_id','site_domain','site_category','app_id','app_domain','app_category','device_id','device_ip','device_model','C20']:
-                index = abs(hash(item)%D)
-            else:
-                index = item
+            index = abs(hash(item)%D)
                 
             j += 1
+            
+            # print(i + ': ' + item + ': ' + str(index))
             
             if index == '' or float(index) == 0.0:
                 continue
@@ -54,6 +53,8 @@ with open(output_file,"wb") as outfile:
         new_line += "\n"            
         outfile.write(new_line)
         
+        # print(new_line)
+            
         if t % 100000 == 0:
             print("%s\t%s"%(t, str(datetime.now() - start)))
             
@@ -80,10 +81,7 @@ with open(output_file,"wb") as outfile:
         
         for i, item in row.items():
             
-            if i in ['site_id','site_domain','site_category','app_id','app_domain','app_category','device_id','device_ip','device_model','C20']:
-                index = abs(hash(item)%D)
-            else:
-                index = item
+            index = abs(hash(item)%D)
                 
             j += 1
             
