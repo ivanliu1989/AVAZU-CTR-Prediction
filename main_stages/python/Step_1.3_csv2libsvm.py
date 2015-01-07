@@ -10,8 +10,8 @@ from csv import DictReader
 ###############################
 # --- Main transformation --- #
 ###############################
-input_file = 'data/train_df.csv'
-output_file = 'xgboost/libsvm_train.txt'
+input_file = 'data/train_df_n.csv'
+output_file = 'xgboost/libsvm_train_n.txt'
 D = 10**6 #2**28  
 
 start = datetime.now()
@@ -36,7 +36,11 @@ with open(output_file,"wb") as outfile:
         
         for i, item in row.items():
             
-            index = abs(hash(item)%D)
+            if i in ['site_id','site_domain','site_category','app_id','app_domain','app_category','device_id','device_ip','device_model','C20']:
+                index = abs(hash(item)%D)
+            else:
+                index = item
+                
             j += 1
             
             if index == '' or float(index) == 0.0:
@@ -56,8 +60,8 @@ with open(output_file,"wb") as outfile:
 ####################################
 # --- Main transformation test --- #
 ####################################
-input_file = 'data/test_df.csv'
-output_file = 'xgboost/libsvm_test.txt'
+input_file = 'data/test_df_n.csv'
+output_file = 'xgboost/libsvm_test_n.txt'
 D = 10**6 #2**28  
 
 start = datetime.now()
@@ -76,7 +80,11 @@ with open(output_file,"wb") as outfile:
         
         for i, item in row.items():
             
-            index = abs(hash(item)%D)
+            if i in ['site_id','site_domain','site_category','app_id','app_domain','app_category','device_id','device_ip','device_model','C20']:
+                index = abs(hash(item)%D)
+            else:
+                index = item
+                
             j += 1
             
             if index == '' or float(index) == 0.0:
