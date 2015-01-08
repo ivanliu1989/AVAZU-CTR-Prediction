@@ -89,7 +89,7 @@ with open('data/train_df_null.csv',"wb") as outfile:
             C18 = ''
         if C19 in ['d41d8cd9']: 
             C19 = ''
-        if C20 in ['d41d8cd9',-1]: 
+        if C20 in ['d41d8cd9']: 
             C20 = ''
         if C21 in ['d41d8cd9']: 
             C21 = ''
@@ -171,7 +171,7 @@ with open('data/test_df_null.csv',"wb") as outfile:
             C18 = ''
         if C19 in ['d41d8cd9']: 
             C19 = ''
-        if C20 in ['d41d8cd9',-1]: 
+        if C20 in ['d41d8cd9']: 
             C20 = ''
         if C21 in ['d41d8cd9']: 
             C21 = ''

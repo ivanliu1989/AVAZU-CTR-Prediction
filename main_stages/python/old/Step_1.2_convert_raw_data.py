@@ -8,19 +8,22 @@ import pandas as pd
 from collections import Counter
 import os
 import numpy as np
+import hashlib
 
-train = 'data/train_df_app.csv'               # path to training file
-test = 'data/test_df_app.csv'
+#train = 'data/train_df_app.csv'               # path to training file
+#test = 'data/test_df_app.csv'
 #train = 'data/train_df_site.csv'               # path to training file
 #test = 'data/test_df_site.csv'
-test_df = pd.read_csv(test)
-train_df = pd.read_csv(train)
+#test_df = pd.read_csv(test)
+#train_df = pd.read_csv(train)
 
-create_dict_for = ["C1","C4","banner_pos","site_id","site_domain","site_category",
-                   "app_id","app_domain","app_category","device_id","device_ip",
-                   "device_model"]
+COLS = list(['id','click','hour','C1','banner_pos','site_id','site_domain',
+             'site_category','app_id','app_domain','app_category','device_id','device_ip','device_model',
+             'device_type','device_conn_type','C14','C15','C16','C17','C18','C19','C20','C21'])
 
-COLS = list(train_df.columns.values)
+create_dict_for = list(['hour','C1','banner_pos','site_id','site_domain','site_category','app_id',
+                        'app_domain','app_category','device_id','device_ip','device_model',
+                        'device_type','device_conn_type','C14','C15','C16','C17','C18','C19','C20','C21'])
 
 CHUNK_SIZE = 1000000
 
@@ -66,8 +69,8 @@ def write_translated(input_path,output_path,ids,mode="w",start_id=0):
 
 if __name__ == "__main__":
     counters = create_counters()
-    update_counter("data_raw/train.csv",counters)
-    update_counter("data_raw/test.csv",counters)
+    update_counter("data/train.csv",counters)
+    update_counter("data/test.csv",counters)
     ids = convert_counts_to_id(counters)
-    max_id = write_translated("data_raw/train.csv","data_raw/merged.csv",ids)    
-    _ = write_translated("data_raw/test.csv","data_raw/merged.csv",ids,mode="a",start_id = max_id)
+    max_id = write_translated("data/train.csv","data_raw/merged.csv",ids)    
+    _ = write_translated("data/test.csv","data_raw/merged.csv",ids,mode="a",start_id = max_id)

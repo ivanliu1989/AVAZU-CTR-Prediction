@@ -9,6 +9,7 @@ from datetime import datetime
 from csv import DictReader
 import pandas as pd
 from sklearn.preprocessing import OneHotEncoder
+from collections import Counter
 
 ##################
 # -- load data --#
@@ -38,14 +39,17 @@ del test_df
 ######################
 df_col=list(train_df.columns.values)
 
-enc = OneHotEncoder()
-enc.fit(test_df[['C1','banner_pos']])
-a= enc.transform(test_df[['C1','banner_pos']])
-b = pd.DataFrame(a)
+#enc = OneHotEncoder()
+#enc.fit(test_df[['C1','banner_pos']])
+#a= enc.transform(test_df[['C1','banner_pos']])
+#b = pd.DataFrame(a)
                                
 #train_df['counts'] = train_df.groupby(['hour']).transform(len)
 #test_df.ix[(test_df.counts <= 5),'hour'] = hash('hour'+_+'other')%(2**28) # ??
-
+d = Counter(train_df['hour'])
+d_s = d[d<=5]
+n, m = d.keys(), d.values()
+print n, m
 # df_freq = lambda x: Counter(train_df[x])
 # df_freq('hour')
 # hash('other') % (10**6)
