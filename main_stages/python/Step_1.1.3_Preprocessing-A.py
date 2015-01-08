@@ -46,53 +46,53 @@ with open('data/train_df_null.csv',"wb") as outfile:
         C21 = row['C21']
         
         if ID in ['d41d8cd9']: 
-            ID = None
+            ID = ''
         if click in ['d41d8cd9']: 
-            click = None
+            click = ''
         if hour in ['d41d8cd9']: 
-            hour = None
+            hour = ''
         if C1 in ['d41d8cd9']: 
-            C1 = None
+            C1 = ''
         if banner_pos in ['d41d8cd9']: 
-            banner_pos = None
+            banner_pos = ''
         if site_id in ['d41d8cd9', '85f751fd']: 
-            site_id = None
+            site_id = ''
         if site_domain in ['d41d8cd9','c4e18dd6']: 
-            site_domain = None
+            site_domain = ''
         if site_category in ['d41d8cd9','50e219e0']: 
-            site_category = None
+            site_category = ''
         if app_id in ['d41d8cd9','ecad2386']: 
-            app_id = None
+            app_id = ''
         if app_domain in ['d41d8cd9','7801e8d9']: 
-            app_domain = None
+            app_domain = ''
         if app_category in ['d41d8cd9','07d7df22']: 
-            app_category = None
+            app_category = ''
         if device_id in ['d41d8cd9']: 
-            device_id = None
+            device_id = ''
         if device_ip in ['d41d8cd9']: 
-            device_ip = None
+            device_ip = ''
         if device_model in ['d41d8cd9']: 
-            device_model = None
+            device_model = ''
         if device_type in ['d41d8cd9']: 
-            device_type = None
+            device_type = ''
         if device_conn_type in ['d41d8cd9']: 
-            device_conn_type = None
+            device_conn_type = ''
         if C14 in ['d41d8cd9']: 
-            C14 = None
+            C14 = ''
         if C15 in ['d41d8cd9']: 
-            C15 = None
+            C15 = ''
         if C16 in ['d41d8cd9']: 
-            C16 = None
+            C16 = ''
         if C17 in ['d41d8cd9']: 
-            C17 = None
+            C17 = ''
         if C18 in ['d41d8cd9']: 
-            C18 = None
+            C18 = ''
         if C19 in ['d41d8cd9']: 
-            C19 = None
-        if C20 in ['d41d8cd9']: 
-            C20 = None
+            C19 = ''
+        if C20 in ['d41d8cd9',-1]: 
+            C20 = ''
         if C21 in ['d41d8cd9']: 
-            C21 = None
+            C21 = ''
 
         outfile.write('%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n' % (str(ID), str(click),str(hour),str(C1),str(banner_pos),str(site_id),str(site_domain),str(site_category),str(app_id),str(app_domain),str(app_category),str(device_id),str(device_ip),str(device_model),str(device_type),str(device_conn_type),str(C14),str(C15),str(C16),str(C17),str(C18),str(C19),str(C20),str(C21)))
         if t % 100000 == 0:
@@ -130,51 +130,51 @@ with open('data/test_df_null.csv',"wb") as outfile:
         C21 = row['C21']
         
         if ID in ['d41d8cd9']: 
-            ID = None
+            ID = ''
         if hour in ['d41d8cd9']: 
-            hour = None
+            hour = ''
         if C1 in ['d41d8cd9']: 
-            C1 = None
+            C1 = ''
         if banner_pos in ['d41d8cd9']: 
-            banner_pos = None
+            banner_pos = ''
         if site_id in ['d41d8cd9', '85f751fd']: 
-            site_id = None
+            site_id = ''
         if site_domain in ['d41d8cd9','c4e18dd6']: 
-            site_domain = None
+            site_domain = ''
         if site_category in ['d41d8cd9','50e219e0']: 
-            site_category = None
+            site_category = ''
         if app_id in ['d41d8cd9','ecad2386']: 
-            app_id = None
+            app_id = ''
         if app_domain in ['d41d8cd9','7801e8d9']: 
-            app_domain = None
+            app_domain = ''
         if app_category in ['d41d8cd9','07d7df22']: 
-            app_category = None
+            app_category = ''
         if device_id in ['d41d8cd9']: 
-            device_id = None
+            device_id = ''
         if device_ip in ['d41d8cd9']: 
-            device_ip = None
+            device_ip = ''
         if device_model in ['d41d8cd9']: 
-            device_model = None
+            device_model = ''
         if device_type in ['d41d8cd9']: 
-            device_type = None
+            device_type = ''
         if device_conn_type in ['d41d8cd9']: 
-            device_conn_type = None
+            device_conn_type = ''
         if C14 in ['d41d8cd9']: 
-            C14 = None
+            C14 = ''
         if C15 in ['d41d8cd9']: 
-            C15 = None
+            C15 = ''
         if C16 in ['d41d8cd9']: 
-            C16 = None
+            C16 = ''
         if C17 in ['d41d8cd9']: 
-            C17 = None
+            C17 = ''
         if C18 in ['d41d8cd9']: 
-            C18 = None
+            C18 = ''
         if C19 in ['d41d8cd9']: 
-            C19 = None
-        if C20 in ['d41d8cd9']: 
-            C20 = None
+            C19 = ''
+        if C20 in ['d41d8cd9',-1]: 
+            C20 = ''
         if C21 in ['d41d8cd9']: 
-            C21 = None
+            C21 = ''
             
         outfile.write('%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n' % (str(ID),str(hour),str(C1),str(banner_pos),str(site_id),str(site_domain),str(site_category),str(app_id),str(app_domain),str(app_category),str(device_id),str(device_ip),str(device_model),str(device_type),str(device_conn_type),str(C14),str(C15),str(C16),str(C17),str(C18),str(C19),str(C20),str(C21)))
         if t % 100000 == 0:

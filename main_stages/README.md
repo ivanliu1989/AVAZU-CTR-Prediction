@@ -26,7 +26,8 @@ libFM<br>
 
 ##### Step 5 Ensemble
 	- App, Site <br>
-	- GBDT feature
+	- GBDT feature <br>
+blend two logistic model with different learning rate and got 0.0003 LB improvement
 
 ##### Step 6 Calibration
 There is a gap. So minus every prediction by 0.003.<br>
