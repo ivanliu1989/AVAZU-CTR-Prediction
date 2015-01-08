@@ -5,8 +5,10 @@ Major Planning
 Feature Engineering, generate features for GBDT<br>
 	- Hour (DOW, Hour)<br>
 	- Noisy removal, <= 5 freq<br>
+	- Null value [d41d8cd9,85f751fd,c4e18dd6,50e219e0,ecad2386,7801e8d9,07d7df22]
 	- One-hot encoding(factor() | sparse.model.matrix())<br>
-	- Split by day, app, site (option)<br>
+	- Split mobile apps vs. sites<br>
+In those columns, replace d41d8cd9 with NULL. You'll see the ad was either served on a site or an app.<br>
 
 ##### Step 2 Gradient Boosting Decision Tree
 xgboost<br>
@@ -23,7 +25,7 @@ Each impression has 23(categorical) + 20(GBDT) = 43 features<br>
 libFM<br>
 
 ##### Step 5 Ensemble
-	- App, Site<br>
+	- App, Site <br>
 	- GBDT feature
 
 ##### Step 6 Calibration
