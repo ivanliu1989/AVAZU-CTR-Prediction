@@ -3,8 +3,8 @@ Major Planning
 
 ##### Step 1 Preprocessing-A
 Feature Engineering, generate features for GBDT<br>
-	- DOW, Hour (Hour)<br>
-	- Noisy removal<br>
+	- Hour (DOW, Hour)<br>
+	- Noisy removal, <= 5 freq<br>
 	- One-hot encoding(factor() | sparse.model.matrix())<br>
 	- Split by day, app, site (option)<br>
 
