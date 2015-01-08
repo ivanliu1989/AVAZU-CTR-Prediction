@@ -29,16 +29,7 @@ holdout = 100 #None  # use every N training instance for holdout validation
 # class, function, generator definitions #####################################
 ##############################################################################
 class ftrl_proximal(object):
-    ''' Our main algorithm: Follow the regularized leader - proximal
-
-        In short,
-        this is an adaptive-learning-rate sparse logistic-regression with
-        efficient L1-L2-regularization
-
-        Reference:
-        http://www.eecs.tufts.edu/~dsculley/papers/ad-click-prediction.pdf
-    '''
-
+    
     def __init__(self, alpha, beta, L1, L2, D, interaction):
         # parameters
         self.alpha = alpha
@@ -50,21 +41,11 @@ class ftrl_proximal(object):
         self.D = D
         self.interaction = interaction
 
-        # model
-        # n: squared sum of past gradients
-        # z: weights
-        # w: lazy weights
         self.n = [0.] * D
         self.z = [0.] * D
         self.w = {}
 
     def _indices(self, x):
-        ''' A helper generator that yields the indices in x
-
-            The purpose of this generator is to make the following
-            code a bit cleaner when doing feature interaction.
-        '''
-
         # first yield index of the bias term
         yield 0
 
@@ -84,14 +65,6 @@ class ftrl_proximal(object):
                     yield hash(str(x[i]) + '_' + str(x[j])) % D
 
     def predict(self, x):
-        ''' Get probability estimation on x
-
-            INPUT:
-                x: features
-
-            OUTPUT:
-                probability of p(y = 1 | x; w)
-        '''
 
         # parameters
         alpha = self.alpha
@@ -107,11 +80,8 @@ class ftrl_proximal(object):
         # wTx is the inner product of w and x
         wTx = 0.
         for i in self._indices(x):
-            sign = -1. if z[i] < 0 else 1.  # get sign of z[i]
-
-            # build w on the fly using z and n, hence the name - lazy weights
-            # we are doing this at prediction instead of update time is because
-            # this allows us for not storing the complete w
+            sign = -1. if z[i] < 0 else 1.  
+            
             if sign * z[i] <= L1:
                 # w[i] vanishes due to L1 regularization
                 w[i] = 0.
@@ -128,18 +98,7 @@ class ftrl_proximal(object):
         return 1. / (1. + exp(-max(min(wTx, 35.), -35.)))
 
     def update(self, x, p, y):
-        ''' Update model using x, p, y
-
-            INPUT:
-                x: feature, a list of indices
-                p: click probability prediction of our model
-                y: answer
-
-            MODIFIES:
-                self.n: increase by squared gradient
-                self.z: weights
-        '''
-
+        
         # parameter
         alpha = self.alpha
 
@@ -147,11 +106,9 @@ class ftrl_proximal(object):
         n = self.n
         z = self.z
         w = self.w
-
         # gradient under logloss
         g = p - y
 
-        # update z and n
         for i in self._indices(x):
             sigma = (sqrt(n[i] + g * g) - sqrt(n[i])) / alpha
             z[i] += g - sigma * w[i]
@@ -159,34 +116,12 @@ class ftrl_proximal(object):
 
 
 def logloss(p, y):
-    ''' FUNCTION: Bounded logloss
-
-        INPUT:
-            p: our prediction
-            y: real answer
-
-        OUTPUT:
-            logarithmic loss of p given y
-    '''
-
+    
     p = max(min(p, 1. - 10e-15), 10e-15)
     return -log(p) if y == 1. else -log(1. - p)
 
 
 def data(path, D):
-    ''' GENERATOR: Apply hash-trick to the original csv row
-                   and for simplicity, we one-hot-encode everything
-
-        INPUT:
-            path: path to training or testing file
-            D: the max index that we can hash to
-
-        YIELDS:
-            ID: id of the instance, mainly useless
-            x: a list of hashed and one-hot-encoded 'indices'
-               we only need the index since all values are either 0 or 1
-            y: y = 1 if we have a click, else we have y = 0
-    '''
 
     for t, row in enumerate(DictReader(open(path))):
         # process id
@@ -199,21 +134,12 @@ def data(path, D):
             if row['click'] == '1':
                 y = 1.
             del row['click']
-
-        # extract date
-        # date = int(row['hour'][4:6])
-
-        # turn hour really into hour, it was originally YYMMDDHH
-        # row['hour'] = row['hour'][6:]
-
-        # build x
+            
         x = []
         for key in row:
             value = row[key]
-
-            # one-hot encode everything with hash trick
-            # index = hash(key + '_' + value) % D
-            index = hash(value) % D
+            
+            index = hash(key+'_'+value) % D
             x.append(index)
 
         yield t, ID, x, y #date, 
@@ -224,34 +150,19 @@ def data(path, D):
 ##############################################################################
 
 start = datetime.now()
-
 # initialize ourselves a learner
 learner = ftrl_proximal(alpha, beta, L1, L2, D, interaction)
 
-# start training
 for e in xrange(epoch):
     loss = 0.
     count = 0
 
-    for t, ID, x, y in data(train, D):  # data is a generator #date, 
-        #    t: just a instance counter
-        # date: you know what this is
-        #   ID: id provided in original data
-        #    x: features
-        #    y: label (click)
-
-        # step 1, get prediction from learner
+    for t, ID, x, y in data(train, D): 
+        
         p = learner.predict(x)
 
-        if (holdout and t % holdout == 0): #(holdafter and date > holdafter) or 
-            # step 2-1, calculate validation loss
-            #           we do not train with the validation data so that our
-            #           validation loss is an accurate estimation
-            #
-            # holdafter: train instances from day 1 to day N
-            #            validate with instances from day N + 1 and after
-            #
-            # holdout: validate with every N instance, train with others
+        if (holdout and t % holdout == 0): 
+        
             loss += logloss(p, y)
             count += 1
         else:
@@ -271,37 +182,22 @@ for e in xrange(epoch):
 
 start = datetime.now()
 
-# initialize ourselves a learner
 learner2 = ftrl_proximal(alpha, beta, L1, L2, D, interaction)
-
 # start training
 for e in xrange(epoch):
     loss = 0.
     count = 0
 
-    for t, ID, x, y in data(train2, D):  # data is a generator #date, 
-        #    t: just a instance counter
-        # date: you know what this is
-        #   ID: id provided in original data
-        #    x: features
-        #    y: label (click)
-
-        # step 1, get prediction from learner
+    for t, ID, x, y in data(train2, D):  #
+    
         p = learner2.predict(x)
 
-        if (holdout and t % holdout == 0): #(holdafter and date > holdafter) or 
-            # step 2-1, calculate validation loss
-            #           we do not train with the validation data so that our
-            #           validation loss is an accurate estimation
-            #
-            # holdafter: train instances from day 1 to day N
-            #            validate with instances from day N + 1 and after
-            #
-            # holdout: validate with every N instance, train with others
+        if (holdout and t % holdout == 0): 
+        
             loss += logloss(p, y)
             count += 1
         else:
-            # step 2-2, update learner with label (click) information
+            
             learner2.update(x, p, y)
         
         if t % 2500000 == 0 and t > 1:
