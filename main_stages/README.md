@@ -31,3 +31,16 @@ blend two logistic model with different learning rate and got 0.0003 LB improvem
 
 ##### Step 6 Calibration
 There is a gap. So minus every prediction by 0.003.<br>
+
+
+#### Predictions
+##### NULL, Split, HOUR
+###### fast solution python
+0.1 | 1 | 4 | 4 | 28 - local: / | LB: 0.3940511 <br>
+0.1 | 1.5 | 4 | 4 | 28 - local: 0.441747/0.310183 | LB: 0.3941666 <br>
+0.12 | 1.5 | 4 | 4 | 28 - local: 0.441551/0.309723 | LB: <br>
+0.1 | 1 | 6 | 6 | 28 - local: 0.441921/0.310515 | LB: <br>
+
+###### VW
+-b 28 -l 0.1 -c -k --passes 3 --holdout_period 100 | local: / | LB: 0.3939303 <br>
+
