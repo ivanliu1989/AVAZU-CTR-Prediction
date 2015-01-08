@@ -2,15 +2,6 @@ from datetime import datetime
 from csv import DictReader
 from math import exp, log, sqrt
 
-
-# TL; DR, the main training process starts on line: 250,
-# you may want to start reading the code from there
-
-
-##############################################################################
-# parameters #################################################################
-##############################################################################
-
 # A, paths
 train = 'train_df_site.csv'               # path to training file
 test = 'test_df_site.csv'                 # path to testing file
@@ -221,7 +212,8 @@ def data(path, D):
             value = row[key]
 
             # one-hot encode everything with hash trick
-            index = hash(key + '_' + value) % D
+            # index = hash(key + '_' + value) % D
+            index = hash(value) % D
             x.append(index)
 
         yield t, ID, x, y #date, 

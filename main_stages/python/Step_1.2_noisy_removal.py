@@ -12,8 +12,10 @@ import pandas as pd
 ##################
 # -- load data --#
 ##################
-train = 'data/train_df.csv'               # path to training file
-test = 'data/test_df.csv'
+train = 'data/train_df_app.csv'               # path to training file
+test = 'data/test_df_app.csv'
+#train = 'data/train_df_site.csv'               # path to training file
+#test = 'data/test_df_site.csv'
 test_df = pd.read_csv(test)
 train_df = pd.read_csv(train)
 
@@ -34,9 +36,9 @@ del test_df
 # -- modification -- #
 ######################
 df_col=list(train_df.columns.values)
-train_df['counts'] = train_df.groupby(['hour']).transform(len)
 
-test_df.ix[(test_df.counts <= 5),'hour'] = 25 # ??
+train_df['counts'] = train_df.groupby(['hour']).transform(len)
+test_df.ix[(test_df.counts <= 5),'hour'] = hash('hour'+_+'other')%(2**28) # ??
 
 # df_freq = lambda x: Counter(train_df[x])
 # df_freq('hour')
