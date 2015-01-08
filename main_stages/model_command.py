@@ -1,6 +1,6 @@
 alias vw=/Users/ivan/Work_directory/vowpal_wabbit/vowpalwabbit/vw
 
-vw -d train_df.vw --loss_function logistic -b 28 -l 0.1 -c -k --passes 3 -f model_holdout.vw --holdout_period 100
+vw -d train_df_n.vw --loss_function logistic -b 28 -l 0.1 -c -k --passes 3 -f model_holdout.vw --holdout_period 100
 
 vw test_df.vw -t -i model_holdout.vw -p avazu.preds.txt
 
@@ -14,5 +14,5 @@ vw test_df.vw -t -i model_holdout.vw -p avazu.preds.txt
 
 ../../xgboost-master/xgboost Step_2.1_xgboost.conf model_in=0002.model num_round=2 model_out=continue.model
 
-id,hour,C1,banner_pos,site_id,site_domain,site_category,app_id,app_domain,app_category,device_id,device_ip,device_model,device_type,device_conn_type,C14,C15,C16,C17,C18,C19,C20,C21,dow
-id,click,hour,C1,banner_pos,site_id,site_domain,site_category,app_id,app_domain,app_category,device_id,device_ip,device_model,device_type,device_conn_type,C14,C15,C16,C17,C18,C19,C20,C21,dow
+
+../../libfm-1.42.src/bin/libFM -task c -train libsvm_train_n.txt -test libsvm_test_n.txt -dim '1,1,8' -out libFM_pred.txt -verbosity 1 -method mcmc -init_stdev 0.1 -iter 1000

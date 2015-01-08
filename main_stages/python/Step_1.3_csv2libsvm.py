@@ -12,7 +12,7 @@ from csv import DictReader
 ###############################
 input_file = 'data/train_df_n.csv'
 output_file = 'xgboost/libsvm_train_n.txt'
-D = 10**6 #2**28  
+D = 2**28  #10**6 
 
 start = datetime.now()
 with open(output_file,"wb") as outfile:
@@ -36,7 +36,7 @@ with open(output_file,"wb") as outfile:
 
         for i, item in row.items():
             
-            index = abs(hash(item)%D)
+            index = abs(hash(i + '_' + item)%D)
                 
             j += 1
             
@@ -63,7 +63,7 @@ with open(output_file,"wb") as outfile:
 ####################################
 input_file = 'data/test_df_n.csv'
 output_file = 'xgboost/libsvm_test_n.txt'
-D = 10**6 #2**28  
+D = 2**28  #10**6 
 
 start = datetime.now()
 with open(output_file,"wb") as outfile:
@@ -81,7 +81,7 @@ with open(output_file,"wb") as outfile:
         
         for i, item in row.items():
             
-            index = abs(hash(item)%D)
+            index = abs(hash(i + '_' + item)%D)
                 
             j += 1
             

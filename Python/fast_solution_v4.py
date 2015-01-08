@@ -12,9 +12,9 @@ from math import exp, log, sqrt
 ##############################################################################
 
 # A, paths
-train = 'train.csv'               # path to training file
-test = 'test.csv'                 # path to testing file
-submission = 'submission1234.csv'  # path of to be outputted submission file
+train = 'train_df_n.csv'               # path to training file
+test = 'test_df_n.csv'                 # path to testing file
+submission = 'submission1234_df_n.csv'  # path of to be outputted submission file
 
 # B, model
 alpha = .1  # learning rate
@@ -208,10 +208,10 @@ def data(path, D):
             del row['click']
 
         # extract date
-        date = int(row['hour'][4:6])
+        # date = int(row['hour'][4:6])
 
         # turn hour really into hour, it was originally YYMMDDHH
-        row['hour'] = row['hour'][6:]
+        # row['hour'] = row['hour'][6:]
 
         # build x
         x = []
@@ -222,7 +222,7 @@ def data(path, D):
             index = hash(key + '_' + value) % D
             x.append(index)
 
-        yield t, date, ID, x, y
+        yield t, ID, x, y #date, 
 
 
 ##############################################################################
@@ -239,7 +239,7 @@ for e in xrange(epoch):
     loss = 0.
     count = 0
 
-    for t, date, ID, x, y in data(train, D):  # data is a generator
+    for t, ID, x, y in data(train, D):  # data is a generator #date, 
         #    t: just a instance counter
         # date: you know what this is
         #   ID: id provided in original data
@@ -249,7 +249,7 @@ for e in xrange(epoch):
         # step 1, get prediction from learner
         p = learner.predict(x)
 
-        if (holdafter and date > holdafter) or (holdout and t % holdout == 0):
+        if (holdout and t % holdout == 0): #(holdafter and date > holdafter) or 
             # step 2-1, calculate validation loss
             #           we do not train with the validation data so that our
             #           validation loss is an accurate estimation
@@ -278,6 +278,6 @@ for e in xrange(epoch):
 
 with open(submission, 'w') as outfile:
     outfile.write('id,click\n')
-    for t, date, ID, x, y in data(test, D):
+    for t, ID, x, y in data(test, D): #date, 
         p = learner.predict(x)
         outfile.write('%s,%s\n' % (ID, str(p)))
