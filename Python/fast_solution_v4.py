@@ -12,9 +12,11 @@ from math import exp, log, sqrt
 ##############################################################################
 
 # A, paths
-train = 'train_df_n.csv'               # path to training file
-test = 'test_df_n.csv'                 # path to testing file
-submission = 'submission1234_df_n.csv'  # path of to be outputted submission file
+train = 'train_df_site.csv'               # path to training file
+test = 'test_df_site.csv'                 # path to testing file
+submission = 'submission_py_site_app.csv'  # path of to be outputted submission file
+train2 = 'train_df_app.csv'               # path to training file
+test2 = 'test_df_app.csv'                 # path to testing file
 
 # B, model
 alpha = .1  # learning rate
@@ -271,6 +273,52 @@ for e in xrange(epoch):
     print('Epoch %d finished, validation logloss: %f, elapsed time: %s' % (
         e, loss/count, str(datetime.now() - start)))
 
+##############################################################################
+# start training #############################################################
+##############################################################################
+
+start = datetime.now()
+
+# initialize ourselves a learner
+learner2 = ftrl_proximal(alpha, beta, L1, L2, D, interaction)
+
+# start training
+for e in xrange(epoch):
+    loss = 0.
+    count = 0
+
+    for t, ID, x, y in data(train2, D):  # data is a generator #date, 
+        #    t: just a instance counter
+        # date: you know what this is
+        #   ID: id provided in original data
+        #    x: features
+        #    y: label (click)
+
+        # step 1, get prediction from learner
+        p = learner2.predict(x)
+
+        if (holdout and t % holdout == 0): #(holdafter and date > holdafter) or 
+            # step 2-1, calculate validation loss
+            #           we do not train with the validation data so that our
+            #           validation loss is an accurate estimation
+            #
+            # holdafter: train instances from day 1 to day N
+            #            validate with instances from day N + 1 and after
+            #
+            # holdout: validate with every N instance, train with others
+            loss += logloss(p, y)
+            count += 1
+        else:
+            # step 2-2, update learner with label (click) information
+            learner2.update(x, p, y)
+        
+        if t % 2500000 == 0 and t > 1:
+            print(' %s\tencountered: %d\tcurrent logloss: %f' % (
+                datetime.now(), t, loss/count))
+                
+    print('Epoch %d finished, validation logloss: %f, elapsed time: %s' % (
+        e, loss/count, str(datetime.now() - start)))
+
 
 ##############################################################################
 # start testing, and build Kaggle's submission file ##########################
@@ -280,4 +328,7 @@ with open(submission, 'w') as outfile:
     outfile.write('id,click\n')
     for t, ID, x, y in data(test, D): #date, 
         p = learner.predict(x)
+        outfile.write('%s,%s\n' % (ID, str(p)))
+    for t, ID, x, y in data(test2, D): #date, 
+        p = learner2.predict(x)
         outfile.write('%s,%s\n' % (ID, str(p)))
