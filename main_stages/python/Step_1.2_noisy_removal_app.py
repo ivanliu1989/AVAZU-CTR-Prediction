@@ -131,5 +131,5 @@ test_df = test_df.reset_index()
 test_click_id = pd.DataFrame({'id':test_click_id})
 test_df = pd.merge(test_click_id, test_df, left_index=True, right_index=True)
 
-train_click_id.to_csv('data/train_df_app_smooth.csv',index=False)
-test_click_id.to_csv('data/test_df_app_smooth.csv',index=False)
+train_df.to_csv('data/train_df_app_smooth.csv',index=False)
+test_df.to_csv('data/test_df_app_smooth.csv',index=False)
