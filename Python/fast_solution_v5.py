@@ -10,14 +10,14 @@ from csv import DictReader
 from math import exp, log, sqrt
 
 # A, paths
-train = 'train_df_site.csv'               # path to training file
-test = 'test_df_site.csv'                 # path to testing file
-submission = 'submission_py_site_app_0.1_1.5_4_4.csv'  # path of to be outputted submission file
-train2 = 'train_df_app.csv'               # path to training file
-test2 = 'test_df_app.csv'                 # path to testing file
+train = 'train_df_site_smooth.csv'               # path to training file
+test = 'test_df_site_smooth.csv'                 # path to testing file
+submission = 'submission_py_site_app_0.12_1.5_4_4.csv'  # path of to be outputted submission file
+train2 = 'train_df_app_smooth.csv'               # path to training file
+test2 = 'test_df_app_smooth.csv'                 # path to testing file
 
 # B, model
-alpha = .1  # learning rate
+alpha = .12  # learning rate
 beta = 1.5   # smoothing parameter for adaptive learning rate
 L1 = 4     # L1 regularization, larger value means more regularized
 L2 = 4     # L2 regularization, larger value means more regularized
