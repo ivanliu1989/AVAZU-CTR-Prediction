@@ -4,9 +4,9 @@ Major Planning
 ##### Step 1 Preprocessing-A
 Feature Engineering, generate features for GBDT<br>
 	- Hour (DOW, Hour)<br>
-	- Noisy removal, <= 5 freq<br>
+	- Noisy removal, <= 5 freq | laplace smooth<br>
 	- Null value [d41d8cd9,85f751fd,c4e18dd6,50e219e0,ecad2386,7801e8d9,07d7df22]
-	- One-hot encoding(factor() | sparse.model.matrix())<br>
+	- One-hot encoding(factor() | sparse.model.matrix() | caret dummy)<br>
 	- Split mobile apps vs. sites<br>
 In those columns, replace d41d8cd9 with NULL. You'll see the ad was either served on a site or an app.<br>
 
