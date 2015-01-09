@@ -42,7 +42,7 @@ def csv_to_vw(loc_csv, loc_output, train=True):
   print("\n %s Task execution time:\n\t%s"%(e, str(datetime.now() - start)))
 
 
-csv_to_vw("data/train_df_site.csv", "vw/train_df_site.vw",train=True)
-csv_to_vw("data/test_df_site.csv", "vw/test_df_site.vw",train=False)
-csv_to_vw("data/train_df_app.csv", "vw/train_df_app.vw",train=True)
-csv_to_vw("data/test_df_app.csv", "vw/test_df_app.vw",train=False)
+csv_to_vw("data/train_df_site_smooth.csv", "vw/train_df_site.vw",train=True)
+csv_to_vw("data/test_df_site_smooth.csv", "vw/test_df_site.vw",train=False)
+csv_to_vw("data/train_df_app_smooth.csv", "vw/train_df_app.vw",train=True)
+csv_to_vw("data/test_df_app_smooth.csv", "vw/test_df_app.vw",train=False)

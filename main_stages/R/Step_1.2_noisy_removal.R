@@ -4,8 +4,8 @@ gc(); rm(list=ls());
 
 options(scipen=888)
 require(data.table)
-train <- as.data.frame(fread('Data/train_df.csv'))
-test <- as.data.frame(fread('Data/test_df.csv'))
+train <- as.data.frame(fread('Data/train_df_site.csv'))
+test <- as.data.frame(fread('Data/test_df_site.csv'))
 
 train_id_click <- train[,c(1,2)]; head(train_id_click)
 test_id <- test['id']; head(test_id)

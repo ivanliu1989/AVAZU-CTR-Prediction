@@ -34,7 +34,7 @@ df_col=list(train_df.columns.values)
     
 #app_id | site_id
 d = Counter(train_df[df_col[3]]) 
-st = d.most_common(100000000).index(('07a3c559', 1))
+st = d.most_common(100000000).index(('572bf9b0', 5))
 f_list = d.most_common(100000000)[st:] 
 smooth_row = []
 for a in f_list:
@@ -43,7 +43,7 @@ train_df.ix[train_df[df_col[3]].isin(smooth_row),df_col[3]] = hash('other') % (2
 
 #app_domain | site_domain
 d = Counter(train_df[df_col[4]]) 
-st = d.most_common(100000000).index(('4a4f8143',1))
+st = d.most_common(100000000).index(('c91cbbb4',5))
 f_list = d.most_common(100000000)[st:] 
 smooth_row = []
 for a in f_list:
@@ -51,17 +51,35 @@ for a in f_list:
 train_df.ix[train_df[df_col[4]].isin(smooth_row),df_col[4]] = hash('other') % (2**28)
 
 #app_category | site_category
-#d = Counter(train_df[df_col[5]])#no need
+d = Counter(train_df[df_col[5]])#no need
+st = d.most_common(100000000).index(('71af18ce',5))
+f_list = d.most_common(100000000)[st:] 
+smooth_row = []
+for a in f_list:
+    smooth_row.append(a[0])
+train_df.ix[train_df[df_col[5]].isin(smooth_row),df_col[5]] = hash('other') % (2**28)
 
 #device_id
-#d = Counter(train_df[df_col[6]]) #id
+d = Counter(train_df[df_col[6]]) #id dc575eb9 5
+st = d.most_common(100000000).index(('dc575eb9',5))
+f_list = d.most_common(100000000)[st:] 
+smooth_row = []
+for a in f_list:
+    smooth_row.append(a[0])
+train_df.ix[train_df[df_col[6]].isin(smooth_row),df_col[6]] = hash('other') % (2**28)
 
 #device_ip
-#d = Counter(train_df[df_col[7]]) #id
+d = Counter(train_df[df_col[7]]) #id
+st = d.most_common(100000000).index(('ff6e5da4',5))
+f_list = d.most_common(100000000)[st:] 
+smooth_row = []
+for a in f_list:
+    smooth_row.append(a[0])
+train_df.ix[train_df[df_col[7]].isin(smooth_row),df_col[7]] = hash('other') % (2**28)
 
 #device_model
 d = Counter(train_df[df_col[8]])
-st = d.most_common(100000000).index(('a01422c4',1))
+st = d.most_common(100000000).index(('5a33307b',5))
 f_list = d.most_common(100000000)[st:] 
 smooth_row = []
 for a in f_list:
@@ -76,7 +94,7 @@ train_df.ix[train_df[df_col[8]].isin(smooth_row),df_col[8]] = hash('other') % (2
 
 #C14
 d = Counter(train_df[df_col[11]]) 
-st = d.most_common(100000000).index((17027,1))
+st = d.most_common(100000000).index((18467,5))
 f_list = d.most_common(100000000)[st:] 
 smooth_row = []
 for a in f_list:
@@ -91,7 +109,7 @@ train_df.ix[train_df[df_col[11]].isin(smooth_row),df_col[11]] = hash('other') % 
 
 #C17
 d = Counter(train_df[df_col[14]]) 
-st = d.most_common(100000000).index((2181,1))
+st = d.most_common(100000000).index((2206,5))
 f_list = d.most_common(100000000)[st:] 
 smooth_row = []
 for a in f_list:
@@ -106,7 +124,7 @@ train_df.ix[train_df[df_col[14]].isin(smooth_row),df_col[14]] = hash('other') % 
 
 #C20
 d = Counter(train_df[df_col[17]]) 
-st = d.most_common(100000000).index((100198,1))
+st = d.most_common(100000000).index((100100,4))
 f_list = d.most_common(100000000)[st:] 
 smooth_row = []
 for a in f_list:
