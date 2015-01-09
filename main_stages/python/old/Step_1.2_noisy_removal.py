@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Jan  7 08:43:51 2015
+Created on Fri Jan  9 12:53:31 2015
 
 @author: ivan
 """
+
 from collections import Counter
 from datetime import datetime
 from csv import DictReader
@@ -31,49 +32,38 @@ del test_df['id']
 # -- combine df -- #
 ####################
 train_df = train_df.append(test_df,ignore_index=True);
+# del train_df
 del test_df
-
+#train_df[df_col[0]].apply(pd.value_counts)
 ######################
 # -- modification -- #
 ######################
 df_col=list(train_df.columns.values)
-    
-#app_id | site_id
-d = Counter(train_df[df_col[3]]) 
-st = d.most_common(100000000).index(('07a3c559', 1))
-f_list = d.most_common(100000000)[st:] 
+#enc = OneHotEncoder()
+#enc.fit(test_df[['C1','banner_pos']])
+#a= enc.transform(test_df[['C1','banner_pos']])
+#b = pd.DataFrame(a)                               
+#train_df['counts'] = train_df.groupby(['hour']).transform(len)
+#test_df.ix[(test_df.counts <= 5),'hour'] = hash('hour'+_+'other')%(2**28) # ??
+
+d = Counter(train_df[df_col[3]]) #app_id | site_id
+st = d.most_common(100000).index(('07a3c559', 1))
+f_list = d.most_common(10000)[st:] 
 smooth_row = []
 for a in f_list:
     smooth_row.append(a[0])
-train_df.ix[train_df[df_col[3]].isin(smooth_row),df_col[3]] = hash('other') % (2**28)
+for r in train_df[df_col[3]]:
+    if r in smooth_row:
+        r = hash('other') % (2**28)
 
-#app_domain | site_domain
-d = Counter(train_df[df_col[4]]) 
-st = d.most_common(100000000).index(('4a4f8143',1))
-f_list = d.most_common(100000000)[st:] 
-smooth_row = []
-for a in f_list:
-    smooth_row.append(a[0])
-train_df.ix[train_df[df_col[4]].isin(smooth_row),df_col[4]] = hash('other') % (2**28)
+d = Counter(train_df[df_col[4]]) #app_domain | site_domain
+result = [a for a, b in enumerate(d.values()) if b <=5]
 
-#app_category | site_category
-d = Counter(train_df[df_col[5]]) 
-st = d.most_common(100000000).index(('4a4f8143',1))
-f_list = d.most_common(100000000)[st:] 
-smooth_row = []
-for a in f_list:
-    smooth_row.append(a[0])
-train_df.ix[train_df[df_col[5]].isin(smooth_row),df_col[5]] = hash('other') % (2**28)
+d = Counter(train_df[df_col[5]]) #app_category | site_category
+result = [a for a, b in enumerate(d.values()) if b <=5]
 
-#device_id
-d = Counter(train_df[df_col[6]]) 
-st = d.most_common(100000000).index(('4a4f8143',1))
-f_list = d.most_common(100000000)[st:] 
-smooth_row = []
-for a in f_list:
-    smooth_row.append(a[0])
-train_df.ix[train_df[df_col[6]].isin(smooth_row),df_col[6]] = hash('other') % (2**28)
-
+d = Counter(train_df[df_col[6]]) #device_id
+result = [a for a, b in enumerate(d.values()) if b <=5]
 
 d = Counter(train_df[df_col[7]]) #device_ip
 result = [a for a, b in enumerate(d.values()) if b <=5]
@@ -111,6 +101,9 @@ result = [a for a, b in enumerate(d.values()) if b <=5]
 d = Counter(train_df[df_col[18]]) #C21
 result = [a for a, b in enumerate(d.values()) if b <=5]
 
+# df_freq = lambda x: Counter(train_df[x])
+# df_freq('hour')
+# hash('other') % (10**6)
 
 ################
 # -- output -- #

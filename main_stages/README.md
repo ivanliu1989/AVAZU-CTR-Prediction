@@ -44,5 +44,5 @@ There is a gap. So minus every prediction by 0.003.<br>
 
 ###### VW
 -b 28 -l 0.1 -c -k --passes 3 --holdout_period 100 | local: / | LB: 0.3939303 <br>
--b 28 -l 0.12 -c -k --passes 3 --holdout_period 100 | local: 0.437666/0.300353 | LB:  <br>
+-b 28 -l 0.12 -c -k --passes 3 --holdout_period 100 | local: 0.437666/0.300353 | LB: 0.3938035 <br>++
 
