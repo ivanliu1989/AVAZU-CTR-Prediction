@@ -42,7 +42,7 @@ There is a gap. So minus every prediction by 0.003.<br>
 0.12 | 1.5 | 4 | 4 | 28 - local: 0.441551/0.309723 | LB: 0.3941158 +<br>
 0.1 | 1 | 6 | 6 | 28 - local: 0.441921/0.310515 | LB: 0.3942410 -<br>
 0.12 | 1.5 | 4 | 4 | 28 - local: 0.440745/0.308922 | LB: 0.3934614 (smooth)<br>
-0.12 | 1.5 | 4 | 4 | 28 - local: / | LB:  (smooth - 10)<br>
+0.12 | 1.5 | 4 | 4 | 28 - local: 0.440846/0.308867 | LB:  (smooth - 10)<br>
 
 ###### VW
 -b 28 -l 0.1 -c -k --passes 3 --holdout_period 100 | local: / | LB: 0.3939303 <br>
