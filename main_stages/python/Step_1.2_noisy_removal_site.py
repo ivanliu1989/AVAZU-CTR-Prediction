@@ -32,7 +32,7 @@ df_col=list(train_df.columns.values)
     
 #app_id | site_id
 d = Counter(train_df[df_col[3]]) 
-st = d.most_common(100000000).index(('23756717', 10)) #('edf9f207', 5)
+st = d.most_common(100000000).index(('edf9f207', 5)) #('edf9f207', 5)
 f_list = d.most_common(100000000)[st:] 
 smooth_row = []
 for a in f_list:
@@ -41,7 +41,7 @@ train_df.ix[train_df[df_col[3]].isin(smooth_row),df_col[3]] = -2 # hash('other')
 
 #app_domain | site_domain
 d = Counter(train_df[df_col[4]]) 
-st = d.most_common(100000000).index(('5eef4635',10)) #('fba8c3cc',5)
+st = d.most_common(100000000).index(('fba8c3cc',5)) #('fba8c3cc',5)
 f_list = d.most_common(100000000)[st:] 
 smooth_row = []
 for a in f_list:
@@ -50,7 +50,7 @@ train_df.ix[train_df[df_col[4]].isin(smooth_row),df_col[4]] = -2
 
 #app_category | site_category
 d = Counter(train_df[df_col[5]])#no need
-st = d.most_common(100000000).index(('110ab22d',6)) #('a72a0145',3)
+st = d.most_common(100000000).index(('a72a0145',3)) #('a72a0145',3)
 f_list = d.most_common(100000000)[st:] 
 smooth_row = []
 for a in f_list:
@@ -59,7 +59,7 @@ train_df.ix[train_df[df_col[5]].isin(smooth_row),df_col[5]] = -2
 
 #device_id
 d = Counter(train_df[df_col[6]]) #id dc575eb9 5
-st = d.most_common(100000000).index(('0e0721a5',10)) #('ac352d50',5)
+st = d.most_common(100000000).index(('ac352d50',5)) #('ac352d50',5)
 f_list = d.most_common(100000000)[st:] 
 smooth_row = []
 for a in f_list:
@@ -68,7 +68,7 @@ train_df.ix[train_df[df_col[6]].isin(smooth_row),df_col[6]] = -2
 
 #device_ip
 d = Counter(train_df[df_col[7]]) #id #site e750d599
-st = d.most_common(100000000).index(('1af427be',10)) #('e750d599',5)
+st = d.most_common(100000000).index(('e750d599',5)) #('e750d599',5)
 f_list = d.most_common(100000000)[st:] 
 smooth_row = []
 for a in f_list:
@@ -77,7 +77,7 @@ train_df.ix[train_df[df_col[7]].isin(smooth_row),df_col[7]] = -2
 
 #device_model
 d = Counter(train_df[df_col[8]])
-st = d.most_common(100000000).index(('9fbf5469',10))#('dec3afcc',5)
+st = d.most_common(100000000).index(('dec3afcc',5))#('dec3afcc',5)
 f_list = d.most_common(100000000)[st:] 
 smooth_row = []
 for a in f_list:
@@ -92,7 +92,7 @@ train_df.ix[train_df[df_col[8]].isin(smooth_row),df_col[8]] = -2
 
 #C14
 d = Counter(train_df[df_col[11]]) 
-st = d.most_common(100000000).index((21233,10)) #(23576,5)
+st = d.most_common(100000000).index((23576,5)) #(23576,5)
 f_list = d.most_common(100000000)[st:] 
 smooth_row = []
 for a in f_list:
@@ -107,7 +107,7 @@ train_df.ix[train_df[df_col[11]].isin(smooth_row),df_col[11]] = -2
 
 #C17
 d = Counter(train_df[df_col[14]]) 
-st = d.most_common(100000000).index((2575,10))#(2565,3)
+st = d.most_common(100000000).index((2565,3))#(2565,3)
 f_list = d.most_common(100000000)[st:] 
 smooth_row = []
 for a in f_list:
@@ -122,7 +122,7 @@ train_df.ix[train_df[df_col[14]].isin(smooth_row),df_col[14]] = -2
 
 #C20
 d = Counter(train_df[df_col[17]]) 
-st = d.most_common(100000000).index((100157,7)) #(100006,5)
+st = d.most_common(100000000).index((100006,5)) #(100006,5)
 f_list = d.most_common(100000000)[st:] 
 smooth_row = []
 for a in f_list:
@@ -144,6 +144,7 @@ train_df = train_df.ix[0:25832829,:]
 
 train_df = pd.merge(train_click_id, train_df, left_index=True, right_index=True)
 test_df = test_df.reset_index()
+del test_df['index']
 test_click_id = pd.DataFrame({'id':test_click_id})
 test_df = pd.merge(test_click_id, test_df, left_index=True, right_index=True)
 
