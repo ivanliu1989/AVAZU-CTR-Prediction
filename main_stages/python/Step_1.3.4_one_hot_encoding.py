@@ -6,8 +6,8 @@ Created on Sat Jan 10 21:19:32 2015
 """
 import pandas as pd
 
-train_path = 'data/train_df_app_smooth.csv'
-test_path = 'data/test_df_app_smooth.csv'
+train_path = 'data/onehot/train_df_smooth_hash_app.csv'
+test_path = 'data/test_df_smooth_hash_app.csv'
 train = pd.read_csv(train_path,index_col = False)
 test = pd.read_csv(test_path,index_col = False)
 
