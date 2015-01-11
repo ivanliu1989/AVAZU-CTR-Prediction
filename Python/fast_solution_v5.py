@@ -17,7 +17,7 @@ train2 = 'data/train_df_app_smooth.csv'               # path to training file
 test2 = 'data/test_df_app_smooth.csv'                 # path to testing file
 
 # B, model
-alpha = .13  # learning rate
+alpha = .14  # learning rate
 beta = 1   # smoothing parameter for adaptive learning rate
 L1 = 1     # L1 regularization, larger value means more regularized
 L2 = 1     # L2 regularization, larger value means more regularized

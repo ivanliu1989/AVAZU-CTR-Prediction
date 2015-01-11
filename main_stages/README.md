@@ -57,3 +57,8 @@ There is a gap. So minus every prediction by 0.003.<br>
 ###### xgboost
 eta = 1 | gamma = 0.3 | max_depth = 8 | num_round = 2 | LB: 0.4103132
 eta = 0.8 | gamma = 0.1 | max_depth = 16 | num_round = 8 | LB: 0.3999703
+eta = 0.8 | gamma = 0.1 | max_depth = 16 | num_round = 2 | LB: 0.4102534
+eta = 1 | gamma = 0.1 | max_depth = 16 | num_round = 2 | LB: 0.4052225
+eta = 1 | gamma = 0.3 | max_depth = 16 | num_round = 2 | LB: 0.4052255
+eta = 1 | gamma = 0.3 | max_depth = 20 | num_round = 2 | LB: 0.4046538
+ensemble 4 | LB: 0.4051936
