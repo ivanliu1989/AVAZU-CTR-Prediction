@@ -5,11 +5,10 @@ Created on Sat Jan 10 21:19:32 2015
 @author: Ivan
 """
 import pandas as pd
-from csv import DictReader
 
-train_path = 'data/onehot/train_df_smooth_hash_app.csv'
+#train_path = 'data/onehot/train_df_smooth_hash_app.csv'
 #test_path = 'data/onehot/test_df_smooth_hash_app.csv'
-#train_path = 'data/onehot/train_df_smooth_hash_site.csv'
+train_path = 'data/onehot/train_df_smooth_hash_site.csv'
 #test_path = 'data/onehot/test_df_smooth_hash_site.csv'
 train = pd.read_csv(train_path,index_col = False)
 #test = pd.read_csv(test_path,index_col = False)
@@ -59,11 +58,11 @@ with open("data/onehot/site_var_dict.csv","wb") as outfile: #site/app
     for key, val in enumerate(unique_val):
         outfile.write('%s,%s\n' % (val, key))
 
-
+'''
 var_dict = {}
 for t, row in enumerate(DictReader(open("data/onehot/site_var_dict.csv"))): # site/app
     var_dict[row['key']] = row['val']
 
 var_dict[str(unique_val[2000])]
-
+'''
 #-- please find Step_1.3.5_csv2libsvm.py to continue the encoding process --#
