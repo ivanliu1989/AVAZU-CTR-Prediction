@@ -24,7 +24,7 @@ with open('data/test_df_app_smooth_ex.csv',"wb") as outfile:
     for t, row in enumerate(DictReader(open(test_app_path))):
         
         ID = row['id']
-        hour = row['hour'][6:]
+        hour = row['hour']
         C1 = row['C1']
         banner_pos = row['banner_pos']
         app_id = row['app_id']
@@ -44,13 +44,13 @@ with open('data/test_df_app_smooth_ex.csv',"wb") as outfile:
         C20 = row['C20']
         C21 = row['C21']
         
-        if hour not in train_app['hour']: 
+        if int(hour) not in train_app['hour']: 
             hour = -2
-        if C1 not in train_app['C1']: 
+        if int(C1) not in train_app['C1']: 
             C1 = -2
-        if banner_pos not in train_app['banner_pos']: 
+        if int(banner_pos) not in train_app['banner_pos']: 
             banner_pos = -2
-        if app_id not in train_app['app_id']: 
+        if str(app_id) not in train_app['app_id']: 
             app_id = -2
         if app_domain not in train_app['app_domain']: 
             app_domain = -2

@@ -7,21 +7,21 @@ Created on Sat Jan 10 21:19:32 2015
 import pandas as pd
 from csv import DictReader
 
-#train_path = 'data/onehot/train_df_smooth_hash_app.csv'
+train_path = 'data/onehot/train_df_smooth_hash_app.csv'
 #test_path = 'data/onehot/test_df_smooth_hash_app.csv'
-train_path = 'data/onehot/train_df_smooth_hash_site.csv'
-test_path = 'data/onehot/test_df_smooth_hash_site.csv'
+#train_path = 'data/onehot/train_df_smooth_hash_site.csv'
+#test_path = 'data/onehot/test_df_smooth_hash_site.csv'
 train = pd.read_csv(train_path,index_col = False)
-test = pd.read_csv(test_path,index_col = False)
+#test = pd.read_csv(test_path,index_col = False)
 
 #train_click_id = train[['id','click']]
 del train['id']
 del train['click']
 #test_id = test['id']
-del test['id']
+#del test['id']
 
-train = train.append(test,ignore_index=True);
-del test
+#train = train.append(test,ignore_index=True);
+#del test
 
 #-- Build dictionary --#
 unique_val = pd.Series(train.values.ravel()).unique()
@@ -52,12 +52,13 @@ all_var = hour.union(C1, banner_pos, app_id, app_domain, app_category, device_id
 '''
 
 #-- Save/Read dictionary to/from csv --#
+len(unique_val)
+
 with open("data/onehot/site_var_dict.csv","wb") as outfile: #site/app
     outfile.write('key,val\n')
     for key, val in enumerate(unique_val):
         outfile.write('%s,%s\n' % (val, key))
 
-len(unique_val)
 
 var_dict = {}
 for t, row in enumerate(DictReader(open("data/onehot/site_var_dict.csv"))): # site/app

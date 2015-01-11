@@ -132,7 +132,11 @@ with open(output_file,"wb") as outfile:
             if item in ['',0,'0']:
                 continue
             
-            index = var_dict[str(item)+'.0']            
+            if var_dict[str(item)+'.0']:
+                index = var_dict[str(item)+'.0']   
+            else:
+                print('exclusive feature')
+                continue
               
             # print(i + ': ' + item + ': ' + str(index))
             
