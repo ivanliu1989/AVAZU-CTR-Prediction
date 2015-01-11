@@ -12,7 +12,7 @@ train = 'data/train_df_site_smooth.csv'               # path to training file
 test = 'data/test_df_site_smooth.csv'                 # path to testing file
 train_s = 'data/onehot/train_df_smooth_hash_site.csv'  # path of to be outputted submission file
 test_s = 'data/onehot/test_df_smooth_hash_site.csv'  # path of to be outputted submission file
-D = 2**28
+D = 2**38
 
 start = datetime.now()
 with open(train_s,"wb") as outfile:
