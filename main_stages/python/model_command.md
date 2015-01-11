@@ -1,4 +1,4 @@
-VW:
+#####VW:
 alias vw=/Users/ivan/Work_directory/vowpal_wabbit/vowpalwabbit/vw
 alias vw-hypersearch=/Users/ivan/Work_directory/vowpal_wabbit/utl/vw-hypersearch
 
@@ -11,21 +11,18 @@ vw test_df_app.vw -t -i model_app.vw -p avazu.preds.app.txt
 vw-hypersearch 0.05 0.15 vw -d train_df_site.vw --loss_function logistic -b 28 -l % -c -k --passes 3 -f model_site.vw --holdout_period 100
 vw-hypersearch 0.05 0.15 vw -d train_df_app.vw --loss_function logistic -b 28 -l % -c -k --passes 3 -f model_app.vw --holdout_period 100
 
-xgboost:
-../../xgboost-master/xgboost Step_2.1_xgboost.conf
 
-../../xgboost-master/xgboost Step_2.1_xgboost.conf task=pred model_in=0003.model
-
-../../xgboost-master/xgboost Step_2.1_xgboost.conf task=dump model_in=0003.model name_dump=dump.raw.txt 
-../../xgboost-master/xgboost Step_2.1_xgboost.conf task=dump model_in=0003.model fmap=featmap.txt name_dump=dump.nice.txt
-
-../../xgboost-master/xgboost Step_2.1_xgboost.conf model_in=0002.model num_round=2 model_out=continue.model
+#####xgboost:
+../../xgboost-master/xgboost Step_2.1_xgboost_app.conf
+../../xgboost-master/xgboost Step_2.1_xgboost_app.conf task=pred model_in=model_app.model
+../../xgboost-master/xgboost Step_2.1_xgboost_app.conf task=eval eval[name]=data/libsvm_train_app.txt
 
 
+#####FM
 ../../libfm-1.42.src/bin/libFM -task c -train libsvm_train_n.txt -test libsvm_test_n.txt -dim '1,1,8' -out libFM_pred.txt -verbosity 1 -method mcmc -init_stdev 0.1 -iter 1000
 
 
-VW improve:
+#####VW improve:
 1. Shuffle the data before making the model as the VW algorithm is an online learner and might have given more preference to the latest data
 2. provide high weights for clicks as data is skewed. How Much?
 3. tune VW algorithm using vw-hypersearch. What should be tuned?
