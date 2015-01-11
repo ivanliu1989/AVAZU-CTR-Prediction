@@ -172,7 +172,7 @@ with open(output_file,"wb") as outfile:
             if item in ['',0,'0']:
                 continue
             
-            if str(item)+'.0' in var_dict:
+            if str(str(item)+'.0') in var_dict:
                 index = var_dict[str(item)+'.0']   
             else:
                 ex_f += 1

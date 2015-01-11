@@ -54,3 +54,6 @@ There is a gap. So minus every prediction by 0.003.<br>
 -b 28 -l 0.12 -c -k --passes 3 --holdout_period 100 | local: 0.437666/0.300353 | LB: 0.3938035 ++<br>
 -b 28 -l 0.12 -c -k --passes 3 --holdout_period 100 | local: 0.438099/0.301331 | LB: 0.3933600 (smooth)<br>
 
+###### xgboost
+eta = 1 | gamma = 0.3 | max_depth = 8 | num_round = 2 | LB: 0.4103132
+eta = 0.8 | gamma = 0.1 | max_depth = 16 | num_round = 8 | LB: 0.3999703
