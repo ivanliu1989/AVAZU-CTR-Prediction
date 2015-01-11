@@ -126,8 +126,7 @@ with open(output_file,"wb") as outfile:
         new_line.append(label)
         
         del row['id']
-        del row['click']
-
+        
         for i, item in row.items():
 
             if item in ['',0,'0']:
