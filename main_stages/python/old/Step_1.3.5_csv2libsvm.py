@@ -10,11 +10,9 @@ from csv import DictReader
 ###############################
 # --- Main transformation --- #
 ###############################
-input_file = 'data/onehot/train_df_smooth_hash_app.csv'
+input_file = 'data/train_df_app.csv'
 output_file = 'xgboost/libsvm_train_app.txt'
-var_dict = {}
-for t, row in enumerate(DictReader(open("data/onehot/app_var_dict.csv"))): # site/app
-    var_dict[row['key']] = row['val']
+D = 2**28  #10**6 
 
 start = datetime.now()
 with open(output_file,"wb") as outfile:
@@ -33,19 +31,27 @@ with open(output_file,"wb") as outfile:
         
         del row['id']
         del row['click']
+        
+        j = 0
 
         for i, item in row.items():
 
+            j += 1
+            
             if item in ['',0,'0']:
                 continue
             
-            index = var_dict[str(item)+'.0']            
+            index = abs(hash(i + '_' + item)%D)
               
             # print(i + ': ' + item + ': ' + str(index))
             
-            new_item = "%s:%s" % ( index, 1 )
+            if index == '' or float(index) == 0.0:
+                continue
+            
+            new_item = "%s:%s" % ( j-1, index )
             new_line.append( new_item )
             
+        
         new_line = " ".join( new_line )        
         new_line += "\n"            
         outfile.write(new_line)
@@ -54,7 +60,7 @@ with open(output_file,"wb") as outfile:
             
         if t % 100000 == 0:
             print("%s\t%s"%(t, str(datetime.now() - start)))
-'''
+
 input_file = 'data/train_df_site.csv'
 output_file = 'xgboost/libsvm_train_site.txt'
 D = 2**28  #10**6 
@@ -105,15 +111,13 @@ with open(output_file,"wb") as outfile:
             
         if t % 100000 == 0:
             print("%s\t%s"%(t, str(datetime.now() - start)))
-'''             
+             
 ####################################
 # --- Main transformation test --- #
 ####################################
-input_file = 'data/onehot/test_df_smooth_hash_app.csv'
+input_file = 'data/test_df_app.csv'
 output_file = 'xgboost/libsvm_test_app.txt'
-var_dict = {}
-for t, row in enumerate(DictReader(open("data/onehot/app_var_dict.csv"))): # site/app
-    var_dict[row['key']] = row['val']
+D = 2**28  #10**6 
 
 start = datetime.now()
 with open(output_file,"wb") as outfile:
@@ -126,27 +130,32 @@ with open(output_file,"wb") as outfile:
         new_line.append(label)
         
         del row['id']
-        del row['click']
-
+        
+        j = 0
+        
         for i, item in row.items():
+            
+            j += 1
 
             if item in ['',0,'0']:
                 continue
             
-            index = var_dict[str(item)+'.0']            
-              
-            # print(i + ': ' + item + ': ' + str(index))
+            index = abs(hash(i + '_' + item)%D)
+                
+            if index == '' or float(index) == 0.0:
+                continue
             
-            new_item = "%s:%s" % ( index, 1 )
+            new_item = "%s:%s" % ( j-1, index )
             new_line.append( new_item )
             
+        
         new_line = " ".join( new_line )        
         new_line += "\n"            
         outfile.write(new_line)
         
         if t % 100000 == 0:
             print("%s\t%s"%(t, str(datetime.now() - start)))
-'''
+
 input_file = 'data/test_df_site.csv'
 output_file = 'xgboost/libsvm_test_site.txt'
 D = 2**28  #10**6 
@@ -187,4 +196,4 @@ with open(output_file,"wb") as outfile:
         
         if t % 100000 == 0:
             print("%s\t%s"%(t, str(datetime.now() - start)))
-'''   
+   
