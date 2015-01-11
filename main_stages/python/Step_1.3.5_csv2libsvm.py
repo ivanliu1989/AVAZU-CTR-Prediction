@@ -116,6 +116,7 @@ for t, row in enumerate(DictReader(open("data/onehot/app_var_dict.csv"))): # sit
     var_dict[row['key']] = row['val']
 
 start = datetime.now()
+ex_f = 0 
 with open(output_file,"wb") as outfile:
     for t, row in enumerate(DictReader(open(input_file))):
         
@@ -132,10 +133,10 @@ with open(output_file,"wb") as outfile:
             if item in ['',0,'0']:
                 continue
             
-            if var_dict[str(item)+'.0']:
+            if str(item)+'.0' in var_dict:
                 index = var_dict[str(item)+'.0']   
             else:
-                print('exclusive feature')
+                ex_f += 1
                 continue
               
             # print(i + ': ' + item + ': ' + str(index))
@@ -149,6 +150,7 @@ with open(output_file,"wb") as outfile:
         
         if t % 100000 == 0:
             print("%s\t%s"%(t, str(datetime.now() - start)))
+            print(ex_f)
 '''
 input_file = 'data/test_df_site.csv'
 output_file = 'xgboost/libsvm_test_site.txt'
