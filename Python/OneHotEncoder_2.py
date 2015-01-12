@@ -4,9 +4,7 @@ Created on Sat Jan 10 21:14:04 2015
 
 @author: Ivan
 """
-
 from scipy import sparse
-
 
 class OneHotEncoderCOO():
     """
