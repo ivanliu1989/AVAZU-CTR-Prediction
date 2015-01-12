@@ -25,3 +25,8 @@ submit1['click2'] = 0
 
 for key,val in enumerate(submit1['id']):
     submit1['click2'][key] = pred_2[val]
+    
+submit1['click'] = 0.5*submit1['click'] + 0.5*submit1['click2']
+del submit1['click2']
+
+submit1.to_csv('submit_ensemble_merge.csv',index=False)
