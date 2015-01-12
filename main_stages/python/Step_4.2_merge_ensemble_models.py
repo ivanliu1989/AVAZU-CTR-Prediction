@@ -17,7 +17,7 @@ for t, row in enumerate(DictReader(open(pred_file2))): # site/app
 
 start = datetime.now()
 with open('submit_ensemble_merge.csv',"wb") as outfile:
-    outfile.write('id,click')
+    outfile.write('id,click\n')
     for t, row in enumerate(DictReader(open(pred_file1))):
         
         ID = row['id']
