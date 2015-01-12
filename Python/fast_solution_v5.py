@@ -17,14 +17,20 @@ train2 = 'data/train_df_app_smooth.csv'               # path to training file
 test2 = 'data/test_df_app_smooth.csv'                 # path to testing file
 
 # B, model
-alpha = .2  # learning rate
-beta = 1   # smoothing parameter for adaptive learning rate
-L1 = 1     # L1 regularization, larger value means more regularized
-L2 = 16     # L2 regularization, larger value means more regularized
+alpha_site = .2  # learning rate
+beta_site = 1   # smoothing parameter for adaptive learning rate
+L1_site = 1     # L1 regularization, larger value means more regularized
+L2_site = 52     # L2 regularization, larger value means more regularized
+
+alpha_app = .2  # learning rate
+beta_app = 1   # smoothing parameter for adaptive learning rate
+L1_app = 1     # L1 regularization, larger value means more regularized
+L2_app = 4     # L2 regularization, larger value means more regularized
 
 # C, feature/hash trick
 D = 2 ** 28             # number of weights to use
-interaction = False     # whether to enable poly2 feature interactions
+interaction_app = False     # whether to enable poly2 feature interactions
+interaction_site = True     # whether to enable poly2 feature interactions
 
 # D, training/validation
 epoch = 1       # learn training data for N passes
@@ -158,7 +164,7 @@ def data(path, D):
 
 start = datetime.now()
 # initialize ourselves a learner
-learner = ftrl_proximal(alpha, beta, L1, L2, D, interaction)
+learner = ftrl_proximal(alpha_site, beta_site, L1_site, L2_site, D, interaction)
 
 for e in xrange(epoch):
     loss = 0.
@@ -189,7 +195,7 @@ for e in xrange(epoch):
 
 start = datetime.now()
 
-learner2 = ftrl_proximal(alpha, beta, L1, L2, D, interaction)
+learner2 = ftrl_proximal(alpha_app, beta_app, L1_app, L2_app, D, interaction)
 # start training
 for e in xrange(epoch):
     loss = 0.
