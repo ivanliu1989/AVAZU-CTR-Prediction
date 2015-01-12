@@ -33,6 +33,10 @@ blend two logistic model with different learning rate and got 0.0003 LB improvem
 ##### Step 6 Calibration
 There is a gap. So minus every prediction by 0.003.<br>
 
+##### Shuffle data
+pypy shuffle_ooc.py train_df_app_smooth.csv > train_df_app_smooth_shuffled.csv
+pypy shuffle_ooc.py train_df_site_smooth.csv > train_df_site_smooth_shuffled.csv
+
 
 #### Predictions
 ##### NULL, Split, HOUR
@@ -48,6 +52,8 @@ There is a gap. So minus every prediction by 0.003.<br>
 * 0.13 | 1 | 2 | 6 | 28 - local: 0.440191/0.307800 | LB:  (smooth - 5)<br>
 * 0.13 | 1 | 1 | 6 | 28 - local: 0.439785/0.307126 | LB:  (smooth - 5)<br>
 * 0.13 | 1 | 1 | 1 | 28 - local: 0.439512/0.306498 | LB: 0.3931091 (smooth - 5)<br>
+0.14 | 1 | 1 | 1 | 28 - local: 0.439405/0.306257 | LB: 0.3931330 (smooth - 5)<br>
+
 
 ###### VW
 -b 28 -l 0.1 -c -k --passes 3 --holdout_period 100 | local: / | LB: 0.3939303 <br>
@@ -62,3 +68,4 @@ eta = 1 | gamma = 0.1 | max_depth = 16 | num_round = 2 | LB: 0.4052225 <br>
 eta = 1 | gamma = 0.3 | max_depth = 16 | num_round = 2 | LB: 0.4052255 <br>
 eta = 1 | gamma = 0.3 | max_depth = 20 | num_round = 2 | LB: 0.4046538 <br>
 ensemble 4 | LB: 0.4051936 <br>
+eta = 0.3 | gamma = 0.1 | max_depth = 8 | num_round = 50 | LB: 0.4012691 <br>
