@@ -53,6 +53,7 @@ pypy shuffle_ooc.py train_df_site_smooth.csv > train_df_site_smooth_shuffled.csv
 * 0.13 | 1 | 1 | 6 | 28 - local: 0.439785/0.307126 | LB:  (smooth - 5)<br>
 * 0.13 | 1 | 1 | 1 | 28 - local: 0.439512/0.306498 | LB: 0.3931091 (smooth - 5)<br>
 0.14 | 1 | 1 | 1 | 28 - local: 0.439405/0.306257 | LB: 0.3931330 (smooth - 5)<br>
+0.13 | 1 | 1 | 3 | 28 - local: 0.439631/0.306774 | LB:  (smooth - 5)<br>
 
 
 ###### VW
