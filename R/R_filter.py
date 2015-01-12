@@ -8,10 +8,10 @@ Created on Mon Jan 12 15:45:23 2015
 from datetime import datetime
 from csv import DictReader
 
-pred = 'data/submission_py_site_app_0.13_1_1_3_s5.csv'               # path to training file
+pred = 'ensemble/submission_ensemble.csv'               # path to training file
 
 start = datetime.now()
-with open('data/submission_py_site_app_0.13_1_1_3_s5_filtered.csv',"wb") as outfile:
+with open('ensemble/submission_ensemble_filtered.csv',"wb") as outfile:
     outfile.write('id,click\n')
     for t, row in enumerate(DictReader(open(pred))):
         ID = row['id']

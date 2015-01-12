@@ -53,8 +53,9 @@ pypy shuffle_ooc.py train_df_site_smooth.csv > train_df_site_smooth_shuffled.csv
 * 0.13 | 1 | 1 | 6 | 28 - local: 0.439785/0.307126 | LB:  (smooth - 5)<br>
 * 0.13 | 1 | 1 | 1 | 28 - local: 0.439512/0.306498 | LB: 0.3931091 (smooth - 5)<br>
 0.14 | 1 | 1 | 1 | 28 - local: 0.439405/0.306257 | LB: 0.3931330 (smooth - 5)<br>
-0.13 | 1 | 1 | 3 | 28 - local: 0.439631/0.306774 | LB:  (smooth - 5)<br>
-
+0.13 | 1 | 1 | 3 | 28 - local: 0.439631/0.306774 | LB: 0.3931350  (smooth - 5)<br>
+0.13 | 1 | 1 | 1 | 28 - local: 0.441814/0.315843 | LB: 0. (smooth - 5 | without ID)<br>
+0.3931330 & 0.4012691 ensemble | LB: 0. (smooth - 5)<br>
 
 ###### VW
 -b 28 -l 0.1 -c -k --passes 3 --holdout_period 100 | local: / | LB: 0.3939303 <br>
@@ -70,3 +71,7 @@ eta = 1 | gamma = 0.3 | max_depth = 16 | num_round = 2 | LB: 0.4052255 <br>
 eta = 1 | gamma = 0.3 | max_depth = 20 | num_round = 2 | LB: 0.4046538 <br>
 ensemble 4 | LB: 0.4051936 <br>
 eta = 0.3 | gamma = 0.1 | max_depth = 8 | num_round = 50 | LB: 0.4012691 <br>
+
+
+../../xgboost-master/xgboost Step_2.1_xgboost_app.conf
+../../xgboost-master/xgboost Step_2.1_xgboost_app.conf task=pred model_in=model/model_app.model
