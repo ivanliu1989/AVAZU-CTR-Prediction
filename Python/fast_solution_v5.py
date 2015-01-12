@@ -30,7 +30,7 @@ L2_app = 4     # L2 regularization, larger value means more regularized
 # C, feature/hash trick
 D = 2 ** 28             # number of weights to use
 interaction_app = False     # whether to enable poly2 feature interactions
-interaction_site = True     # whether to enable poly2 feature interactions
+interaction_site = False     # whether to enable poly2 feature interactions
 
 # D, training/validation
 epoch = 1       # learn training data for N passes

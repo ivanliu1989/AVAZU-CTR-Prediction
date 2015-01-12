@@ -57,6 +57,8 @@ pypy shuffle_ooc.py train_df_site_smooth.csv > train_df_site_smooth_shuffled.csv
 0.13 | 1 | 1 | 1 | 28 - local: 0.441814/0.315843 | LB: 0. (smooth - 5 | without ID)<br>
 0.3931330 & 0.4012691 ensemble | LB: 0.3930214 (smooth - 5)<br>
 
+0.2 | 1 | 1 | 4 | 28 - local: 0.305771
+
 ###### VW
 -b 28 -l 0.1 -c -k --passes 3 --holdout_period 100 | local: / | LB: 0.3939303 <br>
 -b 28 -l 0.12 -c -k --passes 3 --holdout_period 100 | local: 0.437666/0.300353 | LB: 0.3938035 ++<br>
