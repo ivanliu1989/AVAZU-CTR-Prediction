@@ -23,8 +23,11 @@ submit1 = pd.read_csv(pred_file1)
 #pred_2[submit1['id'][1]]
 submit1['click2'] = 0
 
+start = datetime.now()
 for key,val in enumerate(submit1['id']):
     submit1['click2'][key] = pred_2[val]
+    if key % 100000 == 0:
+            print("%s\t%s"%(key, str(datetime.now() - start)))
     
 submit1['click'] = 0.5*submit1['click'] + 0.5*submit1['click2']
 del submit1['click2']
