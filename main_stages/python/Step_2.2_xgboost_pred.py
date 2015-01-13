@@ -6,8 +6,8 @@ Created on Tue Jan  6 14:46:43 2015
 """
 import pandas as pd
 
-xgboost_app = 'xgboost/GBTR_D8_app_pred.txt'
-xgboost_site = 'xgboost/GBTR_D8_site_pred.txt'
+xgboost_app = 'xgboost/libFM_pred_app.txt'
+xgboost_site = 'xgboost/libFM_pred_site.txt'
 pred_app = pd.read_csv(xgboost_app,index_col = False, header = None)
 pred_site = pd.read_csv(xgboost_site,index_col = False, header = None)
 
