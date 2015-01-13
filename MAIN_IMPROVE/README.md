@@ -44,18 +44,6 @@ Shuffled:<br>
 	- 0.13 | 1 | 1 | 1 | 28 - local: 0.439533/0.309538 | LB: (unseen test => '')<br>
 	- 0.13 | 1 | 1 | 1 | 28 - local: 0.440630/0.307406 | LB: (unseen test => '', seed=888)<br>
 
-Vowpal Wabbit:<br>
-alias vw=/Users/ivan/Work_directory/vowpal_wabbit/vowpalwabbit/vw <br>
-vw -d train_df_site.vw --loss_function logistic -b 28 -l 0.12 -c -k --passes 3 -f model_site.vw --holdout_period 10 <br>
-vw -d train_df_app.vw --loss_function logistic -b 28 -l 0.12 -c -k --passes 3 -f model_app.vw --holdout_period 10 <br>
-vw test_df_site.vw -t -i model_site.vw -p avazu.preds.site.txt <br>
-vw test_df_app.vw -t -i model_app.vw -p avazu.preds.app.txt <br>
-
-vw -d train_df_site.vw --loss_function logistic -b 28 -l 0.2 -c -k --passes 6 -f model_site.vw --holdout_period 10 --l1 12e-09 --l2 6e-09 --decay_learning_rate 0.8 -q ::
-vw -d train_df_app.vw --loss_function logistic -b 28 -l 0.2 -c -k --passes 6 -f model_app.vw --holdout_period 10 --l1 12e-09 --l2 6e-09 --decay_learning_rate 0.8 -q ::
-
-vw -d train_df_site.vw --loss_function logistic -b 28 -l 0.01 -c -k --passes 3 -f model_site.vw --holdout_period 10 --termination 0.001 --nn 20 -q :: --power_t 0
-
 
 
 

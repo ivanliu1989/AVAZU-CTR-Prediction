@@ -15,3 +15,12 @@
 3. NN
 	- vw -d train_df_site.vw --loss_function logistic -b 28 -l 0.01 -c -k --passes 3 -f model_site.vw --holdout_period 10 --termination 0.001 --nn 20 -q :: --power_t 0
 
+##### Old
+-b 28 -l 0.12 -c -k --passes 3 --holdout_period 100 | local: 0.438099/0.301331 | LB: 0.3933600 (smooth)<br>
+(0.2)0.438435/
+(0.15)0.439258/
+
+##### calibration
+ctr - 0.16980562476404604 <br>
+ctr-test - 0.17470822297322214 <br>
+calibration - -0.004902598209176101 <br>
