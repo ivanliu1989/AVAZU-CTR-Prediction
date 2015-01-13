@@ -10,22 +10,22 @@ from csv import DictReader
 from math import exp, log, sqrt
 
 # A, paths
-train = 'data/train_df_site_smooth.csv'               # path to training file
-test = 'data/test_df_site_smooth.csv'                 # path to testing file
-submission = 'data/submission_py_site_app_0.13_1_1_1_s5.csv'  # path of to be outputted submission file
-train2 = 'data/train_df_app_smooth.csv'               # path to training file
-test2 = 'data/test_df_app_smooth.csv'                 # path to testing file
+train = 'data/train_df_site_smooth_ex.csv'               # path to training file
+test = 'data/test_df_site_smooth_ex.csv'                 # path to testing file
+submission = 'data/submission_py_0.13_1_1_1_ex.csv'  # path of to be outputted submission file
+train2 = 'data/train_df_app_smooth_ex.csv'               # path to training file
+test2 = 'data/test_df_app_smooth_ex.csv'                 # path to testing file
 
 # B, model
-alpha_site = .2  # learning rate
+alpha_site = .13  # learning rate
 beta_site = 1   # smoothing parameter for adaptive learning rate
 L1_site = 1     # L1 regularization, larger value means more regularized
-L2_site = 52     # L2 regularization, larger value means more regularized
+L2_site = 1     # L2 regularization, larger value means more regularized
 
-alpha_app = .2  # learning rate
+alpha_app = .13  # learning rate
 beta_app = 1   # smoothing parameter for adaptive learning rate
 L1_app = 1     # L1 regularization, larger value means more regularized
-L2_app = 4     # L2 regularization, larger value means more regularized
+L2_app = 1     # L2 regularization, larger value means more regularized
 
 # C, feature/hash trick
 D = 2 ** 28             # number of weights to use
@@ -164,7 +164,7 @@ def data(path, D):
 
 start = datetime.now()
 # initialize ourselves a learner
-learner = ftrl_proximal(alpha_site, beta_site, L1_site, L2_site, D, interaction)
+learner = ftrl_proximal(alpha_site, beta_site, L1_site, L2_site, D, interaction_site)
 
 for e in xrange(epoch):
     loss = 0.
@@ -195,7 +195,7 @@ for e in xrange(epoch):
 
 start = datetime.now()
 
-learner2 = ftrl_proximal(alpha_app, beta_app, L1_app, L2_app, D, interaction)
+learner2 = ftrl_proximal(alpha_app, beta_app, L1_app, L2_app, D, interaction_app)
 # start training
 for e in xrange(epoch):
     loss = 0.

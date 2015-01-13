@@ -7,6 +7,7 @@ IMPROVEMENTS BASED ON MAJOR PLANNING
 		2. Unseen variables => 'Other'(-2)
 
 ##### Step 2 SHUFFLE DATA
+	../../shuf-t-master/shuf-t -t 1 train_df_app_smooth.csv -o train_df_app_smooth_shuffled.csv
 
 ##### Step 3 VALIDATION (1.5%)
 
@@ -23,3 +24,10 @@ IMPROVEMENTS BASED ON MAJOR PLANNING
 
 ##### Step 6 BLENDING
 	- Weighted
+
+
+###### fast solution python 
+Unseen feature (not shuffled):<br>
+	- 0.13 | 1 | 1 | 1 | 28 - local: 0.439512/0.306498 | LB: 0.3931091 (benchmark)<br>
+	- 0.13 | 1 | 1 | 1 | 28 - local: 0.442022/0.310298 | LB: 0. (featured train)<br>
+	- 0.13 | 1 | 1 | 1 | 28 - local: 0.439512/0.306498 | LB: 0. (unfeatured train)<br>
