@@ -14,24 +14,28 @@ train <- train[index,]
 dim(validation);dim(train)
 head(validation);head(train)
 
-fitControl <- trainControl(method = "adaptive_cv",
+fitControl <- trainControl(method = "repeatedcv",
                            number = 10,
                            repeats = 5,
                            ## Estimate class probabilities
                            classProbs = TRUE,
                            ## Evaluate performance using 
                            ## the following function
-                           summaryFunction = twoClassSummary,
-                           ## Adaptive resampling information:
-                           adaptive = list(min = 10,
-                                           alpha = 0.05,
-                                           method = "gls",
-                                           complete = TRUE))
+                           summaryFunction = twoClassSummary)
 
 set.seed(825)
-svmFit <- train(click ~., data=train,
-                 method = "svmRadial",
-                 trControl = fitControl2,
-                 preProc = c("center", "scale"),
-                 tuneLength = 8,
-                 metric = "ROC")
+svmFit <- train(click~., data=train,
+                method = "svmRadial",
+                trControl = fitControl,
+                preProc = c("center", "scale"),
+                tuneLength = 8,
+                metric = "ROC")
+
+gbmFit <- train(click ~ ., data = train,
+                 method = "gbm",
+                 trControl = fitControl,
+                 ## This last option is actually one
+                 ## for gbm() that passes through
+                 verbose = T)
+
+gc()
