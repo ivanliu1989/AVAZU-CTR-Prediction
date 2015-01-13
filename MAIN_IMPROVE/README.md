@@ -9,6 +9,10 @@ IMPROVEMENTS BASED ON MAJOR PLANNING
 ##### Step 2 SHUFFLE DATA
 	../../shuf-t-master/shuf-t -t 1 train_df_app_smooth.csv -o train_df_app_smooth_shuffled.csv
 
+###### Middle steps - vw format transformation
+
+###### Middle steps - hashing / one-hot encoding
+
 ##### Step 3 VALIDATION (1.5%)
 
 ##### Step 4 SEPARATELY TUNING MODELS => Vowpal Wabbit
@@ -32,3 +36,6 @@ Unseen feature (not shuffled):<br>
 	- 0.13 | 1 | 1 | 1 | 28 - local: 0.442022/0.310298 | LB: 0.3963906 (featured train)<br>
 	- 0.13 | 1 | 1 | 1 | 28 - local: 0.439512/0.306498 | LB: 0.3957204 (unfeatured train, -2 test)<br>
 	- 0.13 | 1 | 1 | 1 | 28 - local: 0.439512/0.306498 | LB: 0.3931100 (unfeatured train)<br>
+
+Blending:<br>
+	- xgboost 600_900 / python online | LB: 0.3912111<br>
