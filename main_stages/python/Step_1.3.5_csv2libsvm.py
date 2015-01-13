@@ -11,8 +11,7 @@ from csv import DictReader
 # --- Main transformation --- #
 ###############################
 input_file = 'data/onehot/train_df_smooth_hash_app.csv'
-output_file = 'xgboost/libsvm_train_app.txt'
-output_file2 = 'xgboost/libsvm_validation_app.txt'
+output_file = 'xgboost/libsvm_train_full_app.txt'
 var_dict = {}
 for t, row in enumerate(DictReader(open("data/onehot/app_var_dict.csv"))): # site/app
     var_dict[row['key']] = row['val']
@@ -58,8 +57,7 @@ with open(output_file,"wb") as outfile:
 
 
 input_file = 'data/onehot/train_df_smooth_hash_site.csv'
-output_file = 'xgboost/libsvm_train_site.txt'
-output_file2 = 'xgboost/libsvm_validation_site.txt'
+output_file = 'xgboost/libsvm_train_full_site.txt'
 var_dict = {}
 for t, row in enumerate(DictReader(open("data/onehot/site_var_dict.csv"))): # site/app
     var_dict[row['key']] = row['val']
