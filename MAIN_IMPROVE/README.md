@@ -29,5 +29,6 @@ IMPROVEMENTS BASED ON MAJOR PLANNING
 ###### fast solution python 
 Unseen feature (not shuffled):<br>
 	- 0.13 | 1 | 1 | 1 | 28 - local: 0.439512/0.306498 | LB: 0.3931091 (benchmark)<br>
-	- 0.13 | 1 | 1 | 1 | 28 - local: 0.442022/0.310298 | LB: 0. (featured train)<br>
-	- 0.13 | 1 | 1 | 1 | 28 - local: 0.439512/0.306498 | LB: 0. (unfeatured train)<br>
+	- 0.13 | 1 | 1 | 1 | 28 - local: 0.442022/0.310298 | LB: 0.3963906 (featured train)<br>
+	- 0.13 | 1 | 1 | 1 | 28 - local: 0.439512/0.306498 | LB: 0.3957204 (unfeatured train, -2 test)<br>
+	- 0.13 | 1 | 1 | 1 | 28 - local: 0.439512/0.306498 | LB: 0.3931100 (unfeatured train)<br>

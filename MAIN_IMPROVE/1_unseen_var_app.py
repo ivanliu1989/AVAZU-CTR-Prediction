@@ -74,29 +74,29 @@ with open('data/test_df_app_smooth_ex.csv',"wb") as outfile:
         C21 = row['C21']
         
         if str(app_id) not in app_id_train and str(app_id) != '':
-            app_id = -2
+            app_id = ''
         if str(app_domain) not in app_domain_train and str(app_domain) != '':
-            app_domain = -2
+            app_domain = ''
         if str(app_category) not in app_category_train and str(app_category) != '':
-            app_category = -2
+            app_category = ''
         if str(device_id) not in device_id_train and str(device_id) != '':
-            device_id = -2
+            device_id = ''
         if str(device_ip) not in device_ip_train and str(device_ip) != '':
-            device_ip = -2
+            device_ip = ''
         if str(device_model) not in device_model_train and str(device_model) != '':
-            device_model = -2
+            device_model = ''
         if int(device_type) not in device_type_train and int(device_type) != '':
-            device_type = -2
+            device_type = ''
         if int(C14) not in C14_train and int(C14) != '':
-            C14 = -2
+            C14 = ''
         if int(C15) not in C15_train and int(C15) != '':
-            C15 = -2
+            C15 = ''
         if int(C16) not in C16_train and int(C16) != '':
-            C16 = -2
+            C16 = ''
         if int(C17) not in C17_train and int(C17) != '':
-            C17 = -2
+            C17 = ''
         if int(C20) not in C20_train and int(C20) != '':
-            C20 = -2
+            C20 = ''
         
         outfile.write('%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n' % (str(ID),str(hour),str(C1),str(banner_pos),str(app_id),str(app_domain),str(app_category),str(device_id),str(device_ip),str(device_model),str(device_type),str(device_conn_type),str(C14),str(C15),str(C16),str(C17),str(C18),str(C19),str(C20),str(C21)))
         if t % 100000 == 0:
@@ -131,29 +131,29 @@ with open('data/train_df_app_smooth_ex.csv',"wb") as outfile:
         C21 = row['C21']
         
         if str(app_id) not in app_id_test and str(app_id) != '':
-            app_id = -2
+            app_id = ''
         if str(app_domain) not in app_domain_test and str(app_domain) != '':
-            app_domain = -2
+            app_domain = ''
         if str(app_category) not in app_category_test and str(app_category) != '':
-            app_category = -2
+            app_category = ''
         if str(device_id) not in device_id_test and str(device_id) != '':
-            device_id = -2
+            device_id = ''
         if str(device_ip) not in device_ip_test and str(device_ip) != '':
-            device_ip = -2
+            device_ip = ''
         if str(device_model) not in device_model_test and str(device_model) != '':
-            device_model = -2
+            device_model = ''
         if int(device_type) not in device_type_test and int(device_type) != '':
-            device_type = -2
+            device_type = ''
         if int(C14) not in C14_test and int(C14) != '':
-            C14 = -2
+            C14 = ''
         if int(C15) not in C15_test and int(C15) != '':
-            C15 = -2
+            C15 = ''
         if int(C16) not in C16_test and int(C16) != '':
-            C16 = -2
+            C16 = ''
         if int(C17) not in C17_test and int(C17) != '':
-            C17 = -2
+            C17 = ''
         if int(C20) not in C20_test and int(C20) != '':
-            C20 = -2
+            C20 = ''
         
         outfile.write('%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n' % (str(ID),str(click),str(hour),str(C1),str(banner_pos),str(app_id),str(app_domain),str(app_category),str(device_id),str(device_ip),str(device_model),str(device_type),str(device_conn_type),str(C14),str(C15),str(C16),str(C17),str(C18),str(C19),str(C20),str(C21)))
         if t % 100000 == 0:
