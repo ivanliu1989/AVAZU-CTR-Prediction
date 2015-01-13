@@ -14,9 +14,9 @@ test_site_path = 'data/test_df_site_smooth.csv'
 train_site = pd.read_csv(train_site_path,index_col = False)
 test_site = pd.read_csv(test_site_path,index_col = False)
 
-site_col = list(train_site.columns.values)
-del site_col[0];del site_col[0];del site_col[0];del site_col[0];del site_col[0]
-del site_col[7];del site_col[11];del site_col[11];del site_col[12]
+#site_col = list(train_site.columns.values)
+#del site_col[0];del site_col[0];del site_col[0];del site_col[0];del site_col[0]
+#del site_col[7];del site_col[11];del site_col[11];del site_col[12]
 # hour, c1, banner, device_conn_type, C18, C19, C21
 site_id_train = set(train_site['site_id'])
 site_domain_train = set(train_site['site_domain'])
@@ -73,29 +73,29 @@ with open('data/test_df_site_smooth_ex.csv',"wb") as outfile:
         C20 = row['C20'] #
         C21 = row['C21']
         
-        if str(site_id) not in site_id_train:
+        if str(site_id) not in site_id_train and str(site_id) != '':
             site_id = -2
-        if str(site_domain) not in site_domain_train:
+        if str(site_domain) not in site_domain_train and str(site_domain) != '':
             site_domain = -2
-        if str(site_category) not in site_category_train:
+        if str(site_category) not in site_category_train and str(site_category) != '':
             site_category = -2
-        if str(device_id) not in device_id_train:
+        if str(device_id) not in device_id_train and str(device_id) != '':
             device_id = -2
-        if str(device_ip) not in device_ip_train:
+        if str(device_ip) not in device_ip_train and str(device_ip) != '':
             device_ip = -2
-        if str(device_model) not in device_model_train:
+        if str(device_model) not in device_model_train and str(device_model) != '':
             device_model = -2
-        if int(device_type) not in device_type_train:
+        if int(device_type) not in device_type_train and int(device_type) != '':
             device_type = -2
-        if int(C14) not in C14_train:
+        if int(C14) not in C14_train and int(C14) != '':
             C14 = -2
-        if int(C15) not in C15_train:
+        if int(C15) not in C15_train and int(C15) != '':
             C15 = -2
-        if int(C16) not in C16_train:
+        if int(C16) not in C16_train and int(C16) != '':
             C16 = -2
-        if int(C17) not in C17_train:
+        if int(C17) not in C17_train and int(C17) != '':
             C17 = -2
-        if int(C20) not in C20_train:
+        if int(C20) not in C20_train and int(C20) != '':
             C20 = -2
         
         outfile.write('%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n' % (str(ID),str(hour),str(C1),str(banner_pos),str(site_id),str(site_domain),str(site_category),str(device_id),str(device_ip),str(device_model),str(device_type),str(device_conn_type),str(C14),str(C15),str(C16),str(C17),str(C18),str(C19),str(C20),str(C21)))
@@ -130,29 +130,29 @@ with open('data/train_df_site_smooth_ex.csv',"wb") as outfile:
         C20 = row['C20'] #
         C21 = row['C21']
         
-        if str(site_id) not in site_id_test:
+        if str(site_id) not in site_id_test and str(site_id) != '':
             site_id = -2
-        if str(site_domain) not in site_domain_test:
+        if str(site_domain) not in site_domain_test and str(site_domain) != '':
             site_domain = -2
-        if str(site_category) not in site_category_test:
+        if str(site_category) not in site_category_test and str(site_category) != '':
             site_category = -2
-        if str(device_id) not in device_id_test:
+        if str(device_id) not in device_id_test and str(device_id) != '':
             device_id = -2
-        if str(device_ip) not in device_ip_test:
+        if str(device_ip) not in device_ip_test and str(device_ip) != '':
             device_ip = -2
-        if str(device_model) not in device_model_test:
+        if str(device_model) not in device_model_test and str(device_model) != '':
             device_model = -2
-        if int(device_type) not in device_type_test:
+        if int(device_type) not in device_type_test and int(device_type) != '':
             device_type = -2
-        if int(C14) not in C14_test:
+        if int(C14) not in C14_test and int(C14) != '':
             C14 = -2
-        if int(C15) not in C15_test:
+        if int(C15) not in C15_test and int(C15) != '':
             C15 = -2
-        if int(C16) not in C16_test:
+        if int(C16) not in C16_test and int(C16) != '':
             C16 = -2
-        if int(C17) not in C17_test:
+        if int(C17) not in C17_test and int(C17) != '':
             C17 = -2
-        if int(C20) not in C20_test:
+        if int(C20) not in C20_test and int(C20) != '':
             C20 = -2
         
         outfile.write('%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n' % (str(ID),str(click),str(hour),str(C1),str(banner_pos),str(site_id),str(site_domain),str(site_category),str(device_id),str(device_ip),str(device_model),str(device_type),str(device_conn_type),str(C14),str(C15),str(C16),str(C17),str(C18),str(C19),str(C20),str(C21)))
