@@ -33,9 +33,13 @@ IMPROVEMENTS BASED ON MAJOR PLANNING
 ###### fast solution python 
 Unseen feature (not shuffled):<br>
 	- 0.13 | 1 | 1 | 1 | 28 - local: 0.439512/0.306498 | LB: 0.3931091 (benchmark)<br>
-	- 0.13 | 1 | 1 | 1 | 28 - local: 0.442022/0.310298 | LB: 0.3963906 (featured train)<br>
-	- 0.13 | 1 | 1 | 1 | 28 - local: 0.439512/0.306498 | LB: 0.3957204 (unfeatured train, -2 test)<br>
-	- 0.13 | 1 | 1 | 1 | 28 - local: 0.439512/0.306498 | LB: 0.3931100 (unfeatured train)<br>
+	- 0.13 | 1 | 1 | 1 | 28 - local: 0.442022/0.310298 | LB: 0.3963906 (unseen test/train => -2)<br>
+	- 0.13 | 1 | 1 | 1 | 28 - local: 0.439512/0.306498 | LB: 0.3957204 (unseen test => -2)<br>
+	- 0.13 | 1 | 1 | 1 | 28 - local: 0.439512/0.306498 | LB: 0.3931100 (unseen test => '')<br>
 
 Blending:<br>
 	- xgboost 600_900 / python online | LB: 0.3912111<br>
+
+Shuffled:<br>
+	- 0.13 | 1 | 1 | 1 | 28 - local: 0.439533/0.309538 | LB: (unseen test => '')<br>
+	- 0.13 | 1 | 1 | 1 | 28 - local: 0.440630/0.307406 | LB: (unseen test => '', seed=888)<br>
