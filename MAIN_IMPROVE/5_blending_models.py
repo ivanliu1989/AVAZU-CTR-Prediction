@@ -27,7 +27,7 @@ with open('pred/submit_ensemble_merge.csv',"wb") as outfile:
         
         ID = row['id']
         click = row['click']
-        click = 0.4*float(click) + 0.4*float(pred_2[ID]) + 0.2*float(pred_3[ID])
+        click = 3/(1/float(click) + 1/float(pred_2[ID]) + 1/float(pred_3[ID]))
         
         outfile.write('%s,%s\n' % (str(ID), str(click)))
         
