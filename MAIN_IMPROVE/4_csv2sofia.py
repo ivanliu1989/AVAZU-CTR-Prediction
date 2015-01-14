@@ -34,12 +34,12 @@ with open(output_file,"wb") as outfile:
         del row['id']
         del row['click']
 
-        for i, item in row.items():
+        for i, item in enumerate(row):
 
             if item in ['',0,'0']:
                 continue
             
-            index = var_dict[str(item)+'.0']            
+            index = var_dict[str(item)+'.0'] + 1            
               
             # print(i + ': ' + item + ': ' + str(index))
             
@@ -80,12 +80,12 @@ with open(output_file,"wb") as outfile:
         del row['id']
         del row['click']
 
-        for i, item in row.items():
+        for i, item in enumerate(row):
 
             if item in ['',0,'0']:
                 continue
             
-            index = var_dict[str(item)+'.0']            
+            index = var_dict[str(item)+'.0'] + 1           
               
             # print(i + ': ' + item + ': ' + str(index))
             
@@ -123,13 +123,13 @@ with open(output_file,"wb") as outfile:
         
         del row['id']
         
-        for i, item in row.items():
+        for i, item in enumerate(row):
 
             if item in ['',0,'0']:
                 continue
             
             if str(item)+'.0' in var_dict:
-                index = var_dict[str(item)+'.0']   
+                index = var_dict[str(item)+'.0'] + 1  
             else:
                 ex_f += 1
                 continue
@@ -167,13 +167,13 @@ with open(output_file,"wb") as outfile:
         
         del row['id']
         
-        for i, item in row.items():
+        for i, item in enumerate(row):
 
             if item in ['',0,'0']:
                 continue
             
             if str(str(item)+'.0') in var_dict:
-                index = var_dict[str(item)+'.0']   
+                index = var_dict[str(item)+'.0'] + 1  
             else:
                 ex_f += 1
                 continue
