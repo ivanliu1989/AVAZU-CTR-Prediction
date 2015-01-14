@@ -21,7 +21,7 @@ for t, row in enumerate(DictReader(open(pred_file3))): # site/app
     pred_3[row['id']] = row['click']
 
 start = datetime.now()
-with open('pred/submit_ensemble_merge.csv',"wb") as outfile:
+with open('pred/submit_weighted_blending.csv',"wb") as outfile:
     outfile.write('id,click\n')
     for t, row in enumerate(DictReader(open(pred_file1))):
         
