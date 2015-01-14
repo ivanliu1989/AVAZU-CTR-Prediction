@@ -4,7 +4,6 @@ Created on Wed Jan 14 09:18:34 2015
 
 @author: ivan
 """
-import pandas as pd
 from csv import DictReader
 from datetime import datetime
 

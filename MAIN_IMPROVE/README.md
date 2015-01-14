@@ -49,6 +49,10 @@ Shuffled:<br>
 	- 0.13 | 1 | 1 | 1 | 28 - local: 0.439533/0.309538 | LB: (unseen test => '')<br>
 	- 0.13 | 1 | 1 | 1 | 28 - local: 0.440630/0.307406 | LB: (unseen test => '', seed=888)<br>
 
+./libFM -task r -train ml1m-train.libfm -test ml1m-test.libfm -dim ’1,1,8’ -iter 1000
+-method sgda -learn_rate 0.01 -init_stdev 0.1 -validation ml1m-val.libfm
+
+../../libfm-1.42.src/bin/libFM -task c -train libsvm_train_app.txt -test libsvm_test_app.txt -out libFM_pred_app.txt -verbosity 1 -dim ’1,1,8’ -iter 100 -method sgda -learn_rate 0.01 -init_stdev 0.1 -validation libsvm_validation_app.txt  <br>
 
 
 

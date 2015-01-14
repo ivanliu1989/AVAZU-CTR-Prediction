@@ -8,7 +8,7 @@ from datetime import datetime
 from csv import DictReader
 import pandas as pd
 
-pred_file1 = 'pred/submission_py_site_app_0.13_1_1_1_s5.csv'
+pred_file1 = 'pred/submission_py_0.13_1_1_1_full.csv'
 pred_file2 = 'pred/submit_xgboost_app_site.csv'  
 pred_file3 = 'pred/submit_libFM_pred.csv'  
 
