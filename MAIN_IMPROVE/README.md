@@ -29,6 +29,11 @@ IMPROVEMENTS BASED ON MAJOR PLANNING
 ##### Step 6 BLENDING
 	- Weighted
 
+##### Step 7 Calibration
+	- ctr - 0.16980562476404604
+	- ctr-test - 0.17470822297322214
+	- calibration - -0.004902598209176101
+	- LB: 0.3903022 ++ 8 positions
 
 ###### fast solution python 
 Unseen feature (not shuffled):<br>
