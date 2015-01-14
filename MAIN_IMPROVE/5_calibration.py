@@ -11,7 +11,7 @@ train_app_path = 'data/train_df_app_smooth.csv'
 
 train_site_path = 'data/train_df_site_smooth.csv'
 
-submit_path = 'pred/submit_ensemble_merge.csv'
+submit_path = 'pred/submit_weighted_blending_4models.csv'
 
 app_count = 0
 app_sum = 0
@@ -38,8 +38,8 @@ for t, row in enumerate(DictReader(open(train_site_path))):
             print("%s\t%s"%(t, str(datetime.now() - start)))
             
 
-average_ctr = (app_sum+site_sum)/(app_count+site_count)
-
+average_ctr = (app_sum+site_sum)/(app_count+site_count) #0.16980562476404604
+average_ctr = 0.16980562476404604
 
 test_count = 0
 test_sum = 0
@@ -59,7 +59,7 @@ calibration = average_ctr - average_ctr_test
 
 #-- calibration --#
 start = datetime.now()
-with open('pred/submit_ensemble_merge_cal.csv',"wb") as outfile:
+with open('pred/submit_weighted_blending_4models_cal.csv',"wb") as outfile:
     outfile.write('id,click\n')
     for t, row in enumerate(DictReader(open(submit_path))):
         
