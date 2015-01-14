@@ -74,6 +74,8 @@ eta = 1 | gamma = 0.3 | max_depth = 20 | num_round = 2 | LB: 0.4046538 <br>
 ensemble 4 | LB: 0.4051936 <br>
 eta = 0.3 | gamma = 0.1 | max_depth = 8 | num_round = 50 | LB: 0.4012691 <br>
 eta = 0.15 | gamma = 0.1 | max_depth = 9 | num_round = 600_900 | LB: 0.3937956 <br>
+eta = 0.1 | gamma = 0.1 | max_depth = 9 | num_round = 1200_700 | LB: 0.3941421 <br>
+
 
 ../../xgboost-master/xgboost Step_2.1_xgboost_app.conf
 ../../xgboost-master/xgboost Step_2.1_xgboost_app.conf task=pred model_in=model/model_app.model

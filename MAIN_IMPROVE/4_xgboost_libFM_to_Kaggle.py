@@ -6,8 +6,8 @@ Created on Tue Jan  6 14:46:43 2015
 """
 import pandas as pd
 
-xgboost_app = 'xgboost/libFM_pred_app_ALS.txt'
-xgboost_site = 'xgboost/libFM_pred_site_ALS.txt'
+xgboost_app = 'xgboost/pred/Pred_app_1200.txt'
+xgboost_site = 'xgboost/pred/Pred_site_700.txt'
 pred_app = pd.read_csv(xgboost_app,index_col = False, header = None)
 pred_site = pd.read_csv(xgboost_site,index_col = False, header = None)
 
@@ -22,4 +22,4 @@ submission_site = pd.DataFrame({'id':submit_site['id'],
                                 'click':pred_site[0]})
 
 submission = submission_app.append(submission_site,ignore_index=True)
-submission.to_csv('submit_libFM_app_site_ALS.csv',index=False)
+submission.to_csv('submit_xgboost_1200_700.csv',index=False)

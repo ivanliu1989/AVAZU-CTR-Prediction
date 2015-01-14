@@ -11,7 +11,7 @@ from csv import DictReader
 # --- Main transformation --- #
 ###############################
 input_file = 'data/onehot/train_df_smooth_hash_app.csv'
-output_file = 'xgboost/sofia_train_app.txt'
+output_file = 'sofia-ml/data/sofia_train_app.txt'
 var_dict = {}
 for t, row in enumerate(DictReader(open("data/onehot/app_var_dict.csv"))): # site/app
     var_dict[row['key']] = row['val']
@@ -57,7 +57,7 @@ with open(output_file,"wb") as outfile:
 
 
 input_file = 'data/onehot/train_df_smooth_hash_site.csv'
-output_file = 'xgboost/sofia_train_site.txt'
+output_file = 'sofia-ml/data/sofia_train_site.txt'
 var_dict = {}
 for t, row in enumerate(DictReader(open("data/onehot/site_var_dict.csv"))): # site/app
     var_dict[row['key']] = row['val']
@@ -105,7 +105,7 @@ with open(output_file,"wb") as outfile:
 # --- Main transformation test --- #
 ####################################
 input_file = 'data/onehot/test_df_smooth_hash_app.csv'
-output_file = 'xgboost/sofia_test_app.txt'
+output_file = 'sofia-ml/data/sofia_test_app.txt'
 var_dict = {}
 for t, row in enumerate(DictReader(open("data/onehot/app_var_dict.csv"))): # site/app
     var_dict[row['key']] = row['val']
@@ -149,7 +149,7 @@ with open(output_file,"wb") as outfile:
 
 
 input_file = 'data/onehot/test_df_smooth_hash_site.csv'
-output_file = 'xgboost/sofia_test_site.txt'
+output_file = 'sofia-ml/data/sofia_test_site.txt'
 var_dict = {}
 for t, row in enumerate(DictReader(open("data/onehot/site_var_dict.csv"))): # site/app
     var_dict[row['key']] = row['val']
