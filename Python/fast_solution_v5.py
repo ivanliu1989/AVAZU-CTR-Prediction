@@ -10,11 +10,11 @@ from csv import DictReader
 from math import exp, log, sqrt
 
 # A, paths
-train = 'data/train_df_site_smooth_ex.csv'               # path to training file
-test = 'data/test_df_site_smooth_ex.csv'                 # path to testing file
-submission = 'data/submission_py_0.13_1_1_1_ex.csv'  # path of to be outputted submission file
-train2 = 'data/train_df_app_smooth_ex.csv'               # path to training file
-test2 = 'data/test_df_app_smooth_ex.csv'                 # path to testing file
+train = 'data/train_df_site_smooth.csv'               # path to training file
+test = 'data/test_df_site_smooth.csv'                 # path to testing file
+submission = 'data/submission_py_0.13_1_1_1_29.csv'  # path of to be outputted submission file
+train2 = 'data/train_df_app_smooth.csv'               # path to training file
+test2 = 'data/test_df_app_smooth.csv'                 # path to testing file
 
 # B, model
 alpha_site = .13  # learning rate
@@ -28,14 +28,14 @@ L1_app = 1     # L1 regularization, larger value means more regularized
 L2_app = 1     # L2 regularization, larger value means more regularized
 
 # C, feature/hash trick
-D = 2 ** 28             # number of weights to use
+D = 2 ** 29             # number of weights to use
 interaction_app = False     # whether to enable poly2 feature interactions
 interaction_site = False     # whether to enable poly2 feature interactions
 
 # D, training/validation
 epoch = 1       # learn training data for N passes
 holdafter = None #28   # data after date N (exclusive) are used as validation
-holdout = 100 #None  # use every N training instance for holdout validation
+holdout = 100000000 #None  # use every N training instance for holdout validation
 
 
 ##############################################################################
