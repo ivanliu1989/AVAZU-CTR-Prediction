@@ -1,4 +1,4 @@
-	- alias vw=/Users/ivan/Work_directory/vowpal_wabbit/vowpalwabbit/vw
+	- alias vw=/Users/ivan/Work_directory/vowpal_wabbit-7.9/vowpalwabbit/vw
 
 ##### testing
 	- vw test_df_site.vw -t -i model_site.vw -p avazu.preds.site.txt 
@@ -37,3 +37,7 @@ LB: 0.3903022
 
 ##### poly command
 vw -d train_df_site.vw --loss_function logistic -b 28 -l 0.15 -c -k --passes 6 -f model_site.vw --holdout_period 100 --l1 12e-09 --l2 6e-09 --decay_learning_rate 0.9 -q :: --early_terminate 3 --bfgs --ftrl --ftrl_alpha 0.1 --ftrl_beta 0
+vw -d train_df_app.vw --loss_function logistic -b 28 -l 0.15 -c -k --passes 6 -f model_app.vw --holdout_period 100 --l1 12e-09 --l2 6e-09 --decay_learning_rate 0.9 -q :: --early_terminate 3 --bfgs --ftrl --ftrl_alpha 0.1 --ftrl_beta 0
+
+vw -d train_df_site.vw --loss_function logistic -b 28 -l 0.15 -c -k --passes 6 -f model_site.vw --holdout_period 100 --l1 12e-09 --l2 6e-09 --decay_learning_rate 0.9 --cubic ::: --early_terminate 3 --bfgs --ftrl --ftrl_alpha 0.1 --ftrl_beta 0
+vw -d train_df_app.vw --loss_function logistic -b 28 -l 0.15 -c -k --passes 6 -f model_app.vw --holdout_period 100 --l1 12e-09 --l2 6e-09 --decay_learning_rate 0.9 --cubic ::: --early_terminate 3 --bfgs --ftrl --ftrl_alpha 0.1 --ftrl_beta 0
