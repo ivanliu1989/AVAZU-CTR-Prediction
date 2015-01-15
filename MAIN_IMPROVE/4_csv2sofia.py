@@ -74,7 +74,7 @@ with open(output_file,"wb") as outfile:
     for t, row in enumerate(DictReader(open(input_file))):
         
         new_line = []
-    
+        new_item = []
         if row['click'] == '0':
             label = '0'
         elif row['click'] == '1':
@@ -129,14 +129,14 @@ with open(output_file,"wb") as outfile:
     for t, row in enumerate(DictReader(open(input_file))):
         
         new_line = []
-    
+        new_item = []
         label = '0'
         
         new_line.append(label)
         
         del row['id']
         
-        for i, item in enumerate(row):
+        for i, item in row.items():
 
             if item in ['',0,'0']:
                 continue
@@ -178,14 +178,14 @@ with open(output_file,"wb") as outfile:
     for t, row in enumerate(DictReader(open(input_file))):
         
         new_line = []
-    
+        new_item = []
         label = '0'
         
         new_line.append(label)
         
         del row['id']
         
-        for i, item in enumerate(row):
+        for i, item in row.items():
 
             if item in ['',0,'0']:
                 continue
@@ -203,8 +203,8 @@ with open(output_file,"wb") as outfile:
         
         for index in new_item:
             
-            item = "%s:%s" % ( index, 1 )
-            new_line.append( item )
+            item_n = "%s:%s" % ( index, 1 )
+            new_line.append( item_n )
             
         new_line = " ".join( new_line )        
         new_line += "\n"            
