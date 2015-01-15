@@ -11,7 +11,7 @@ from datetime import datetime
 
 #train_site_path = 'data/train_df_site_smooth.csv'
 
-submit_path = 'submit_weighted_blending_optimal_average_ensemble.csv'
+submit_path = 'submit_poly37_ensemble.csv'
 '''
 app_count = 0
 app_sum = 0
@@ -60,7 +60,7 @@ calibration = average_ctr - average_ctr_test
 
 #-- calibration --#
 start = datetime.now()
-with open('submit_weighted_blending_optimal_average_ensemble_calibrate.csv',"wb") as outfile:
+with open('submit_poly37_ensemble_cal.csv',"wb") as outfile:
     outfile.write('id,click\n')
     for t, row in enumerate(DictReader(open(submit_path))):
         
@@ -77,7 +77,7 @@ with open('submit_weighted_blending_optimal_average_ensemble_calibrate.csv',"wb"
 test_count = 0
 test_sum = 0
 start = datetime.now()
-for t, row in enumerate(DictReader(open('pred/submit_ensemble_merge_cal.csv'))):
+for t, row in enumerate(DictReader(open('Blendling_lg_gbt_fm_poly_calibration.csv'))):
     
     test_count += 1
     test_sum += float(row['click'])
