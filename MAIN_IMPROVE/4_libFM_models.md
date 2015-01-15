@@ -1,4 +1,4 @@
-﻿##### 1. MCMC (100 iter | 0.4027643)
+﻿##### 1. MCMC (100 iter | 0.4027643) (site catmac)
 ../../libfm-1.42.src/bin/libFM -task c -train data/libsvm_train_full_app.txt -test data/libsvm_test_app.txt -out libFM_pred_app_MCMC_900.txt -dim ’1,1,8’ -iter 900 -method mcmc -init_stdev 0.1
 ../../libfm-1.42.src/bin/libFM -task c -train data/libsvm_train_full_site.txt -test data/libsvm_test_site.txt -out libFM_pred_site_MCMC.txt -dim ’1,1,8’ -iter 900 -method mcmc -init_stdev 0.1
 
