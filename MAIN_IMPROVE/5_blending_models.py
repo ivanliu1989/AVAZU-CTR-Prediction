@@ -11,7 +11,8 @@ import pandas as pd
 pred_file1 = 'pred/submission_py_0.13_1_1_1_29.csv'
 pred_file2 = 'pred/submit_xgboost_app_site.csv'  
 pred_file3 = 'pred/submit_libFM_pred.csv'  
-pred_file4 = 'pred/submission_vw_nn_60.csv'  
+pred_file4 = 'pred/submission_vw_nn_60.csv' 
+pred_file5 = 'pred/libfm_ALS.csv'   
 
 pred_2 = {}
 for t, row in enumerate(DictReader(open(pred_file2))): # site/app
@@ -25,14 +26,20 @@ pred_4 = {}
 for t, row in enumerate(DictReader(open(pred_file4))): # site/app
     pred_4[row['id']] = row['click']
 
+pred_5 = {}
+for t, row in enumerate(DictReader(open(pred_file5))): # site/app
+    pred_5[row['id']] = row['click']
+
+
 start = datetime.now()
-with open('pred/submit_weighted_blending_4models.csv',"wb") as outfile:
+with open('submit_weighted_blending_optimal_average_ensemble.csv',"wb") as outfile:
     outfile.write('id,click\n')
     for t, row in enumerate(DictReader(open(pred_file1))):
         
         ID = row['id']
         click = row['click']
-        click = 4/(1/float(click) + 1/float(pred_2[ID]) + 1/float(pred_3[ID])+ 1/float(pred_4[ID]))
+        #click = 3/(1/float(click) + 1/float(pred_2[ID]) + 1/float(pred_3[ID]))# + 0.25 * 2/(1/float(pred_4[ID]) + 1/float(pred_5[ID]))
+        click = 0.4*float(click) + 0.4*float(pred_2[ID]) + 0.2*float(pred_3[ID])
         
         outfile.write('%s,%s\n' % (str(ID), str(click)))
         

@@ -75,6 +75,7 @@ ensemble 4 | LB: 0.4051936 <br>
 eta = 0.3 | gamma = 0.1 | max_depth = 8 | num_round = 50 | LB: 0.4012691 <br>
 eta = 0.15 | gamma = 0.1 | max_depth = 9 | num_round = 600_900 | LB: 0.3937956 <br>
 eta = 0.1 | gamma = 0.1 | max_depth = 9 | num_round = 1200_700 | LB: 0.3941421 <br>
+eta = 0.1 | gamma = 0.1 | max_depth = 9 | num_round = 900_700 | LB: 0.3943239 <br>
 
 
 ../../xgboost-master/xgboost Step_2.1_xgboost_app.conf
