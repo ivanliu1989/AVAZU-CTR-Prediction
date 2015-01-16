@@ -13,7 +13,8 @@
 	- vw -d train_df_app.vw --loss_function logistic -b 28 -l 0.15 -c -k --passes 6 -f model_app.vw --holdout_period 10 --l1 12e-09 --l2 6e-09 --decay_learning_rate 0.8 -q :: --early_terminate 1
 
 3. NN
-	- vw -d train_df_site.vw --loss_function logistic -b 28 -l 0.01 -c -k --passes 3 -f model_site.vw --holdout_period 10 --termination 0.001 --nn 20 -q :: --power_t 0
+	- vw -d train_df_site.vw --loss_function logistic -b 28 -l 0.01 -c -k --passes 6 -f model_site_nn.vw --holdout_period 100 --early_terminate 2 --nn 160 --power_t 0
+	- vw -d train_df_app.vw --loss_function logistic -b 28 -l 0.01 -c -k --passes 6 -f model_app_nn.vw --holdout_period 100 --early_terminate 2 --nn 160 --power_t 0
 
 ##### Old
 -b 28 -l 0.12 -c -k --passes 3 --holdout_period 100 | local: 0.438099/0.301331 | LB: 0.3933600 (smooth)<br>
