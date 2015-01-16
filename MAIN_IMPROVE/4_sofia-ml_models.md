@@ -15,14 +15,17 @@
 	perl eval.pl demo/results.txt
 	
 ##### Training Commands:
-	../../sofia-ml-read-only/sofia-ml --learner_type pegasos --loop_type stochastic --lambda 0.1 --iterations 100000 --dimensionality 1000000 --training_file data/libsvm_train_full_app.txt --model_out model/sofia_app_model
+	../../sofia-ml-read-only/sofia-ml --learner_type pegasos --loop_type stochastic --lambda 0.1 --iterations 100000 --dimensionality 2^28 --training_file data/sofia_train_app.txt --model_out model/sofia_app_model
 
-	../../sofia-ml-read-only/sofia-ml --model_in model/sofia_app_model --test_file data/libsvm_test_app.txt --results_file pred/sofia_pred_app.txt --prediction_type logistic
+	../../sofia-ml-read-only/sofia-ml --model_in model/sofia_app_model --test_file data/sofia_test_app.txt --results_file pred/sofia_pred_app.txt --prediction_type logistic
 
-	../../sofia-ml-read-only/sofia-ml --learner_type pegasos --loop_type stochastic --lambda 0.1 --iterations 100000 --dimensionality 1000000 --training_file data/libsvm_train_full_site.txt --model_out model/sofia_site_model
+	../../sofia-ml-read-only/sofia-ml --learner_type pegasos --loop_type stochastic --lambda 0.1 --iterations 100000 --dimensionality 2^28 --training_file data/sofia_train_site.txt --model_out model/sofia_site_model
 
-	../../sofia-ml-read-only/sofia-ml --model_in model/sofia_site_model --test_file data/libsvm_test_site.txt --results_file pred/sofia_pred_site.txt --prediction_type logistic
+	../../sofia-ml-read-only/sofia-ml --model_in model/sofia_site_model --test_file data/sofia_test_site.txt --results_file pred/sofia_pred_site.txt --prediction_type logistic
 
+##### Algorithms options
+	--learner_type (pegasos, sgd-svm, logreg-pegasos)
+	--loop_type (stochastic, balanced-stochastic, rank, )
 
 ##### Others
 	--passive_aggressive_c float
