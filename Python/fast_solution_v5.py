@@ -10,19 +10,19 @@ from csv import DictReader
 from math import exp, log, sqrt
 
 # A, paths
-train = 'data/train_df_site_smooth.csv'               # path to training file
+train = 'data/train_df_site_smooth_shuffled.csv'               # path to training file
 test = 'data/test_df_site_smooth.csv'                 # path to testing file
-submission = 'data/submission_py_tune_separate.csv'  # path of to be outputted submission file
-train2 = 'data/train_df_app_smooth.csv'               # path to training file
+submission = 'data/submission_py_shuffle_888.csv'  # path of to be outputted submission file
+train2 = 'data/train_df_app_smooth_shuffled.csv'               # path to training file
 test2 = 'data/test_df_app_smooth.csv'                 # path to testing file
 
 # B, model
-alpha_site = 0.19861002453080054  # learning rate
+alpha_site = 0.13  # learning rate
 beta_site = 1   # smoothing parameter for adaptive learning rate
 L1_site = 1     # L1 regularization, larger value means more regularized
 L2_site = 1     # L2 regularization, larger value means more regularized
 
-alpha_app = 0.11882644017386244  # learning rate
+alpha_app = 0.13  # learning rate
 beta_app = 1   # smoothing parameter for adaptive learning rate
 L1_app = 1     # L1 regularization, larger value means more regularized
 L2_app = 1     # L2 regularization, larger value means more regularized

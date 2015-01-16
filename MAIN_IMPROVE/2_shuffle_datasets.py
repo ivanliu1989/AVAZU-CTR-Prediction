@@ -7,7 +7,7 @@ Created on Tue Jan 13 15:36:06 2015
 import pandas as pd
 import numpy as np
 import random
-random.seed(888)
+random.seed(1)
 
 train_app_path = 'data/train_df_app_smooth.csv'
 train_app = pd.read_csv(train_app_path,index_col = False)
