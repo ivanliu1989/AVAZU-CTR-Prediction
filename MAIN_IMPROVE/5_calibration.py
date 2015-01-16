@@ -11,7 +11,7 @@ from datetime import datetime
 
 #train_site_path = 'data/train_df_site_smooth.csv'
 
-submit_path = 'submit_poly37_ensemble.csv'
+submit_path = 'Blendling_lg_gbt_fm_poly_cubic.csv'
 '''
 app_count = 0
 app_sum = 0
@@ -60,7 +60,7 @@ calibration = average_ctr - average_ctr_test
 
 #-- calibration --#
 start = datetime.now()
-with open('submit_poly37_ensemble_cal.csv',"wb") as outfile:
+with open('Blendling_lg_gbt_fm_poly_cubic_calib_2.csv',"wb") as outfile:
     outfile.write('id,click\n')
     for t, row in enumerate(DictReader(open(submit_path))):
         
