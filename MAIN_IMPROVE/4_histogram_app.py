@@ -15,7 +15,7 @@ train_app_path = 'data/train_df_app_smooth.csv'
 test_app_path = 'data/test_df_app_smooth.csv'
 
 train_app = pd.read_csv(train_app_path,index_col = False)
-test_app = pd.read_csv(test_app_path,index_col = False)
+#test_app = pd.read_csv(test_app_path,index_col = False)
 
 train_app_hour = (train_app[['hour','click']].groupby('hour').sum()['click'] + alpha*0.25)/(train_app[['hour','click']].groupby('hour').count()['click']
  + 10)

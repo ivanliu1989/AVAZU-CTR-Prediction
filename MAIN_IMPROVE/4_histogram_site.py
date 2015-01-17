@@ -12,7 +12,7 @@ import pandas as pd
 alpha = 10
 
 train_site_path = 'data/train_df_site_smooth.csv'
-test_site_path = 'data/test_df_site_smooth.csv'
+#test_site_path = 'data/test_df_site_smooth.csv'
 
 train_site = pd.read_csv(train_site_path,index_col = False)
 test_site = pd.read_csv(test_site_path,index_col = False)

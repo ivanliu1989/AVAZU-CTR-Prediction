@@ -7,9 +7,7 @@
 
 3. It is a smoothed version((#nclick+ alpha *0.25)/ (#ncount+alpha) ) of CTR(alpha=10) conditioned on each of categorical variables, so if a feature does not occur in training, the value is 0.25
 
-3.  
-
-ngrams VW/nn VW
+4.  ngrams VW/nn VW
 
 ##### results
 ngrams 2: LB:0.4026492
