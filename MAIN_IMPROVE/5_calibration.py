@@ -11,7 +11,7 @@ from datetime import datetime
 
 #train_site_path = 'data/train_df_site_smooth.csv'
 
-submit_path = 'ensemble_models.csv'
+submit_path = 'lr_cubic_xgboost_libFM.csv'
 '''
 app_count = 0
 app_sum = 0
@@ -60,13 +60,13 @@ calibration = average_ctr - average_ctr_test
 
 #-- calibration --#
 start = datetime.now()
-with open('ensemble_models_clibr_2.csv',"wb") as outfile:
+with open('lr_cubic_xgboost_libFM_clibr.csv',"wb") as outfile:
     outfile.write('id,click\n')
     for t, row in enumerate(DictReader(open(submit_path))):
         
         ID = row['id']
         click = row['click']
-        click = float(click) + calibration/2
+        click = float(click) + calibration
         
         outfile.write('%s,%s\n' % (str(ID), str(click)))
         

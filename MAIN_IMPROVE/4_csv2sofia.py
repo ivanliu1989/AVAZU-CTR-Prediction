@@ -24,7 +24,7 @@ with open(output_file,"wb") as outfile:
         new_item = []
         
         if row['click'] == '0':
-            label = '0'
+            label = '-1'
         elif row['click'] == '1':
             label = '1'
         else:
@@ -76,7 +76,7 @@ with open(output_file,"wb") as outfile:
         new_line = []
         new_item = []
         if row['click'] == '0':
-            label = '0'
+            label = '-1'
         elif row['click'] == '1':
             label = '1'
         else:
@@ -130,7 +130,7 @@ with open(output_file,"wb") as outfile:
         
         new_line = []
         new_item = []
-        label = '0'
+        label = '-1'
         
         new_line.append(label)
         
@@ -179,7 +179,7 @@ with open(output_file,"wb") as outfile:
         
         new_line = []
         new_item = []
-        label = '0'
+        label = '-1'
         
         new_line.append(label)
         
