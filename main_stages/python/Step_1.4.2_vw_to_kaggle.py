@@ -14,9 +14,9 @@ def zygmoid(x):
 
 with open("vw/submission_vw_cubic.csv","wb") as outfile:
 	outfile.write("id,click\n")
-	for line in open("vw/avazu.preds.cubic.site.txt"):
+	for line in open("vw/avazu.preds.app.cubic.txt"):
 		row = line.strip().split(" ")
 		outfile.write("%s,%f\n"%(row[1],zygmoid(float(row[0]))))
-	for line in open("vw/avazu.preds.cubic.app.txt"):
+	for line in open("vw/avazu.preds.site.cubic.txt"):
 		row = line.strip().split(" ")
 		outfile.write("%s,%f\n"%(row[1],zygmoid(float(row[0]))))
