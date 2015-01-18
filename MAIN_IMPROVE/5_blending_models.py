@@ -8,11 +8,11 @@ from datetime import datetime
 from csv import DictReader
 import pandas as pd
 
-pred_file1 = 'pred/submission_vw_ngram2.csv'
-pred_file2 = 'pred/submission_vw_ngram3.csv'  
-pred_file3 = 'pred/submit_libFM_pred.csv'  
-pred_file4 = 'pred/submission_vw_cubic.csv' 
-pred_file5 = 'pred/submit_xgboost_app_site.csv'   
+pred_file1 = 'pred/submission_py_0.13_1_1_1_29.csv'
+pred_file2 = 'pred/submit_histogram.csv'  
+pred_file3 = 'pred/submission_vw_cubic2.csv'  
+pred_file4 = 'pred/submit_libFM_pred.csv' 
+pred_file5 = 'pred/submit_xgboost_900_03.csv'   
 
 pred_2 = {}
 for t, row in enumerate(DictReader(open(pred_file2))): # site/app
@@ -32,7 +32,7 @@ for t, row in enumerate(DictReader(open(pred_file5))): # site/app
 
 
 start = datetime.now()
-with open('ngram23.csv',"wb") as outfile:
+with open('hist_norm.csv',"wb") as outfile:
     outfile.write('id,click\n')
     for t, row in enumerate(DictReader(open(pred_file1))):
         
@@ -40,7 +40,7 @@ with open('ngram23.csv',"wb") as outfile:
         click = row['click']
         #click = 3/(1/float(click) + 1/float(pred_2[ID]) + 1/float(pred_3[ID]))# + 0.25 * 2/(1/float(pred_4[ID]) + 1/float(pred_5[ID]))
         #click = 0.4*(0.7*float(click)+0.3*float(pred_4[ID])) + 0.3*float(pred_2[ID]) + 0.3*float(pred_3[ID])# + 0.3*float(pred_4[ID])
-        click = 0.5 * float(click) + 0.5*float(pred_2[ID]) #+ 0.2*float(pred_3[ID])# + 0.3*float(pred_4[ID])
+        click = (float(click) + float(pred_2[ID]))/2 #+ float(pred_3[ID]) + float(pred_4[ID]) + float(pred_5[ID]))/5
         
         outfile.write('%s,%s\n' % (str(ID), str(click)))
         
