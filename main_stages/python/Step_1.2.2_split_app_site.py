@@ -10,7 +10,7 @@ from csv import DictReader
 ###############################
 # --- Main transformation --- #
 ###############################
-input_file = 'data/train_df_null.csv'
+input_file = 'data/train_df_null_shuffled_fri.csv'
 output_file_app = 'data/train_df_app.csv'
 output_file_site = 'data/train_df_site.csv'
 

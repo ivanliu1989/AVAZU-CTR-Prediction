@@ -45,7 +45,7 @@ with open('data/train_df_null_shuffled_fri.csv',"wb") as outfile:
         if t % 100000 == 0:
             print("%s\t%s"%(t, str(datetime.now() - start)))
             
-        for t, row in enumerate(DictReader(open(train_friday))):
+    for t, row in enumerate(DictReader(open(train_friday))):
         # turn hour really into hour, it was originally YYMMDDHH
         
         ID = row['id']
