@@ -1,15 +1,16 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Jan  6 14:46:43 2015
+Created on Mon Jan 19 09:26:49 2015
 
 @author: ivan
 """
+
 import pandas as pd
 
-xgboost_app = 'Pred_app_hist.txt'
-xgboost_site = 'Pred_site_hist.txt'
-pred_app = pd.read_csv(xgboost_app,index_col = False, header = None)
-pred_site = pd.read_csv(xgboost_site,index_col = False, header = None)
+sofia_app = 'sofia_app_pred_logreg_sto_01'
+sofia_site = 'sofia_site_pred_logreg_sto_01'
+pred_app = pd.read_csv(sofia_app,index_col = False, header = None, delim_whitespace=True)
+pred_site = pd.read_csv(sofia_site,index_col = False, header = None, delim_whitespace=True)
 
 submit_app = 'data/test_df_app_smooth.csv'
 submit_site = 'data/test_df_site_smooth.csv'
@@ -22,4 +23,4 @@ submission_site = pd.DataFrame({'id':submit_site['id'],
                                 'click':pred_site[0]})
 
 submission = submission_app.append(submission_site,ignore_index=True)
-submission.to_csv('libFM_ALS_70.csv',index=False)
+submission.to_csv('sofia_logreg_sto_01.csv',index=False)
