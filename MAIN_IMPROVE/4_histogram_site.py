@@ -12,10 +12,9 @@ import pandas as pd
 alpha = 10
 
 train_site_path = 'data/train_df_site_smooth.csv'
-#test_site_path = 'data/test_df_site_smooth.csv'
 
 train_site = pd.read_csv(train_site_path,index_col = False)
-test_site = pd.read_csv(test_site_path,index_col = False)
+#test_site = pd.read_csv(test_site_path,index_col = False)
 
 train_site_hour = (train_site[['hour','click']].groupby('hour').sum()['click'] + alpha*0.25)/(train_site[['hour','click']].groupby('hour').count()['click']
  + 10)
@@ -88,96 +87,134 @@ with open(output_file,"wb") as outfile:
         
         if int(hour) in train_site_hour: 
             hour = train_site_hour[int(hour)]
+        elif int(hour) == '':
+            hour = ''
         else:
             hour = ((0+alpha*0.25)/(0+alpha))
             
         if int(C1) in train_site_C1: 
             C1 = train_site_C1[int(C1)]
+        elif C1 == '':
+            C1 = ''
         else:
             C1 = ((0+alpha*0.25)/(0+alpha))
             
         if int(banner_pos) in train_site_banner_pos: 
             banner_pos = train_site_banner_pos[int(banner_pos)]
+        elif banner_pos == '':
+            banner_pos = ''
         else:
             banner_pos = ((0+alpha*0.25)/(0+alpha))
             
         if str(site_id) in train_site_site_id: 
             site_id = train_site_site_id[str(site_id)]
+        elif site_id == '':
+            site_id = ''
         else:
             site_id = ((0+alpha*0.25)/(0+alpha))
             
         if str(site_domain) in train_site_site_domain: 
             site_domain = train_site_site_domain[str(site_domain)]
+        elif site_domain == '':
+            site_domain = ''
         else:
             site_domain = ((0+alpha*0.25)/(0+alpha))
             
         if str(site_category) in train_site_site_category: 
             site_category = train_site_site_category[str(site_category)]
+        elif site_category == '':
+            site_category = ''
         else:
             site_category = ((0+alpha*0.25)/(0+alpha))
             
         if str(device_id) in train_site_device_id: 
             device_id = train_site_device_id[str(device_id)]
+        elif device_id == '':
+            device_id = ''
         else:
             device_id = ((0+alpha*0.25)/(0+alpha))
             
         if str(device_ip) in train_site_device_ip: 
             device_ip = train_site_device_ip[str(device_ip)]
+        elif device_ip == '':
+            device_ip = ''
         else:
             device_ip = ((0+alpha*0.25)/(0+alpha))
             
         if str(device_model) in train_site_device_model: 
             device_model = train_site_device_model[str(device_model)]
+        elif device_model == '':
+            device_model = ''
         else:
             device_model = ((0+alpha*0.25)/(0+alpha))
             
         if int(device_type) in train_site_device_type: 
             device_type = train_site_device_type[int(device_type)]
+        elif device_type == '':
+            device_type = ''
         else:
             device_type = ((0+alpha*0.25)/(0+alpha))
             
         if int(device_conn_type) in train_site_device_conn_type: 
             device_conn_type = train_site_device_conn_type[int(device_conn_type)]
+        elif device_conn_type == '':
+            device_conn_type = ''
         else:
             device_conn_type = ((0+alpha*0.25)/(0+alpha))
             
         if int(C14) in train_site_C14: 
             C14 = train_site_C14[int(C14)]
+        elif C14 == '':
+            C14 = ''
         else:
             C14 = ((0+alpha*0.25)/(0+alpha))
         
         if int(C15) in train_site_C15: 
             C15 = train_site_C15[int(C15)]
+        elif C15 == '':
+            C15 = ''
         else:
             C15 = ((0+alpha*0.25)/(0+alpha))
         
         if int(C16) in train_site_C16: 
             C16 = train_site_C16[int(C16)]
+        elif C16 == '':
+            C16 = ''
         else:
             C16 = ((0+alpha*0.25)/(0+alpha))
         
         if int(C17) in train_site_C17: 
             C17 = train_site_C17[int(C17)]
+        elif C17 == '':
+            C17 = ''
         else:
             C17 = ((0+alpha*0.25)/(0+alpha))
         
         if int(C18) in train_site_C18: 
             C18 = train_site_C18[int(C18)]
+        elif C18 == '':
+            C18 = ''
         else:
             C18 = ((0+alpha*0.25)/(0+alpha))
         
         if int(C19) in train_site_C19: 
             C19 = train_site_C19[int(C19)]
+        elif C19 == '':
+            C19 = ''
         else:
             C19 = ((0+alpha*0.25)/(0+alpha))
         
         if int(C20) in train_site_C20: 
             C20 = train_site_C20[int(C20)]
+        elif C20 == '':
+            C20 = ''
         else:
             C20 = ((0+alpha*0.25)/(0+alpha))
         
         if int(C21) in train_site_C21: 
             C21 = train_site_C21[int(C21)]
+        elif C21 == '':
+            C21 = ''
         else:
             C21 = ((0+alpha*0.25)/(0+alpha))
                     
@@ -217,96 +254,134 @@ with open(output_file,"wb") as outfile:
         
         if int(hour) in train_site_hour: 
             hour = train_site_hour[int(hour)]
+        elif int(hour) == '':
+            hour = ''
         else:
             hour = ((0+alpha*0.25)/(0+alpha))
             
         if int(C1) in train_site_C1: 
             C1 = train_site_C1[int(C1)]
+        elif C1 == '':
+            C1 = ''
         else:
             C1 = ((0+alpha*0.25)/(0+alpha))
             
         if int(banner_pos) in train_site_banner_pos: 
             banner_pos = train_site_banner_pos[int(banner_pos)]
+        elif banner_pos == '':
+            banner_pos = ''
         else:
             banner_pos = ((0+alpha*0.25)/(0+alpha))
             
         if str(site_id) in train_site_site_id: 
             site_id = train_site_site_id[str(site_id)]
+        elif site_id == '':
+            site_id = ''
         else:
             site_id = ((0+alpha*0.25)/(0+alpha))
             
         if str(site_domain) in train_site_site_domain: 
             site_domain = train_site_site_domain[str(site_domain)]
+        elif site_domain == '':
+            site_domain = ''
         else:
             site_domain = ((0+alpha*0.25)/(0+alpha))
             
         if str(site_category) in train_site_site_category: 
             site_category = train_site_site_category[str(site_category)]
+        elif site_category == '':
+            site_category = ''
         else:
             site_category = ((0+alpha*0.25)/(0+alpha))
             
         if str(device_id) in train_site_device_id: 
             device_id = train_site_device_id[str(device_id)]
+        elif device_id == '':
+            device_id = ''
         else:
             device_id = ((0+alpha*0.25)/(0+alpha))
             
         if str(device_ip) in train_site_device_ip: 
             device_ip = train_site_device_ip[str(device_ip)]
+        elif device_ip == '':
+            device_ip = ''
         else:
             device_ip = ((0+alpha*0.25)/(0+alpha))
             
         if str(device_model) in train_site_device_model: 
             device_model = train_site_device_model[str(device_model)]
+        elif device_model == '':
+            device_model = ''
         else:
             device_model = ((0+alpha*0.25)/(0+alpha))
             
         if int(device_type) in train_site_device_type: 
             device_type = train_site_device_type[int(device_type)]
+        elif device_type == '':
+            device_type = ''
         else:
             device_type = ((0+alpha*0.25)/(0+alpha))
             
         if int(device_conn_type) in train_site_device_conn_type: 
             device_conn_type = train_site_device_conn_type[int(device_conn_type)]
+        elif device_conn_type == '':
+            device_conn_type = ''
         else:
             device_conn_type = ((0+alpha*0.25)/(0+alpha))
             
         if int(C14) in train_site_C14: 
             C14 = train_site_C14[int(C14)]
+        elif C14 == '':
+            C14 = ''
         else:
             C14 = ((0+alpha*0.25)/(0+alpha))
         
         if int(C15) in train_site_C15: 
             C15 = train_site_C15[int(C15)]
+        elif C15 == '':
+            C15 = ''
         else:
             C15 = ((0+alpha*0.25)/(0+alpha))
         
         if int(C16) in train_site_C16: 
             C16 = train_site_C16[int(C16)]
+        elif C16 == '':
+            C16 = ''
         else:
             C16 = ((0+alpha*0.25)/(0+alpha))
         
         if int(C17) in train_site_C17: 
             C17 = train_site_C17[int(C17)]
+        elif C17 == '':
+            C17 = ''
         else:
             C17 = ((0+alpha*0.25)/(0+alpha))
         
         if int(C18) in train_site_C18: 
             C18 = train_site_C18[int(C18)]
+        elif C18 == '':
+            C18 = ''
         else:
             C18 = ((0+alpha*0.25)/(0+alpha))
         
         if int(C19) in train_site_C19: 
             C19 = train_site_C19[int(C19)]
+        elif C19 == '':
+            C19 = ''
         else:
             C19 = ((0+alpha*0.25)/(0+alpha))
         
         if int(C20) in train_site_C20: 
             C20 = train_site_C20[int(C20)]
+        elif C20 == '':
+            C20 = ''
         else:
             C20 = ((0+alpha*0.25)/(0+alpha))
         
         if int(C21) in train_site_C21: 
             C21 = train_site_C21[int(C21)]
+        elif C21 == '':
+            C21 = ''
         else:
             C21 = ((0+alpha*0.25)/(0+alpha))
                     

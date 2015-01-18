@@ -32,7 +32,7 @@ for t, row in enumerate(DictReader(open(pred_file5))): # site/app
 
 
 start = datetime.now()
-with open('py_cubic_fm_xg.csv',"wb") as outfile:
+with open('py_cubic_fm_xg_weighted.csv',"wb") as outfile:
     outfile.write('id,click\n')
     for t, row in enumerate(DictReader(open(pred_file1))):
         
@@ -40,7 +40,7 @@ with open('py_cubic_fm_xg.csv',"wb") as outfile:
         click = row['click']
         #click = 3/(1/float(click) + 1/float(pred_2[ID]) + 1/float(pred_3[ID]))# + 0.25 * 2/(1/float(pred_4[ID]) + 1/float(pred_5[ID]))
         #click = 0.4*(0.7*float(click)+0.3*float(pred_4[ID])) + 0.3*float(pred_2[ID]) + 0.3*float(pred_3[ID])# + 0.3*float(pred_4[ID])
-        click = 0.4*(0.7*float(click) + 0.3*float(pred_2[ID])) + 0.2* float(pred_3[ID]) + 0.4*float(pred_4[ID])# + float(pred_5[ID]))/5
+        click = 3/(1/(0.7*float(click) + 0.3*float(pred_2[ID])) + 1/float(pred_3[ID]) + 1/float(pred_4[ID]))# + float(pred_5[ID]))/5
         
         outfile.write('%s,%s\n' % (str(ID), str(click)))
         
