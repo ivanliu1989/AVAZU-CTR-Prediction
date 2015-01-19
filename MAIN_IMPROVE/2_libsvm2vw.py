@@ -7,7 +7,7 @@ Created on Mon Jan 19 11:21:02 2015
 from csv import DictReader
 from datetime import datetime
 
-def libsvm_to_vw(loc_libsvm, loc_output):
+def libsvm_to_vw(loc_libsvm, loc_output, train=True):
     
     start = datetime.now()
     print("\nTurning %s into %s?"%(loc_libsvm,loc_output))
@@ -21,11 +21,20 @@ def libsvm_to_vw(loc_libsvm, loc_output):
             except ValueError:
                 print "line with ValueError (skipping):"
                 print line
-                continue
+                break
             
             if y in [0,'0']:
                 y = '-1'
+            elif y in [1,'1']:
+                y = '1'
+            else:
+                break
             
+            if train:
+                y = y
+            else:
+                y = '1'
+                
             new_line = y + " |i " + x
             outfile.write( new_line )
             
@@ -36,7 +45,7 @@ def libsvm_to_vw(loc_libsvm, loc_output):
     
 
 
-libsvm_to_vw("xgboost/data/libsvm_train_full_site.txt", "vw/sparse/train_df_site.vw")
-libsvm_to_vw("xgboost/data/libsvm_test_site.txt", "vw/sparse/test_df_site.vw")
-libsvm_to_vw("xgboost/data/libsvm_train_full_app.txt", "vw/sparse/train_df_app.vw")
-libsvm_to_vw("xgboost/data/libsvm_test_app.txt", "vw/sparse/test_df_app.vw")
+libsvm_to_vw("xgboost/data/libsvm_train_full_site.txt", "vw/sparse/train_df_site.vw",True)
+libsvm_to_vw("xgboost/data/libsvm_test_site.txt", "vw/sparse/test_df_site.vw",False)
+libsvm_to_vw("xgboost/data/libsvm_train_full_app.txt", "vw/sparse/train_df_app.vw",True)
+libsvm_to_vw("xgboost/data/libsvm_test_app.txt", "vw/sparse/test_df_app.vw",False)
