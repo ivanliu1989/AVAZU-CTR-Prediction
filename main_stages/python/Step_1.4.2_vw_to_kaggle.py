@@ -12,11 +12,11 @@ def zygmoid(x):
 	#it on FastML too: https://github.com/zygmuntz/kaggle-stackoverflow/blob/master/sigmoid_mc.py
 	return 1 / (1 + math.exp(-x))
 
-with open("vw/submission_vw_ngram3.csv","wb") as outfile:
+with open("vw/submission_vw_cubic.csv","wb") as outfile:
 	outfile.write("id,click\n")
-	for line in open("vw/avazu.preds.app.3grams.txt"):
+	for line in open("vw/avazu.preds.app.txt"):
 		row = line.strip().split(" ")
 		outfile.write("%s,%f\n"%(row[1],zygmoid(float(row[0]))))
-	for line in open("vw/avazu.preds.site.3grams.txt"):
+	for line in open("vw/avazu.preds.site.txt"):
 		row = line.strip().split(" ")
 		outfile.write("%s,%f\n"%(row[1],zygmoid(float(row[0]))))
