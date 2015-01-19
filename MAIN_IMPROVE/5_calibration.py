@@ -11,7 +11,7 @@ from datetime import datetime
 
 #train_site_path = 'data/train_df_site_smooth.csv'
 
-submit_path = 'lr_cubic_xgboost_libFM.csv'
+submit_path = 'blending_max.csv'
 '''
 app_count = 0
 app_sum = 0
