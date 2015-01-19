@@ -6,10 +6,8 @@
 
 ##### vowpal wabbit NN
 	vw -d name_space/train_df_site.vw --loss_function logistic -b 28 -l 0.01 -c -k --passes 16 -f model_site_nn.vw --holdout_period 100 --early_terminate 3 --nn 160 --power_t 0
-0. |  passes | 0.
 
 	vw -d name_space/train_df_app.vw --loss_function logistic -b 28 -l 0.01 -c -k --passes 16 -f model_app_nn.vw --holdout_period 100 --early_terminate 3 --nn 130 --power_t 0
-0. |  passes | 0.
 
 
 ##### libFM MCMC
@@ -23,7 +21,7 @@
 
 	../../sofia-ml-read-only/sofia-ml --model_in model/sofia_app_model --test_file data/sofia_test_app.txt --results_file pred/sofia_pred_app.txt --prediction_type logistic
 
---loop_type (roc, stochastic)
+	--loop_type (roc, stochastic)
 
 
 ##### xgboost ensemble
