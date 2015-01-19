@@ -5,8 +5,11 @@
 
 	0.425166/0.28738 | 0.3975120
 
-#### Vowpal wabbit sparse
+#### Vowpal wabbit Name_space | Sparse
 	vw -d sparse/train_df_site.vw --loss_function logistic -b 28 -l 4.5 -c -k --passes 15 -f sparse/model_site.vw --holdout_period 100 --decay_learning_rate 0.9 --early_terminate 3
+
+	0.437087/0.297082 | 
+	0.437088/0.297076 | 
 
 #### Vowpal wabbit NN
 	vw -d name_space/train_df_site.vw --loss_function logistic -b 28 -l 0.01 -c -k --passes 16 -f model_site_nn.vw --holdout_period 100 --early_terminate 3 --nn 160 --power_t 0
