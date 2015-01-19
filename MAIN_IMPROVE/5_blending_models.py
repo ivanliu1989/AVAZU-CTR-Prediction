@@ -8,11 +8,11 @@ from datetime import datetime
 from csv import DictReader
 import pandas as pd
 
-pred_file1 = 'pred/submission_py_0.13_1_1_1_29_0.3931037.csv'
-pred_file2 = 'pred/submission_vw_cubic2_0.3957190.csv'  
-pred_file3 = 'pred/submit_libFM_pred_0.4027643.csv'  
-pred_file4 = 'pred/submit_xgboost_900_03_0.3931970.csv' 
-pred_file5 = 'pred/submit_xgboost_900_03.csv'   
+pred_file1 = 'pred/blending/submission_py_0.13_1_1_1_29_0.3931037.csv'
+pred_file2 = 'pred/blending/sofia_logreg_sto_001.csv'  
+pred_file3 = 'pred/blending/sofia_logreg_sto_02.csv'  
+pred_file4 = 'pred/blending/submit_xgboost_900_03_0.3931970.csv' 
+pred_file5 = 'pred/blending/submit_xgboost_900_03.csv'   
 
 pred_2 = {}
 for t, row in enumerate(DictReader(open(pred_file2))): # site/app
@@ -32,7 +32,7 @@ for t, row in enumerate(DictReader(open(pred_file5))): # site/app
 
 
 start = datetime.now()
-with open('py_cubic_fm_xg_weighted.csv',"wb") as outfile:
+with open('sofia_001_Lr.csv',"wb") as outfile:
     outfile.write('id,click\n')
     for t, row in enumerate(DictReader(open(pred_file1))):
         
@@ -40,8 +40,8 @@ with open('py_cubic_fm_xg_weighted.csv',"wb") as outfile:
         click = row['click']
         #click = 3/(1/float(click) + 1/float(pred_2[ID]) + 1/float(pred_3[ID]))# + 0.25 * 2/(1/float(pred_4[ID]) + 1/float(pred_5[ID]))
         #click = 0.4*(0.7*float(click)+0.3*float(pred_4[ID])) + 0.3*float(pred_2[ID]) + 0.3*float(pred_3[ID])# + 0.3*float(pred_4[ID])
-        click = 3/(1/(0.7*float(click) + 0.3*float(pred_2[ID])) + 1/float(pred_3[ID]) + 1/float(pred_4[ID]))# + float(pred_5[ID]))/5
-        
+        #click = 3/(1/(0.7*float(click) + 0.3*float(pred_2[ID])) + 1/float(pred_3[ID]) + 1/float(pred_4[ID]))# + float(pred_5[ID]))/5
+        click = (float(click)+float(pred_2[ID]))/2
         outfile.write('%s,%s\n' % (str(ID), str(click)))
         
         if t % 100000 == 0:
