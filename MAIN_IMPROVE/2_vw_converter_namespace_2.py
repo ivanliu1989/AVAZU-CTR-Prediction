@@ -24,7 +24,7 @@ def csv_to_vw(loc_csv, loc_output, train=True):
       
         if k not in ["id","click"]:
           if len(str(v)) > 0:
-           categorical_features += "%s:%s" % (str(k),str(v))
+           categorical_features += "%s:%s " % (str(k),str(v))
 			  
 	  #Creating the labels		  
       if train: #we care about labels
