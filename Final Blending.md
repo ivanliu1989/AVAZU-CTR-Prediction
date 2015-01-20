@@ -38,6 +38,8 @@
 
 	vw -d name_space/train_df_app.vw --loss_function hinge -b 28 -l 0.15 -c -k --passes 15 -f name_space/model_app.vw --holdout_period 100 --decay_learning_rate 0.9 --early_terminate 3 --l2 6e-8
 
+	Hinge: 0.386922/0.230282 | 
+	Squared: /0.351894 |
 
 #### LibFM MCMC [5]
 	../../libfm-1.42.src/bin/libFM -task c -train data/libsvm_train_full_app.txt -test data/libsvm_test_app.txt -out libFM_pred_app_MCMC_900.txt -dim ’1,1,8’ -iter 900 -method mcmc -init_stdev 0.1
