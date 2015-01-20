@@ -21,19 +21,19 @@ with open("vw/submission_vw_name_l4.5.csv","wb") as outfile:
 		row = line.strip().split(" ")
 		outfile.write("%s,%f\n"%(row[1],zygmoid(float(row[0]))))
 
-with open("vw/submission_vw_sparse_l4.5.csv","wb") as outfile:
+with open("avazu.preds.sparse.csv","wb") as outfile:
 	outfile.write("id,click\n")
-	for line in open("vw/avazu.preds.app.sparse.txt"):
+	for line in open("avazu.preds.app.sparse.txt"):
 		row = line.strip().split(" ")
 		outfile.write("%s,%f\n"%(row,zygmoid(float(row[0]))))
-	for line in open("vw/avazu.preds.site.sparse.txt"):
+	for line in open("avazu.preds.site.sparse.txt"):
 		row = line.strip().split(" ")
 		outfile.write("%s,%f\n"%(row,zygmoid(float(row[0]))))
   
 
-submit_click = pd.read_csv("vw/submission_vw_sparse_l4.5.csv",index_col = False)
-submit_id = pd.read_csv("vw/submission_vw_name_l4.5.csv",index_col = False) 
+submit_click = pd.read_csv("avazu.preds.sparse.csv",index_col = False)
+submit_id = pd.read_csv("submission_vw_cubic2_0.3957190.csv",index_col = False) 
 
 submit_click['id']=submit_id['id']
 
-submit_click.to_csv("submission_vw_sparse_l4.5.csv",index = False)
+submit_click.to_csv("avazu.preds.sparse.csv",index = False)

@@ -11,7 +11,7 @@ from datetime import datetime
 
 #train_site_path = 'data/train_df_site_smooth.csv'
 
-submit_path = 'blending_max.csv'
+submit_path = 'blending_weighted_nocubic.csv'
 '''
 app_count = 0
 app_sum = 0
@@ -60,13 +60,13 @@ calibration = average_ctr - average_ctr_test
 
 #-- calibration --#
 start = datetime.now()
-with open('lr_cubic_xgboost_libFM_clibr.csv',"wb") as outfile:
+with open('blending_weighted_nocubic_clibra4.csv',"wb") as outfile:
     outfile.write('id,click\n')
     for t, row in enumerate(DictReader(open(submit_path))):
         
         ID = row['id']
         click = row['click']
-        click = float(click) + calibration
+        click = float(click) + calibration/4
         
         outfile.write('%s,%s\n' % (str(ID), str(click)))
         

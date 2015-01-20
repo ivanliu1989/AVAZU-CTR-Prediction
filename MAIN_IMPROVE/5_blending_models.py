@@ -33,15 +33,14 @@ for t, row in enumerate(DictReader(open(pred_file5))): # site/app
 '''
 
 start = datetime.now()
-with open('blending_min.csv',"wb") as outfile:
+with open('blending_weighted_nocubic.csv',"wb") as outfile:
     outfile.write('id,click\n')
     for t, row in enumerate(DictReader(open(pred_file1))):
         
         ID = row['id']
         click = row['click']
         #click = 3/(1/float(click) + 1/float(pred_2[ID]) + 1/float(pred_3[ID]))# + 0.25 * 2/(1/float(pred_4[ID]) + 1/float(pred_5[ID]))
-        #click = 0.4*(0.7*float(click)+0.3*float(pred_4[ID])) + 0.3*float(pred_2[ID]) + 0.3*float(pred_3[ID])# + 0.3*float(pred_4[ID])
-        click = min(float(click),float(pred_2[ID]),float(pred_3[ID]),float(pred_4[ID]))
+        click = 0.4*(float(click)+0*float(pred_2[ID])) + 0.4*float(pred_3[ID]) + 0.2*float(pred_4[ID])# + 0.3*float(pred_4[ID])
         
         outfile.write('%s,%s\n' % (str(ID), str(click)))
         

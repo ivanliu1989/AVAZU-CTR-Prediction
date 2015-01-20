@@ -1,7 +1,7 @@
 	- alias vw=/Users/ivan/Work_directory/vowpal_wabbit-7.9/vowpalwabbit/vw
 
 ##### testing
-	- vw test_df_site.vw -t -i model_site.vw -p avazu.preds.site.txt 
+	- vw sparse/test_df_site.vw -t -i sparse/model_site.vw -p avazu.preds.site.sparse.txt 
 	- vw test_df_app.vw -t -i model_app.vw -p avazu.preds.app.txt
 
 ##### training
