@@ -62,4 +62,16 @@
 	../../xgboost-master/xgboost 4_xgboost_site.conf
 	../../xgboost-master/xgboost 4_xgboost_site.conf task=pred
 
-	eta = 0.6 | gamma = 0.1 | max_depth = 9 | num_round = 100 | subsample = 0.7
+	eta = 0.6 | gamma = 0.1 | max_depth = 9 | num_round = 100 | subsample = 0.7squared
+
+#### Model List
+	1. vw logistic
+	2. vw nn
+	3. vw cubic
+	4. vw hinge
+	5. vw squared
+	6. vw quantile
+	7. libFM MCMC
+	8. xgboost 0.7*9
+	9. libSVM/Sofia-ML
+
