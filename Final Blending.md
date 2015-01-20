@@ -32,7 +32,7 @@
 
 	vw -d name_space/train_df_app.vw --loss_function logistic -b 28 -l 0.01 -c -k --passes 16 -f model_app_nn.vw --holdout_period 100 --early_terminate 3 --nn 38 --power_t 0
 
-	0.431702/0.293282 | 
+	0.431702/0.293282 | 0.4073284/0.3987734
 
 #### Vowpal wabbit Hinge [3]
 	vw -d name_space/train_df_site.vw --loss_function hinge -b 28 -l 0.15 -c -k --passes 15 -f name_space/model_site.vw --holdout_period 100 --decay_learning_rate 0.9 --early_terminate 3 --l2 6e-8
@@ -68,13 +68,13 @@
 	eta = 0.6 | gamma = 0.1 | max_depth = 9 | num_round = 100 | subsample = 0.7squared
 
 #### Model List
-	1. vw logistic
-	2. vw nn
-	3. vw cubic
-	4. vw hinge
-	5. vw squared
-	6. vw quantile
-	7. libFM MCMC
-	8. xgboost 0.7*9
-	9. libSVM/Sofia-ML
+	1. vw logistic + | 0.3931037
+	2. vw nn + | 0.3987734
+	3. vw cubic + | 0.3957190
+	4. vw hinge -
+	5. vw squared -
+	6. vw quantile -
+	7. libFM MCMC + | 0.4027643
+	8. xgboost 0.7*9 + | 0.3931970
+	9. libSVM/Sofia-ML +
 
