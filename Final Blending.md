@@ -32,6 +32,7 @@
 
 	vw -d name_space/train_df_app.vw --loss_function logistic -b 28 -l 0.01 -c -k --passes 16 -f model_app_nn.vw --holdout_period 100 --early_terminate 3 --nn 38 --power_t 0
 
+	0.431702/0.293282 | 
 
 #### Vowpal wabbit Hinge [3]
 	vw -d name_space/train_df_site.vw --loss_function hinge -b 28 -l 0.15 -c -k --passes 15 -f name_space/model_site.vw --holdout_period 100 --decay_learning_rate 0.9 --early_terminate 3 --l2 6e-8
