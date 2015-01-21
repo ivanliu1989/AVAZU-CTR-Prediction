@@ -66,8 +66,10 @@ with open('Blending_models_BM_CU_FM_XG_NN_calibr.csv',"wb") as outfile:
         
         ID = row['id']
         click = row['click']
-        click = float(click) + calibration/2
-        
+        click = float(click) + calibration
+        if click <= 0 or click >= 1:
+            print(click)
+            
         outfile.write('%s,%s\n' % (str(ID), str(click)))
         
         if t % 100000 == 0:
