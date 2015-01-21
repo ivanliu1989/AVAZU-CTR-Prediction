@@ -48,8 +48,8 @@
 
 	../../libfm-1.42.src/bin/libFM -task c -train data/libsvm_train_full_site.txt -test data/libsvm_test_site.txt -out pred/libFM_pred_site_MCMC_70.txt -dim '0,1,15' -iter 70 -method mcmc -regular 0.005 -learn_rate 0.1
 
-#### LibSVM [5]
-	../../libsvm-3.20/svm-train -s 0 -t 0 -b 1 data/sofia_train_app.txt model/libsvm_app_model.model
+#### LibLinear [5]
+	../../liblinear-1.96/train -s 0 -t 0 -b 1 data/sofia_train_app.txt model/libsvm_app_model.model
 
 	../../libsvm-3.20/svm-predict -b 1 data/sofia_test_app.txt model/libsvm_app_model.model pred/libsvm_pred_app
 
