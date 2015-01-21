@@ -17,14 +17,13 @@
 
 	0.425166/0.28738 | 0.3975120
 
-#### Vowpal wabbit Name_space | Sparse (LBFGS) [1]
-	vw -d name_space/train_df_site.vw --loss_function logistic -b 28 -l 0.15 -c -k --passes 15 -f name_space/model_site.vw --holdout_period 100 --decay_learning_rate 0.9 --early_terminate 3 --termination 0.001 --mem 15 --l2 0.0 --bfgs
-
-	vw -d name_space/train_df_site.vw --loss_function logistic -b 28 -l 0.15 -c -k --passes 15 -f name_space/model_site.vw --holdout_period 100 --decay_learning_rate 0.9 --early_terminate 3 --l2 6e-8
+#### Vowpal wabbit Name_space 
+	vw -d name_space/train_df_site.vw --loss_function logistic -b 28 -l 0.15 -c -k --passes 15 -f name_space/model_site.vw --holdout_period 100 --decay_learning_rate 0.9 --early_terminate 3 --l2 6e-8 --bootstrap 10
 
 	vw-hypersearch -l 0.01 0.3 vw --loss_function logistic -l % name_space/train_df_app.vw
 	
 	0.43852/0.30065 | lb: 0.3938007
+	0.442204/0.307986 | bootstrap lb: 
 
 #### Vowpal wabbit NN [2]
 	vw -d name_space/train_df_site.vw --loss_function logistic -b 28 -l 0.01 -c -k --passes 16 -f model_site_nn.vw --holdout_period 100 --early_terminate 3 --nn 38 --power_t 0
@@ -70,7 +69,7 @@
 	2. vw nn + | 0.3987734
 	3. vw cubic + | 0.3957190
 	4. vw hinge -
-	5. vw squared - 
+	5. vw squared + | 
 	6. vw quantile -
 	7. libFM MCMC + | 0.4027643
 	8. xgboost 0.7*9 + | 0.3931970
