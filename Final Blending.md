@@ -49,18 +49,11 @@
 	../../libfm-1.42.src/bin/libFM -task c -train data/libsvm_train_full_site.txt -test data/libsvm_test_site.txt -out pred/libFM_pred_site_MCMC_70.txt -dim '0,1,15' -iter 70 -method mcmc -regular 0.005 -learn_rate 0.1
 
 #### LibLinear [5]
-	../../liblinear-1.96/train -s 0 -t 0 -b 1 data/sofia_train_app.txt model/libsvm_app_model.model
+	../../liblinear-1.96/train -s 7 -c 1 -v 10 -e 0.001 data/sofia_train_app.txt model/libLinear_app_model.model
+	../../liblinear-1.96/predict -b 1 data/sofia_test_app.txt model/libLinear_app_model.model pred/liblinear_pred_app
 
-	../../libsvm-3.20/svm-predict -b 1 data/sofia_test_app.txt model/libsvm_app_model.model pred/libsvm_pred_app
-
-#### Sofia-ML (libSVM) [6]
-	../../sofia-ml-read-only/sofia-ml --learner_type logreg-pegasos --loop_type stochastic --lambda 0.000001 --iterations 80000000 --dimensionality 845479 --training_file data/sofia_train_site.txt --model_out model/sofia_site_model
-
-	../../sofia-ml-read-only/sofia-ml --learner_type logreg-pegasos --loop_type stochastic --lambda 0.000001 --iterations 80000000 --dimensionality 588067 --training_file data/sofia_train_app.txt --model_out model/sofia_app_model
-
-	../../sofia-ml-read-only/sofia-ml --model_in model/sofia_app_model --test_file data/sofia_test_app.txt --results_file pred/sofia_pred_app.txt --prediction_type logistic
-
-	--loop_type (roc, stochastic)
+	../../liblinear-1.96/train -s 7 -c 1 -v 10 -e 0.001 data/sofia_train_site.txt model/libLinear_site_model.model
+	../../liblinear-1.96/predict -b 1 data/sofia_test_site.txt model/libLinear_site_model.model pred/liblinear_pred_site
 
 
 #### Xgboost ensemble [6]
@@ -76,9 +69,7 @@
 	1. vw logistic + | 0.3931037
 	2. vw nn + | 0.3987734
 	3. vw cubic + | 0.3957190
-	4. vw SVM - | 
-	5. libFM MCMC + | 0.4027643
-	6. xgboost 0.7*9 + | 0.3931970
-	7. Sofia-ML + | 0.3978022
-	8. libLinear - |
+	4. libFM MCMC + | 0.4027643
+	5. xgboost 0.7*9 + | 0.3931970
+	6. libLinear - | 
 

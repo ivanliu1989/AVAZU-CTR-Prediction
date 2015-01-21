@@ -11,7 +11,7 @@ from datetime import datetime
 
 #train_site_path = 'data/train_df_site_smooth.csv'
 
-submit_path = 'Blending_models_BM_CU_FM_XG_NN.csv'
+submit_path = 'pred/Blending_models_BM_CU_FM_XG_NN.csv'
 '''
 app_count = 0
 app_sum = 0
@@ -60,7 +60,7 @@ calibration = average_ctr - average_ctr_test
 
 #-- calibration --#
 start = datetime.now()
-with open('Blending_models_BM_CU_FM_XG_NN_calibr.csv',"wb") as outfile:
+with open('pred/Blending_models_BM_CU_FM_XG_NN_calibr.csv',"wb") as outfile:
     outfile.write('id,click\n')
     for t, row in enumerate(DictReader(open(submit_path))):
         
@@ -79,7 +79,7 @@ with open('Blending_models_BM_CU_FM_XG_NN_calibr.csv',"wb") as outfile:
 test_count = 0
 test_sum = 0
 start = datetime.now()
-for t, row in enumerate(DictReader(open('Blendling_lg_gbt_fm_cubic_calibr.csv'))):
+for t, row in enumerate(DictReader(open('pred/Blending_models_BM_CU_FM_XG_NN_calibr.csv'))):
     
     test_count += 1
     test_sum += float(row['click'])

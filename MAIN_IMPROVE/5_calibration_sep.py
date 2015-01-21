@@ -12,7 +12,7 @@ train_app_path = 'data/train_df_app_smooth.csv'
 train_site_path = 'data/train_df_site_smooth.csv'
 test_app_path = 'data/test_df_app_smooth.csv'
 test_site_path = 'data/test_df_site_smooth.csv'
-submit_path = 'Blending_models_BM_CU_FM_XG_NN.csv'
+submit_path = 'pred/Blending_models_BM_CU_FM_XG_NN.csv'
 
 test_app = pd.read_csv(test_app_path,index_col = False)
 test_site = pd.read_csv(test_site_path,index_col = False)
