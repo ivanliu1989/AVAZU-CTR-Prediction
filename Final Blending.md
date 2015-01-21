@@ -1,7 +1,7 @@
 	- alias vw=/Users/ivan/Work_directory/vowpal_wabbit-7.9/vowpalwabbit/vw
 	- alias vw-hypersearch=/Users/ivan/Work_directory/vowpal_wabbit-7.9/utl/vw-hypersearch
 
-	- vw sparse/test_df_site.vw -t -i sparse/model_site.vw -p avazu.preds.site.sparse.txt
+	- vw sparse/test_df_site.vw -t -i sparse/model_site.vw -p avazu.preds.site.sparse.txt --link logistic
 #### Tips for Vowpal wabbit
 	1. 2-grams on ALL the features. (VW)
 	2. Neural networks. (VW)
@@ -20,7 +20,7 @@
 #### Vowpal wabbit Name_space | Sparse (LBFGS) [1]
 	vw -d name_space/train_df_site.vw --loss_function logistic -b 28 -l 0.15 -c -k --passes 15 -f name_space/model_site.vw --holdout_period 100 --decay_learning_rate 0.9 --early_terminate 3 --termination 0.001 --mem 15 --l2 0.0 --bfgs
 
-	vw -d sparse/train_df_site.vw --loss_function logistic -b 28 -l 0.15 -c -k --passes 15 -f sparse/model_site.vw --holdout_period 100 --decay_learning_rate 0.9 --early_terminate 3 --l2 6e-8
+	vw -d name_space/train_df_site.vw --loss_function logistic -b 28 -l 0.15 -c -k --passes 15 -f name_space/model_site.vw --holdout_period 100 --decay_learning_rate 0.9 --early_terminate 3 --l2 6e-8
 
 	vw-hypersearch -l 0.01 0.3 vw --loss_function logistic -l % name_space/train_df_app.vw
 	
@@ -37,7 +37,7 @@
 #### Vowpal wabbit Hinge [3]
 	vw -d name_space/train_df_site.vw --loss_function hinge -b 28 -l 0.15 -c -k --passes 15 -f name_space/model_site.vw --holdout_period 100 --decay_learning_rate 0.9 --early_terminate 3 --l2 6e-8
 
-	vw -d name_space/train_df_app.vw --loss_function hinge -b 28 -l 0.15 -c -k --passes 15 -f name_space/model_app.vw --holdout_period 100 --decay_learning_rate 0.9 --early_terminate 3 --l2 6e-8
+	vw -d name_space/train_df_app.vw --loss_function squared -b 28 -l 0.13 -c -k --passes 15 -f name_space/model_app.vw --holdout_period 100 --decay_learning_rate 0.9 --early_terminate 3 --l2 6e-8
 
 	Hinge: 0.386922/0.230282 | 
 	Squared: /0.351894 |
@@ -72,9 +72,9 @@
 	2. vw nn + | 0.3987734
 	3. vw cubic + | 0.3957190
 	4. vw hinge -
-	5. vw squared -
+	5. vw squared - 
 	6. vw quantile -
 	7. libFM MCMC + | 0.4027643
 	8. xgboost 0.7*9 + | 0.3931970
-	9. libSVM/Sofia-ML +
+	9. libSVM/Sofia-ML + | 0.3978022
 
