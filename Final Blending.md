@@ -48,6 +48,10 @@
 
 	../../libfm-1.42.src/bin/libFM -task c -train data/libsvm_train_full_site.txt -test data/libsvm_test_site.txt -out pred/libFM_pred_site_MCMC_70.txt -dim '0,1,15' -iter 70 -method mcmc -regular 0.005 -learn_rate 0.1
 
+#### LibSVM [5]
+	../../libsvm-3.20/svm-train -s 0 -t 0 -b 1 data/sofia_train_app.txt model/libsvm_app_model.model
+
+	../../libsvm-3.20/svm-predict -b 1 data/sofia_test_app.txt model/libsvm_app_model.model pred/libsvm_pred_app
 
 #### Sofia-ML (libSVM) [6]
 	../../sofia-ml-read-only/sofia-ml --learner_type logreg-pegasos --loop_type stochastic --lambda 0.000001 --iterations 80000000 --dimensionality 845479 --training_file data/sofia_train_site.txt --model_out model/sofia_site_model
@@ -75,5 +79,6 @@
 	4. vw SVM - | 
 	5. libFM MCMC + | 0.4027643
 	6. xgboost 0.7*9 + | 0.3931970
-	7. libSVM/Sofia-ML + | 0.3978022
+	7. Sofia-ML + | 0.3978022
+	8. libSVM - |
 
