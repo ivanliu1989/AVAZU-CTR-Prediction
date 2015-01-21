@@ -1,4 +1,4 @@
-	- alias vw=/Users/ivan/Work_directory/vowpal_wabbit-7.9/vowpalwabbit/vw
+﻿	- alias vw=/Users/ivan/Work_directory/vowpal_wabbit-7.9/vowpalwabbit/vw
 	- alias vw-hypersearch=/Users/ivan/Work_directory/vowpal_wabbit-7.9/utl/vw-hypersearch
 
 	- vw sparse/test_df_site.vw -t -i sparse/model_site.vw -p avazu.preds.site.sparse.txt --link logistic
@@ -80,5 +80,5 @@
 	5. libFM MCMC + | 0.4027643
 	6. xgboost 0.7*9 + | 0.3931970
 	7. Sofia-ML + | 0.3978022
-	8. libSVM - |
+	8. libLinear - |
 
