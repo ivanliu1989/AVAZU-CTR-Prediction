@@ -17,13 +17,15 @@
 
 	0.425166/0.28738 | 0.3975120
 
+
 #### Vowpal wabbit Name_space 
 	vw -d name_space/train_df_site.vw --loss_function logistic -b 28 -l 0.15 -c -k --passes 15 -f name_space/model_site.vw --holdout_period 100 --decay_learning_rate 0.9 --early_terminate 3 --l2 6e-8 --bootstrap 10
 
 	vw-hypersearch -l 0.01 0.3 vw --loss_function logistic -l % name_space/train_df_app.vw
 	
 	0.43852/0.30065 | lb: 0.3938007
-	0.442204/0.307986 | bootstrap lb: 
+	0.442204/0.307986 | bootstrap lb: 0.3977472
+
 
 #### Vowpal wabbit NN [2]
 	vw -d name_space/train_df_site.vw --loss_function logistic -b 28 -l 0.01 -c -k --passes 16 -f model_site_nn.vw --holdout_period 100 --early_terminate 3 --nn 38 --power_t 0
@@ -32,12 +34,14 @@
 
 	0.431702/0.293282 | 0.4073284/0.3987734
 
-#### Vowpal wabbit Hinge [3]
-	vw -d name_space/train_df_site.vw --loss_function squared -b 28 -l 0.13 -c -k --passes 6 -f squared/model_site.vw --holdout_period 100 --decay_learning_rate 0.9 --early_terminate 3 --l2 6e-8 --bootstrap 10
 
-	vw -d name_space/train_df_app.vw --loss_function squared -b 28 -l 0.13 -c -k --passes 6 -f squared/model_app.vw --holdout_period 100 --decay_learning_rate 0.9 --early_terminate 3 --l2 6e-8 --bootstrap 10
+#### Vowpal wabbit SVM [3]
+	vw -d train_df_app.vw --ksvm --kernel linear -b 28 -c -k -f svm/model_app.vw --l2 6e-9 --passes 3 --reprocess 2 --loss_function logistic --link logistic
+
+	linear, poly(--degree 2), rbf(--bandwidth 1)
 
 	vw sparse/test_df_site.vw -t -i sparse/model_site.vw -p avazu.preds.site.sparse.txt --link logistic
+
 
 #### LibFM MCMC [5]
 	../../libfm-1.42.src/bin/libFM -task c -train data/libsvm_train_full_app.txt -test data/libsvm_test_app.txt -out libFM_pred_app_MCMC_900.txt -dim ’1,1,8’ -iter 900 -method mcmc -init_stdev 0.1
@@ -68,10 +72,8 @@
 	1. vw logistic + | 0.3931037
 	2. vw nn + | 0.3987734
 	3. vw cubic + | 0.3957190
-	4. vw hinge -
-	5. vw squared + | 
-	6. vw quantile -
-	7. libFM MCMC + | 0.4027643
-	8. xgboost 0.7*9 + | 0.3931970
-	9. libSVM/Sofia-ML + | 0.3978022
+	4. vw SVM - | 
+	5. libFM MCMC + | 0.4027643
+	6. xgboost 0.7*9 + | 0.3931970
+	7. libSVM/Sofia-ML + | 0.3978022
 
