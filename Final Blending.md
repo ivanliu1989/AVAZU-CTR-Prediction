@@ -71,5 +71,9 @@
 	3. vw cubic + | 0.3957190
 	4. libFM MCMC + | 0.4027643
 	5. xgboost 0.7*9 + | 0.3931970
-	6. libLinear lr_dual - | 0.3987665
+	6. libLinear lr_dual + | 0.3987665
+	7. libLinear lr_pri - |
+	8. vw squared - |
+	9. libLinear svr - |
+	10. lib logistic positive - |
 

@@ -25,16 +25,16 @@ def csv_to_vw(loc_csv, loc_output, train=True):
       
         if k not in ["id","click"]:
           if len(str(v)) > 0:
-           categorical_features += "%s:%s " % (str(k),str(v))
+           categorical_features += "|%s %s " % (str(k),str(v))
 			  
 	  #Creating the labels		  
       if train: #we care about labels
         if row['click'] == '1':
           label = 1
-          outfile.write( "%s '%s |c %s\n" % (label,row['id'],categorical_features) )
+          outfile.write( "%s '%s %s\n" % (label,row['id'],categorical_features) )
 		
       else: #we dont care about labels
-        outfile.write( "1 '%s |c %s\n" % (row['id'],categorical_features) )
+        outfile.write( "1 '%s %s\n" % (row['id'],categorical_features) )
       
 	  #Reporting progress
       if e % 100000 == 0:
