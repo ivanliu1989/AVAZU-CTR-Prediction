@@ -49,12 +49,13 @@
 	../../libfm-1.42.src/bin/libFM -task c -train data/libsvm_train_full_site.txt -test data/libsvm_test_site.txt -out pred/libFM_pred_site_MCMC_70.txt -dim '0,1,15' -iter 70 -method mcmc -regular 0.005 -learn_rate 0.1
 
 #### LibLinear [5]
-	../../liblinear-1.96/train -s 7 -c 1 -v 10 -e 0.001 data/sofia_train_app.txt model/libLinear_app_model.model
+	../../liblinear-1.96/train -s 13 -e 0.001 data/sofia_train_app.txt model/libLinear_app_model_svr_dual.model
 	../../liblinear-1.96/predict -b 1 data/sofia_test_app.txt model/libLinear_app_model.model pred/liblinear_pred_app
 
 	../../liblinear-1.96/train -s 7 -c 1 -v 10 -e 0.001 data/sofia_train_site.txt model/libLinear_site_model.model
 	../../liblinear-1.96/predict -b 1 data/sofia_test_site.txt model/libLinear_site_model.model pred/liblinear_pred_site
 
+	-v 10 -c 1
 
 #### Xgboost ensemble [6]
 	../../xgboost-master/xgboost 4_xgboost_app.conf
@@ -75,5 +76,4 @@
 	7. libLinear lr_pri - | 0.3964280
 	8. vw squared - |
 	9. libLinear svr - |
-	10. lib logistic positive - |
 
