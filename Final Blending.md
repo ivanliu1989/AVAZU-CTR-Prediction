@@ -74,6 +74,6 @@
 	5. xgboost 0.7*9 + | 0.3931970
 	6. libLinear lr_dual + | 0.3987665
 	7. libLinear lr_pri - | 0.3964280
-	8. vw squared - |
+	8. naive bayes - |
 	9. libLinear svr - |
 

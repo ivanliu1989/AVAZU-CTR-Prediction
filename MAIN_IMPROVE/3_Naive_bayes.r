@@ -1,47 +1,31 @@
 setwd('/Users/ivan/Work_directory/VAZU/')
 gc(); rm(list=ls());
-library(devtools)
-install.packages("ff")
-install.packages("rJava")
-install_github("jwijffels/RMOA", subdir="RMOAjars/pkg")
-install_github("jwijffels/RMOA", subdir="RMOA/pkg")
+require(data.table);require(caret)
 
-require(RMOA)
+train_app <- data.frame(fread('data/train_df_app_smooth.csv'))
+train_app <- train_app[,-1]
+head(train_app)
 
-## Create a HoeffdingTree
-hdt <- HoeffdingTree(numericEstimator = "GaussianNumericAttributeClassObserver")
-hdt
+for (i in seq(dim(train_app)[2])){   
+    train_app[which(train_app[[i]]==''),i] <- NaN   
+}
+for (i in seq(dim(train_app)[2])){   
+    train_app[[i]] <- as.factor(train_app[[i]])   
+}
 
-## Define a stream - e.g. a stream based on a data.frame
-data(iris)
-iris <- factorise(iris)
-irisdatastream <- datastream_dataframe(data=iris)
+index <- createFolds(y = train_app$click, k = 10, list = F, returnTrain = FALSE)
+#index <- createDataPartition(y = train_app$click, p = 0.8, list = F)
+train_dt <- train_app[which(index==1),]
+test_dt <- train_app[which(index==10),]
+dim(train_dt);dim(test_dt);dim(train_app)
+#rm(train_app)
 
-## Train the HoeffdingTree on the iris dataset
-mymodel <- trainMOA(model = hdt, 
-                    formula = Species ~ Sepal.Length + Sepal.Width + Petal.Length, 
-                    data = irisdatastream)
+### Naive Bayes ###
+set.seed(825)
 
-## Predict using the HoeffdingTree on the iris dataset
-scores <- predict(mymodel, newdata=iris, type="response")
-str(scores)
-table(scores, iris$Species)
-scores <- predict(mymodel, newdata=iris, type="votes")
-head(scores)
+train_dt <- train_app[which(index==1),]
 
+fit_app <- train(click~., data=train_dt, method = "nb")#,
+                #trControl = fitControl, tuneGrid = gbmGrid, metric = "ROC")
 
-##
-## Boosting example
-##
-irisdatastream$reset()
-mymodel <- OzaBoost(baseLearner = "trees.HoeffdingTree", ensembleSize = 30)
-mymodel <- trainMOA(model = mymodel, 
-                    formula = Species ~ Sepal.Length + Sepal.Width + Petal.Length, 
-                    data = irisdatastream)
-
-## Predict using the HoeffdingTree on the iris dataset
-scores <- predict(mymodel, newdata=iris, type="response")
-str(scores)
-table(scores, iris$Species)
-scores <- predict(mymodel, newdata=iris, type="votes")
-head(scores)
+testPred_app <- predict(fit_app, test_dt, type = "prob")
