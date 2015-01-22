@@ -8,8 +8,8 @@ Created on Thu Jan 22 10:03:05 2015
 
 import pandas as pd
 
-lib_app = 'libLinear/pred/liblinear_pred_7_app.txt'
-lib_site = 'libLinear/pred/liblinear_pred_7_site.txt'
+lib_app = 'libLinear/pred/liblinear_pred_app_0'
+lib_site = 'libLinear/pred/liblinear_pred_site_0'
 pred_app = pd.read_csv(lib_app,index_col = False, header = 0, delim_whitespace=True)
 pred_site = pd.read_csv(lib_site,index_col = False, header = 0, delim_whitespace=True)
 
@@ -24,4 +24,4 @@ submission_site = pd.DataFrame({'id':submit_site['id'],
                                 'click':pred_site['1']})
 
 submission = submission_app.append(submission_site,ignore_index=True)
-submission.to_csv('libLinear_logreg_dual.csv',index=False)
+submission.to_csv('libLinear_logreg_pric.csv',index=False)

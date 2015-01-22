@@ -72,7 +72,7 @@
 	4. libFM MCMC + | 0.4027643
 	5. xgboost 0.7*9 + | 0.3931970
 	6. libLinear lr_dual + | 0.3987665
-	7. libLinear lr_pri - |
+	7. libLinear lr_pri - | 0.3964280
 	8. vw squared - |
 	9. libLinear svr - |
 	10. lib logistic positive - |
