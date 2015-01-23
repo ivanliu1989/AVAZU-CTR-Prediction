@@ -14,17 +14,17 @@ for (i in seq(dim(train_app)[2])){
 }
 
 # index <- createFolds(y = train_app$click, k = 10, list = F, returnTrain = FALSE)
-index <- createDataPartition(y = train_app$click, p = 0.8, list = F)
-train_dt <- train_app[index,]
-test_dt <- train_app[-index,]
-dim(train_dt);dim(test_dt);dim(train_app)
-rm(train_app)
+# index <- createDataPartition(y = train_app$click, p = 0.8, list = F)
+# train_dt <- train_app[index,]
+# test_dt <- train_app[-index,]
+# dim(train_dt);dim(test_dt);dim(train_app)
+# rm(train_app)
 
 ### Naive Bayes ###
 ## Define a stream - e.g. a stream based on a data.frame
 # factorise(x=train_app)
-train_dt <- datastream_dataframe(data=train_dt)
-train_dt$get_points(10)
+train_app <- datastream_dataframe(data=train_app)
+train_app$get_points(10)
 
 
 ## Train the HoeffdingTree on the iris dataset
@@ -33,14 +33,17 @@ mymodel <- NaiveBayes(control=ctrl)
 mymodel
 
 mytrainedmodel <- trainMOA(model = mymodel, chunksize = 1000000, 
-                           click ~ ., data = train_dt)
-train_dt$reset()
+                           click ~ ., data = train_app)
+train_app$reset()
 mytrainedmodel$model
 
 ## Predict using the HoeffdingTree on the iris dataset
 save(mytrainedmodel, file='naivebayes_model_app.RData')
-scores <- predict(mytrainedmodel, newdata=test_dt[1:100,], type="votes")
 
+test_app <- data.frame(fread('data/test_df_app_smooth.csv'))
+test_app <- test_app[,-1]
+
+scores <- predict(mytrainedmodel, newdata=test_dt[1:100,], type="votes")
 LogLoss(as.numeric(scores[,2])/(as.numeric(scores[,1])+as.numeric(scores[,2])), as.numeric(test_dt[1:100,1]))
 
 ## logloss func
