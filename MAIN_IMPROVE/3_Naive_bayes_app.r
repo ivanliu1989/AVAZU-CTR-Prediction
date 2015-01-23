@@ -30,13 +30,12 @@ train_app$get_points(10)
 ## Train the HoeffdingTree on the iris dataset
 ctrl <- MOAoptions(model = "NaiveBayes")
 mymodel <- NaiveBayes(control=ctrl)
-mymodel
-
+gc()
 mytrainedmodel <- trainMOA(model = mymodel, chunksize = 1000000, 
                            click ~ ., data = train_app)
 train_app$reset()
 mytrainedmodel$model
-
+gc()
 ## Predict using the HoeffdingTree on the iris dataset
 save(mytrainedmodel, file='naivebayes_model_app.RData')
 
