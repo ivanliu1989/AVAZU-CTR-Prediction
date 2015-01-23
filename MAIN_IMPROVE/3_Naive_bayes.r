@@ -32,22 +32,19 @@ ctrl <- MOAoptions(model = "NaiveBayes")
 mymodel <- NaiveBayes(control=ctrl)
 mymodel
 
-mytrainedmodel <- trainMOA(model = mymodel, chunksize = 10000, 
+mytrainedmodel <- trainMOA(model = mymodel, chunksize = 1000000, 
                            click ~ ., data = train_dt)
 train_dt$reset()
 mytrainedmodel$model
 
 ## Predict using the HoeffdingTree on the iris dataset
 save(mytrainedmodel, file='naivebayes_model_app.RData')
-scores <- predict(mytrainedmodel, newdata=test_dt, type="response")
-str(scores)
-LogLoss(scores, test_dt$click)
-scores <- predict(mytrainedmodel, newdata=test_dt, type="votes")
-head(scores)
+scores <- predict(mytrainedmodel, newdata=test_dt[1:100,], type="votes")
+
+LogLoss(as.numeric(scores[,2])/(as.numeric(scores[,1])+as.numeric(scores[,2])), as.numeric(test_dt[1:100,1]))
 
 ## logloss func
-LogLoss<-function(predicted,actual)
-{
-    result<- -1/length(actual)*(sum((actual*log(predicted)+(1-actual)*log(1-predicted))))
-    return(result)
+LogLoss <- function(predicted,actual, eps=0.00001) {
+    predicted <- pmin(pmax(predicted, eps), 1-eps)
+    -1/length(actual)*(sum(actual*log(predicted)+(1-actual)*log(1-predicted)))
 }
