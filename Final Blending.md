@@ -67,13 +67,12 @@
 	eta = 0.6 | gamma = 0.1 | max_depth = 9 | num_round = 100 | subsample = 0.7squared
 
 #### Model List
-	1. vw logistic + | 0.3931037
+	1. py ftrl logistic + | 0.3931037
 	2. vw nn + | 0.3987734
 	3. vw cubic + | 0.3957190
 	4. libFM MCMC + | 0.4027643
 	5. xgboost 0.7*9 + | 0.3931970
-	6. libLinear lr_dual + | 0.3987665
-	7. libLinear lr_pri - | 0.3964280
+	7. libLinear lr_pri + | 0.3964280
 	8. naive bayes - |
 	9. libLinear svr - |
 
