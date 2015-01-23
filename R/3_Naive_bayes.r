@@ -1,10 +1,10 @@
-setwd('/Users/ivan/Work_directory/VAZU/')
+# setwd('/Users/ivan/Work_directory/VAZU/')
+setwd('C:/Users/Ivan.Liuyanfeng/Desktop/Data_Mining_Work_Space/VAZU')
 gc(); rm(list=ls());
 library(devtools)
 install.packages("ff")
 install.packages("rJava")
-install_github("jwijffels/RMOA", subdir="RMOAjars/pkg")
-install_github("jwijffels/RMOA", subdir="RMOA/pkg")
+install.packages("RMOA")
 
 require(RMOA)
 

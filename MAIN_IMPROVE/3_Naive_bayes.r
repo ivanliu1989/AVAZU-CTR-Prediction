@@ -1,6 +1,6 @@
-setwd('/Users/ivan/Work_directory/VAZU/')
+setwd('C:/Users/Ivan.Liuyanfeng/Desktop/Data_Mining_Work_Space/VAZU')
 gc(); rm(list=ls());
-require(data.table);require(caret)
+require(data.table);require(RMOA); require(caret)
 
 train_app <- data.frame(fread('data/train_df_app_smooth.csv'))
 train_app <- train_app[,-1]
@@ -13,19 +13,33 @@ for (i in seq(dim(train_app)[2])){
     train_app[[i]] <- as.factor(train_app[[i]])   
 }
 
-index <- createFolds(y = train_app$click, k = 10, list = F, returnTrain = FALSE)
-#index <- createDataPartition(y = train_app$click, p = 0.8, list = F)
-train_dt <- train_app[which(index==1),]
-test_dt <- train_app[which(index==10),]
+# index <- createFolds(y = train_app$click, k = 10, list = F, returnTrain = FALSE)
+index <- createDataPartition(y = train_app$click, p = 0.8, list = F)
+train_dt <- train_app[index,]
+test_dt <- train_app[-index,]
 dim(train_dt);dim(test_dt);dim(train_app)
-#rm(train_app)
+rm(train_app)
 
 ### Naive Bayes ###
-set.seed(825)
+## Define a stream - e.g. a stream based on a data.frame
+# factorise(x=train_app)
+train_dt <- datastream_dataframe(data=train_dt)
+train_dt$get_points(10)
 
-train_dt <- train_app[which(index==1),]
 
-fit_app <- train(click~., data=train_dt, method = "nb")#,
-                #trControl = fitControl, tuneGrid = gbmGrid, metric = "ROC")
+## Train the HoeffdingTree on the iris dataset
+ctrl <- MOAoptions(model = "NaiveBayes")
+mymodel <- NaiveBayes(control=ctrl)
+mymodel
 
-testPred_app <- predict(fit_app, test_dt, type = "prob")
+mytrainedmodel <- trainMOA(model = mymodel, chunksize = 10000, 
+                           click ~ ., data = train_dt)
+train_dt$reset()
+mytrainedmodel$model
+
+## Predict using the HoeffdingTree on the iris dataset
+scores <- predict(mytrainedmodel, newdata=test_dt, type="response")
+str(scores)
+table(scores, test_dt$click)
+scores <- predict(mytrainedmodel, newdata=test_dt, type="votes")
+head(scores)
