@@ -38,8 +38,16 @@ train_dt$reset()
 mytrainedmodel$model
 
 ## Predict using the HoeffdingTree on the iris dataset
+save(mytrainedmodel, file='naivebayes_model_app.RData')
 scores <- predict(mytrainedmodel, newdata=test_dt, type="response")
 str(scores)
-table(scores, test_dt$click)
+LogLoss(scores, test_dt$click)
 scores <- predict(mytrainedmodel, newdata=test_dt, type="votes")
 head(scores)
+
+## logloss func
+LogLoss<-function(predicted,actual)
+{
+    result<- -1/length(actual)*(sum((actual*log(predicted)+(1-actual)*log(1-predicted))))
+    return(result)
+}
