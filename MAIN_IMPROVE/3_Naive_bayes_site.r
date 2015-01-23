@@ -1,4 +1,7 @@
+Sys.setenv(JAVA_HOME='C:\\Program Files\\Java\\jre7') # for 64-bit version
 setwd('C:/Users/Ivan.Liuyanfeng/Desktop/Data_Mining_Work_Space/VAZU')
+setwd('H:/Machine_Learning/VAZU/')
+
 gc(); rm(list=ls());
 require(data.table);require(RMOA); require(caret)
 
@@ -30,13 +33,13 @@ train_site$get_points(10)
 ## Train the HoeffdingTree on the iris dataset
 ctrl <- MOAoptions(model = "NaiveBayes")
 mymodel <- NaiveBayes(control=ctrl)
-mymodel
 
+gc()
 mytrainedmodel <- trainMOA(model = mymodel, chunksize = 1000000, 
                            click ~ ., data = train_site)
-train_site$reset()
+#train_site$reset()
 mytrainedmodel$model
-
+gc()
 ## Predict using the HoeffdingTree on the iris dataset
 save(mytrainedmodel, file='naivebayes_model_site.RData')
 
