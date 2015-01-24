@@ -39,7 +39,8 @@ train_app$reset()
 mytrainedmodel$model
 gc()
 ## Predict using the HoeffdingTree on the iris dataset
-save(mytrainedmodel, file='naivebayes_model_app.RData')
+# save(mytrainedmodel, file='naivebayes_model_app.RData')
+save(mytrainedmodel, file='ozaboost_model_app.RData')
 
 test_app <- data.frame(fread('data/test_df_app_smooth.csv'))
 test_app <- test_app[,-1]
@@ -55,8 +56,11 @@ scores <- predict(mytrainedmodel, newdata=test_app, type="votes")
 
 pred <- scores[,2]/(scores[,1]+scores[,2])
 range(pred)
-save(scores, file='naivebayes_pred_app.RData')
-write.csv(pred,file='naive_bayes_app_pred.csv')
+# save(scores, file='naivebayes_pred_app.RData')
+# write.csv(pred,file='naive_bayes_app_pred.csv')
+
+save(scores, file='ozaboost_pred_app.RData')
+write.csv(pred,file='ozaboost_app_pred.csv')
 LogLoss(as.numeric(scores[,2])/(as.numeric(scores[,1])+as.numeric(scores[,2])), as.numeric(test_dt[1:100,1]))
 
 ## logloss func
