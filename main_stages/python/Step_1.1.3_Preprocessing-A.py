@@ -19,19 +19,19 @@ with open('other/train_df_null.csv',"wb") as outfile:
     outfile.write('id,click,hour,dow,C1,banner_pos,site_id,site_domain,site_category,app_id,app_domain,app_category,device_id,device_ip,device_model,device_type,device_conn_type,C14,C15,C16,C17,C18,C19,C20,C21\n')
     for t, row in enumerate(DictReader(open(train))):
         # turn hour really into hour, it was originally YYMMDDHH
-        if row['hour'][4:6] in [19,26]:
+        if int(row['hour'][4:6]) in [19,26]:
              dow = 'Sunday'
-        elif row['hour'][4:6] in [20,27]:
+        elif int(row['hour'][4:6]) in [20,27]:
              dow = 'Monday'
-        elif row['hour'][4:6] in [21,28]:
+        elif int(row['hour'][4:6]) in [21,28]:
              dow = 'Tuesday'
-        elif row['hour'][4:6] in [22,29]:
+        elif int(row['hour'][4:6]) in [22,29]:
              dow = 'Wednesday'
-        elif row['hour'][4:6] in [23,30]:
+        elif int(row['hour'][4:6]) in [23,30]:
              dow = 'Thursday'
-        elif row['hour'][4:6] in [18,25]:
+        elif int(row['hour'][4:6]) in [18,25]:
              dow = 'Saturday'
-        elif row['hour'][4:6] in [24,31]:
+        elif int(row['hour'][4:6]) in [24,31]:
              dow = 'Friday'
         else:
              break
@@ -120,19 +120,19 @@ start = datetime.now()
 with open('other/test_df_null.csv',"wb") as outfile:
     outfile.write('id,hour,dow,C1,banner_pos,site_id,site_domain,site_category,app_id,app_domain,app_category,device_id,device_ip,device_model,device_type,device_conn_type,C14,C15,C16,C17,C18,C19,C20,C21\n')
     for t, row in enumerate(DictReader(open(test))):
-        if row['hour'][4:6] in [19,26]:
+        if int(row['hour'][4:6]) in [19,26]:
              dow = 'Sunday'
-        elif row['hour'][4:6] in [20,27]:
+        elif int(row['hour'][4:6]) in [20,27]:
              dow = 'Monday'
-        elif row['hour'][4:6] in [21,28]:
+        elif int(row['hour'][4:6]) in [21,28]:
              dow = 'Tuesday'
-        elif row['hour'][4:6] in [22,29]:
+        elif int(row['hour'][4:6]) in [22,29]:
              dow = 'Wednesday'
-        elif row['hour'][4:6] in [23,30]:
+        elif int(row['hour'][4:6]) in [23,30]:
              dow = 'Thursday'
-        elif row['hour'][4:6] in [18,25]:
+        elif int(row['hour'][4:6]) in [18,25]:
              dow = 'Saturday'
-        elif row['hour'][4:6] in [24,31]:
+        elif int(row['hour'][4:6]) in [24,31]:
              dow = 'Friday'
         else:
              break
