@@ -49,7 +49,7 @@ test_site <- test_site[,-1]
 for (i in seq(dim(test_site)[2])){   
     test_site[which(test_site[[i]]==''),i] <- NaN   
 }
-for (i in seq(dim(test_app)[2])){   
+for (i in seq(dim(test_site)[2])){   
     test_site[[i]] <- as.factor(test_site[[i]])   
 }
 
