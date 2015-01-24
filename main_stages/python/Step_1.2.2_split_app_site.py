@@ -10,9 +10,9 @@ from csv import DictReader
 ###############################
 # --- Main transformation --- #
 ###############################
-input_file = 'data/train_df_null_shuffled_fri.csv'
-output_file_app = 'data/train_df_app.csv'
-output_file_site = 'data/train_df_site.csv'
+input_file = 'other/train_df_null.csv'
+output_file_app = 'other/train_df_app.csv'
+output_file_site = 'other/train_df_site.csv'
 
 start = datetime.now()
 with open(output_file_app,"wb") as outfile:
@@ -85,9 +85,9 @@ with open(output_file_site,"wb") as outfile:
 ####################################
 # --- Main transformation test --- #
 ####################################
-input_file = 'data/test_df_null.csv'
-output_file_app = 'data/test_df_app.csv'
-output_file_site = 'data/test_df_site.csv'
+input_file = 'other/test_df_null.csv'
+output_file_app = 'other/test_df_app.csv'
+output_file_site = 'other/test_df_site.csv'
 
 start = datetime.now()
 with open(output_file_app,"wb") as outfile:
