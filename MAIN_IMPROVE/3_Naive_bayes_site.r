@@ -46,7 +46,14 @@ save(mytrainedmodel, file='naivebayes_model_site.RData')
 test_site <- data.frame(fread('data/test_df_site_smooth.csv'))
 test_site <- test_site[,-1]
 
-scores <- predict(mytrainedmodel, newdata=test_dt[1:100,], type="votes")
+for (i in seq(dim(test_site)[2])){   
+    test_site[which(test_site[[i]]==''),i] <- NaN   
+}
+for (i in seq(dim(test_app)[2])){   
+    test_site[[i]] <- as.factor(test_site[[i]])   
+}
+
+scores <- predict(mytrainedmodel, newdata=test_site, type="votes")
 LogLoss(as.numeric(scores[,2])/(as.numeric(scores[,1])+as.numeric(scores[,2])), as.numeric(test_dt[1:100,1]))
 
 ## logloss func
