@@ -31,12 +31,14 @@ train_site$get_points(10)
 
 
 ## Train the HoeffdingTree on the iris dataset
-ctrl <- MOAoptions(model = "NaiveBayes")
-mymodel <- NaiveBayes(control=ctrl)
+# ctrl <- MOAoptions(model = "NaiveBayes")
+
+mymodel <- OzaBoost(baseLearner = "trees.HoeffdingTree", ensembleSize = 70)
+# mymodel <- NaiveBayes(control=ctrl)
 
 gc()
-mytrainedmodel <- trainMOA(model = mymodel, chunksize = 1000000, 
-                           click ~ ., data = train_site)
+mytrainedmodel <- trainMOA(model = mymodel, chunksize = 2583283, 
+                           click ~ ., data = train_site,trace=T,reset=T)
 #train_site$reset()
 mytrainedmodel$model
 gc()
