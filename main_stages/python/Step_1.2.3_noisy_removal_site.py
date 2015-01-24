@@ -11,8 +11,8 @@ import pandas as pd
 ##################
 # -- load data --#
 ##################
-train = 'data/train_df_site.csv'               # path to training file
-test = 'data/test_df_site.csv'
+train = 'other/train_df_site.csv'               # path to training file
+test = 'other/test_df_site.csv'
 test_df = pd.read_csv(test)
 train_df = pd.read_csv(train)
 
@@ -148,5 +148,5 @@ del test_df['index']
 test_click_id = pd.DataFrame({'id':test_click_id})
 test_df = pd.merge(test_click_id, test_df, left_index=True, right_index=True)
 
-train_df.to_csv('data/train_df_site_smooth.csv',index=False)
-test_df.to_csv('data/test_df_site_smooth.csv',index=False)
+train_df.to_csv('other/train_df_site_smooth.csv',index=False)
+test_df.to_csv('other/test_df_site_smooth.csv',index=False)
