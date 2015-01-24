@@ -8,33 +8,33 @@ Created on Thu Jan  8 14:40:24 2015
 from datetime import datetime
 from csv import DictReader
 
-train = 'data/train.csv'               # path to training file
-test = 'data/test.csv' 
+train = 'other/raw/train.csv'               # path to training file
+test = 'other/raw/test.csv' 
 
 # -- train data -- #
 # list(test_df.columns.values)
 
 start = datetime.now()
-with open('data/train_df_null.csv',"wb") as outfile:
+with open('other/train_df_null.csv',"wb") as outfile:
     outfile.write('id,click,hour,dow,C1,banner_pos,site_id,site_domain,site_category,app_id,app_domain,app_category,device_id,device_ip,device_model,device_type,device_conn_type,C14,C15,C16,C17,C18,C19,C20,C21\n')
     for t, row in enumerate(DictReader(open(train))):
         # turn hour really into hour, it was originally YYMMDDHH
         if row['hour'][4:6] in [19,26]:
-             dow = 1
+             dow = 'Sunday'
         elif row['hour'][4:6] in [20,27]:
-             dow = 2
+             dow = 'Monday'
         elif row['hour'][4:6] in [21,28]:
-             dow = 3
+             dow = 'Tuesday'
         elif row['hour'][4:6] in [22,29]:
-             dow = 4
+             dow = 'Wednesday'
         elif row['hour'][4:6] in [23,30]:
-             dow = 5
+             dow = 'Thursday'
         elif row['hour'][4:6] in [18,25]:
-             dow = 7
+             dow = 'Saturday'
         elif row['hour'][4:6] in [24,31]:
-             dow = 6
--       else:
--            break
+             dow = 'Friday'
+        else:
+             break
 
         ID = row['id']
         click = row['click']
@@ -117,25 +117,25 @@ with open('data/train_df_null.csv',"wb") as outfile:
         
  # -- test data -- #
 start = datetime.now()
-with open('data/test_df_null.csv',"wb") as outfile:
+with open('other/test_df_null.csv',"wb") as outfile:
     outfile.write('id,hour,dow,C1,banner_pos,site_id,site_domain,site_category,app_id,app_domain,app_category,device_id,device_ip,device_model,device_type,device_conn_type,C14,C15,C16,C17,C18,C19,C20,C21\n')
     for t, row in enumerate(DictReader(open(test))):
         if row['hour'][4:6] in [19,26]:
-             dow = 1
+             dow = 'Sunday'
         elif row['hour'][4:6] in [20,27]:
-             dow = 2
+             dow = 'Monday'
         elif row['hour'][4:6] in [21,28]:
-             dow = 3
+             dow = 'Tuesday'
         elif row['hour'][4:6] in [22,29]:
-             dow = 4
+             dow = 'Wednesday'
         elif row['hour'][4:6] in [23,30]:
-             dow = 5
+             dow = 'Thursday'
         elif row['hour'][4:6] in [18,25]:
-             dow = 7
+             dow = 'Saturday'
         elif row['hour'][4:6] in [24,31]:
-             dow = 6
--       else:
--            break
+             dow = 'Friday'
+        else:
+             break
 
         ID = row['id']
         hour = row['hour'][6:]
