@@ -54,6 +54,12 @@ for (i in seq(dim(test_app)[2])){
 }
 
 scores <- predict(mytrainedmodel, newdata=test_site, type="votes")
+
+pred <- scores[,2]/(scores[,1]+scores[,2])
+range(pred)
+save(scores, file='naivebayes_pred_site.RData')
+write.csv(pred,file='naive_bayes_site_pred.csv')
+
 LogLoss(as.numeric(scores[,2])/(as.numeric(scores[,1])+as.numeric(scores[,2])), as.numeric(test_dt[1:100,1]))
 
 ## logloss func
