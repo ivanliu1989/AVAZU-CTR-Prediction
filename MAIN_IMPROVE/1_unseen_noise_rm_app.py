@@ -4,7 +4,7 @@ Created on Mon Jan 26 08:52:33 2015
 
 @author: Ivan
 """
-
+'''
 from collections import Counter
 import pandas as pd
 #from sklearn.preprocessing import OneHotEncoder
@@ -151,3 +151,4 @@ test_df = pd.merge(test_click_id, test_df, left_index=True, right_index=True)
 
 train_df.to_csv('other/train_df_app_smooth.csv',index=False)
 test_df.to_csv('other/test_df_app_smooth.csv',index=False)
+'''
