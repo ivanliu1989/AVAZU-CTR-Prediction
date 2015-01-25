@@ -235,7 +235,7 @@ for e in xrange(epoch):
 
 start = datetime.now()
 # initialize ourselves a learner
-learner = ftrl_proximal(alpha_site, beta_site, L1_site, L2_site, D, interaction_site)
+learner3 = ftrl_proximal(alpha_site, beta_site, L1_site, L2_site, D, interaction_site)
 
 for e in xrange(epoch):
     loss = 0.
@@ -266,7 +266,7 @@ for e in xrange(epoch):
 
 start = datetime.now()
 
-learner2 = ftrl_proximal(alpha_app, beta_app, L1_app, L2_app, D, interaction_app)
+learner4 = ftrl_proximal(alpha_app, beta_app, L1_app, L2_app, D, interaction_app)
 # start training
 for e in xrange(epoch):
     loss = 0.
@@ -297,7 +297,7 @@ for e in xrange(epoch):
 
 start = datetime.now()
 # initialize ourselves a learner
-learner = ftrl_proximal(alpha_site, beta_site, L1_site, L2_site, D, interaction_site)
+learner5 = ftrl_proximal(alpha_site, beta_site, L1_site, L2_site, D, interaction_site)
 
 for e in xrange(epoch):
     loss = 0.
@@ -328,7 +328,7 @@ for e in xrange(epoch):
 
 start = datetime.now()
 
-learner2 = ftrl_proximal(alpha_app, beta_app, L1_app, L2_app, D, interaction_app)
+learner6 = ftrl_proximal(alpha_app, beta_app, L1_app, L2_app, D, interaction_app)
 # start training
 for e in xrange(epoch):
     loss = 0.
@@ -366,14 +366,14 @@ with open(submission, 'w') as outfile:
         p = learner2.predict(x)
         outfile.write('%s,%s\n' % (ID, str(p)))
     for t, ID, x, y in data(train_app_0, D): #date, 
-        p = learner.predict(x)
+        p = learner3.predict(x)
         outfile.write('%s,%s\n' % (ID, str(p)))
     for t, ID, x, y in data(train_app_2, D): #date, 
-        p = learner2.predict(x)
+        p = learner4.predict(x)
         outfile.write('%s,%s\n' % (ID, str(p)))
     for t, ID, x, y in data(train_app_3, D): #date, 
-        p = learner.predict(x)
+        p = learner5.predict(x)
         outfile.write('%s,%s\n' % (ID, str(p)))
     for t, ID, x, y in data(train_app_5, D): #date, 
-        p = learner2.predict(x)
+        p = learner6.predict(x)
         outfile.write('%s,%s\n' % (ID, str(p)))
