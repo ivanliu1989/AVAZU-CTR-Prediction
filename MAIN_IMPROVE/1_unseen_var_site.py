@@ -12,7 +12,7 @@ train_site_path = 'data/train_df_site_smooth.csv'
 test_site_path = 'data/test_df_site_smooth.csv'
 
 train_site = pd.read_csv(train_site_path,index_col = False)
-test_site = pd.read_csv(test_site_path,index_col = False)
+#test_site = pd.read_csv(test_site_path,index_col = False)
 
 #site_col = list(train_site.columns.values)
 #del site_col[0];del site_col[0];del site_col[0];del site_col[0];del site_col[0]
@@ -30,7 +30,7 @@ C15_train = set(train_site['C15'])
 C16_train = set(train_site['C16'])
 C17_train = set(train_site['C17'])
 C20_train = set(train_site['C20'])
-
+'''
 site_id_test = set(test_site['site_id'])
 site_domain_test = set(test_site['site_domain'])
 site_category_test = set(test_site['site_category'])
@@ -43,8 +43,8 @@ C15_test = set(test_site['C15']) #int
 C16_test = set(test_site['C16']) #int
 C17_test = set(test_site['C17']) #int
 C20_test = set(test_site['C20']) #int
-
-del train_site; del test_site
+'''
+del train_site; #del test_site
 
 ##-- test --##
 start = datetime.now()
@@ -101,7 +101,8 @@ with open('data/test_df_site_smooth_ex.csv',"wb") as outfile:
         outfile.write('%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n' % (str(ID),str(hour),str(C1),str(banner_pos),str(site_id),str(site_domain),str(site_category),str(device_id),str(device_ip),str(device_model),str(device_type),str(device_conn_type),str(C14),str(C15),str(C16),str(C17),str(C18),str(C19),str(C20),str(C21)))
         if t % 100000 == 0:
             print("%s\t%s"%(t, str(datetime.now() - start)))
-            
+
+'''
 ##-- train --##
 start = datetime.now()
 with open('data/train_df_site_smooth_ex.csv',"wb") as outfile:
@@ -158,3 +159,4 @@ with open('data/train_df_site_smooth_ex.csv',"wb") as outfile:
         outfile.write('%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n' % (str(ID),str(click),str(hour),str(C1),str(banner_pos),str(site_id),str(site_domain),str(site_category),str(device_id),str(device_ip),str(device_model),str(device_type),str(device_conn_type),str(C14),str(C15),str(C16),str(C17),str(C18),str(C19),str(C20),str(C21)))
         if t % 100000 == 0:
             print("%s\t%s"%(t, str(datetime.now() - start)))
+'''
