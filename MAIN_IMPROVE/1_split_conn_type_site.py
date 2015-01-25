@@ -16,7 +16,7 @@ output_file_2 = 'data/train_df_site_smooth_conn_2.csv'
 
 start = datetime.now()
 with open(output_file_0,"wb") as outfile:
-    outfile.write('id,click,hour,dow,C1,banner_pos,site_id,site_domain,site_category,device_id,device_ip,device_model,device_type,C14,C15,C16,C17,C18,C19,C20,C21\n')
+    outfile.write('id,click,hour,C1,banner_pos,site_id,site_domain,site_category,device_id,device_ip,device_model,device_type,C14,C15,C16,C17,C18,C19,C20,C21\n')
     for t, row in enumerate(DictReader(open(input_file))):
         
         if int(row['device_conn_type']) == 0:
@@ -24,7 +24,7 @@ with open(output_file_0,"wb") as outfile:
             ID = row['id']
             click = row['click']
             hour = row['hour']
-            dow=row['dow']
+            #dow=row['dow']
             C1 = row['C1']
             banner_pos = row['banner_pos']
             site_id = row['site_id']
@@ -43,13 +43,13 @@ with open(output_file_0,"wb") as outfile:
             C20 = row['C20']
             C21 = row['C21']
             
-            outfile.write('%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n' % (str(ID), str(click),str(hour),str(dow),str(C1),str(banner_pos),str(site_id),str(site_domain),str(site_category),str(device_id),str(device_ip),str(device_model),str(device_type),str(C14),str(C15),str(C16),str(C17),str(C18),str(C19),str(C20),str(C21)))
+            outfile.write('%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n' % (str(ID), str(click),str(hour),str(C1),str(banner_pos),str(site_id),str(site_domain),str(site_category),str(device_id),str(device_ip),str(device_model),str(device_type),str(C14),str(C15),str(C16),str(C17),str(C18),str(C19),str(C20),str(C21)))
             if t % 100000 == 0:
                 print("%s\t%s"%(t, str(datetime.now() - start)))
 
 start = datetime.now()
 with open(output_file_2,"wb") as outfile:
-    outfile.write('id,click,hour,dow,C1,banner_pos,site_id,site_domain,site_category,device_id,device_ip,device_model,device_type,C14,C15,C16,C17,C18,C19,C20,C21\n')
+    outfile.write('id,click,hour,C1,banner_pos,site_id,site_domain,site_category,device_id,device_ip,device_model,device_type,C14,C15,C16,C17,C18,C19,C20,C21\n')
     for t, row in enumerate(DictReader(open(input_file))):
         
         if int(row['device_conn_type']) == 2:
@@ -57,7 +57,7 @@ with open(output_file_2,"wb") as outfile:
             ID = row['id']
             click = row['click']
             hour = row['hour']
-            dow=row['dow']
+            #dow=row['dow']
             C1 = row['C1']
             banner_pos = row['banner_pos']
             site_id = row['site_id']
@@ -76,7 +76,7 @@ with open(output_file_2,"wb") as outfile:
             C20 = row['C20']
             C21 = row['C21']
             
-            outfile.write('%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n' % (str(ID), str(click),str(hour),str(dow),str(C1),str(banner_pos),str(site_id),str(site_domain),str(site_category),str(device_id),str(device_ip),str(device_model),str(device_type),str(C14),str(C15),str(C16),str(C17),str(C18),str(C19),str(C20),str(C21)))
+            outfile.write('%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n' % (str(ID), str(click),str(hour),str(C1),str(banner_pos),str(site_id),str(site_domain),str(site_category),str(device_id),str(device_ip),str(device_model),str(device_type),str(C14),str(C15),str(C16),str(C17),str(C18),str(C19),str(C20),str(C21)))
             if t % 100000 == 0:
                 print("%s\t%s"%(t, str(datetime.now() - start)))
             
@@ -89,14 +89,14 @@ output_file_2 = 'data/test_df_site_smooth_conn_2.csv'
 
 start = datetime.now()
 with open(output_file_0,"wb") as outfile:
-    outfile.write('id,hour,dow,C1,banner_pos,site_id,site_domain,site_category,device_id,device_ip,device_model,device_type,C14,C15,C16,C17,C18,C19,C20,C21\n')
+    outfile.write('id,hour,C1,banner_pos,site_id,site_domain,site_category,device_id,device_ip,device_model,device_type,C14,C15,C16,C17,C18,C19,C20,C21\n')
     for t, row in enumerate(DictReader(open(input_file))):
         
         if int(row['device_conn_type']) == 0:
             
             ID = row['id']
             hour = row['hour']
-            dow=row['dow']
+           # dow=row['dow']
             C1 = row['C1']
             banner_pos = row['banner_pos']
             site_id = row['site_id']
@@ -115,20 +115,20 @@ with open(output_file_0,"wb") as outfile:
             C20 = row['C20']
             C21 = row['C21']
             
-            outfile.write('%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n' % (str(ID),str(hour),str(dow),str(C1),str(banner_pos),str(site_id),str(site_domain),str(site_category),str(device_id),str(device_ip),str(device_model),str(device_type),str(C14),str(C15),str(C16),str(C17),str(C18),str(C19),str(C20),str(C21)))
+            outfile.write('%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n' % (str(ID),str(hour),str(C1),str(banner_pos),str(site_id),str(site_domain),str(site_category),str(device_id),str(device_ip),str(device_model),str(device_type),str(C14),str(C15),str(C16),str(C17),str(C18),str(C19),str(C20),str(C21)))
             if t % 100000 == 0:
                 print("%s\t%s"%(t, str(datetime.now() - start)))
 
 start = datetime.now()
 with open(output_file_2,"wb") as outfile:
-    outfile.write('id,hour,dow,C1,banner_pos,site_id,site_domain,site_category,device_id,device_ip,device_model,device_type,C14,C15,C16,C17,C18,C19,C20,C21\n')
+    outfile.write('id,hour,C1,banner_pos,site_id,site_domain,site_category,device_id,device_ip,device_model,device_type,C14,C15,C16,C17,C18,C19,C20,C21\n')
     for t, row in enumerate(DictReader(open(input_file))):
         
         if int(row['device_conn_type']) == 2:
             
             ID = row['id']
             hour = row['hour']
-            dow=row['dow']
+            #dow=row['dow']
             C1 = row['C1']
             banner_pos = row['banner_pos']
             site_id = row['site_id']
@@ -147,7 +147,7 @@ with open(output_file_2,"wb") as outfile:
             C20 = row['C20']
             C21 = row['C21']
             
-            outfile.write('%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n' % (str(ID),str(hour),str(dow),str(C1),str(banner_pos),str(site_id),str(site_domain),str(site_category),str(device_id),str(device_ip),str(device_model),str(device_type),str(C14),str(C15),str(C16),str(C17),str(C18),str(C19),str(C20),str(C21)))
+            outfile.write('%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n' % (str(ID),str(hour),str(C1),str(banner_pos),str(site_id),str(site_domain),str(site_category),str(device_id),str(device_ip),str(device_model),str(device_type),str(C14),str(C15),str(C16),str(C17),str(C18),str(C19),str(C20),str(C21)))
             if t % 100000 == 0:
                 print("%s\t%s"%(t, str(datetime.now() - start)))
 

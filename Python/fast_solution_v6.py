@@ -9,11 +9,21 @@ from csv import DictReader
 from math import exp, log, sqrt
 
 # A, paths
-train = 'data/histogram/train_histogram_site.csv'               # path to training file
-test = 'data/histogram/test_histogram_site.csv'                 # path to testing file
+train_site_0 = 'data/train_df_site_smooth_conn_0.csv'               # path to training file
+test_site_0 = 'data/test_df_site_smooth_conn_0.csv'                 # path to testing file
+train_site_2 = 'data/train_df_site_smooth_conn_2.csv'               # path to training file
+test_site_2 = 'data/test_df_site_smooth_conn_2.csv'                 # path to testing file
+
+train_app_0 = 'data/train_df_app_smooth_conn_0.csv'               # path to training file
+test_app_0 = 'data/test_df_app_smooth_conn_0.csv'                 # path to testing file
+train_app_2 = 'data/train_df_app_smooth_conn_2.csv'               # path to training file
+test_app_2 = 'data/test_df_app_smooth_conn_2.csv'                 # path to testing file
+train_app_3 = 'data/train_df_app_smooth_conn_3.csv'               # path to training file
+test_app_3 = 'data/test_df_app_smooth_conn_3.csv'                 # path to testing file
+train_app_5 = 'data/train_df_app_smooth_conn_5.csv'               # path to training file
+test_app_5 = 'data/test_df_app_smooth_conn_5.csv'                 # path to testing file
+
 submission = 'submit_histogram.csv'  # path of to be outputted submission file
-train2 = 'data/histogram/train_histogram_app.csv'               # path to training file
-test2 = 'data/histogram/test_histogram_app.csv'                 # path to testing file
 
 # B, model
 alpha_site = 0.13  # learning rate
@@ -169,7 +179,7 @@ for e in xrange(epoch):
     loss = 0.
     count = 0
 
-    for t, ID, x, y in data(train, D): 
+    for t, ID, x, y in data(train_site_0, D): 
         
         p = learner.predict(x)
 
@@ -200,7 +210,7 @@ for e in xrange(epoch):
     loss = 0.
     count = 0
 
-    for t, ID, x, y in data(train2, D):  #
+    for t, ID, x, y in data(train_site_2, D):  #
     
         p = learner2.predict(x)
 
@@ -219,6 +229,129 @@ for e in xrange(epoch):
     print('Epoch %d finished, validation logloss: %f, elapsed time: %s' % (
         e, loss/count, str(datetime.now() - start)))
 
+##############################################################################
+# start training #############################################################
+##############################################################################
+
+start = datetime.now()
+# initialize ourselves a learner
+learner = ftrl_proximal(alpha_site, beta_site, L1_site, L2_site, D, interaction_site)
+
+for e in xrange(epoch):
+    loss = 0.
+    count = 0
+
+    for t, ID, x, y in data(train_app_0, D): 
+        
+        p = learner.predict(x)
+
+        if (holdout and t % holdout == 0): 
+        
+            loss += logloss(p, y)
+            count += 1
+        else:
+            # step 2-2, update learner with label (click) information
+            learner.update(x, p, y)
+        
+        if t % 2500000 == 0 and t > 1:
+            print(' %s\tencountered: %d\tcurrent logloss: %f' % (
+                datetime.now(), t, loss/count))
+                
+    print('Epoch %d finished, validation logloss: %f, elapsed time: %s' % (
+        e, loss/count, str(datetime.now() - start)))
+
+##############################################################################
+# start training #############################################################
+##############################################################################
+
+start = datetime.now()
+
+learner2 = ftrl_proximal(alpha_app, beta_app, L1_app, L2_app, D, interaction_app)
+# start training
+for e in xrange(epoch):
+    loss = 0.
+    count = 0
+
+    for t, ID, x, y in data(train_app_2, D):  #
+    
+        p = learner2.predict(x)
+
+        if (holdout and t % holdout == 0): 
+        
+            loss += logloss(p, y)
+            count += 1
+        else:
+            
+            learner2.update(x, p, y)
+        
+        if t % 2500000 == 0 and t > 1:
+            print(' %s\tencountered: %d\tcurrent logloss: %f' % (
+                datetime.now(), t, loss/count))
+                
+    print('Epoch %d finished, validation logloss: %f, elapsed time: %s' % (
+        e, loss/count, str(datetime.now() - start)))
+
+##############################################################################
+# start training #############################################################
+##############################################################################
+
+start = datetime.now()
+# initialize ourselves a learner
+learner = ftrl_proximal(alpha_site, beta_site, L1_site, L2_site, D, interaction_site)
+
+for e in xrange(epoch):
+    loss = 0.
+    count = 0
+
+    for t, ID, x, y in data(train_app_3, D): 
+        
+        p = learner.predict(x)
+
+        if (holdout and t % holdout == 0): 
+        
+            loss += logloss(p, y)
+            count += 1
+        else:
+            # step 2-2, update learner with label (click) information
+            learner.update(x, p, y)
+        
+        if t % 2500000 == 0 and t > 1:
+            print(' %s\tencountered: %d\tcurrent logloss: %f' % (
+                datetime.now(), t, loss/count))
+                
+    print('Epoch %d finished, validation logloss: %f, elapsed time: %s' % (
+        e, loss/count, str(datetime.now() - start)))
+
+##############################################################################
+# start training #############################################################
+##############################################################################
+
+start = datetime.now()
+
+learner2 = ftrl_proximal(alpha_app, beta_app, L1_app, L2_app, D, interaction_app)
+# start training
+for e in xrange(epoch):
+    loss = 0.
+    count = 0
+
+    for t, ID, x, y in data(train_app_5, D):  #
+    
+        p = learner2.predict(x)
+
+        if (holdout and t % holdout == 0): 
+        
+            loss += logloss(p, y)
+            count += 1
+        else:
+            
+            learner2.update(x, p, y)
+        
+        if t % 2500000 == 0 and t > 1:
+            print(' %s\tencountered: %d\tcurrent logloss: %f' % (
+                datetime.now(), t, loss/count))
+                
+    print('Epoch %d finished, validation logloss: %f, elapsed time: %s' % (
+        e, loss/count, str(datetime.now() - start)))
 
 ##############################################################################
 # start testing, and build Kaggle's submission file ##########################
@@ -226,9 +359,21 @@ for e in xrange(epoch):
 
 with open(submission, 'w') as outfile:
     outfile.write('id,click\n')
-    for t, ID, x, y in data(test, D): #date, 
+    for t, ID, x, y in data(train_site_0, D): #date, 
         p = learner.predict(x)
         outfile.write('%s,%s\n' % (ID, str(p)))
-    for t, ID, x, y in data(test2, D): #date, 
+    for t, ID, x, y in data(train_site_2, D): #date, 
+        p = learner2.predict(x)
+        outfile.write('%s,%s\n' % (ID, str(p)))
+    for t, ID, x, y in data(train_app_0, D): #date, 
+        p = learner.predict(x)
+        outfile.write('%s,%s\n' % (ID, str(p)))
+    for t, ID, x, y in data(train_app_2, D): #date, 
+        p = learner2.predict(x)
+        outfile.write('%s,%s\n' % (ID, str(p)))
+    for t, ID, x, y in data(train_app_3, D): #date, 
+        p = learner.predict(x)
+        outfile.write('%s,%s\n' % (ID, str(p)))
+    for t, ID, x, y in data(train_app_5, D): #date, 
         p = learner2.predict(x)
         outfile.write('%s,%s\n' % (ID, str(p)))
