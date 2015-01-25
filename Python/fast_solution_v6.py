@@ -37,7 +37,7 @@ L1_app = 1     # L1 regularization, larger value means more regularized
 L2_app = 1     # L2 regularization, larger value means more regularized
 
 # C, feature/hash trick
-D = 2 ** 29             # number of weights to use
+D = 2 ** 28             # number of weights to use
 interaction_app = False     # whether to enable poly2 feature interactions
 interaction_site = False     # whether to enable poly2 feature interactions
 
@@ -261,6 +261,23 @@ for e in xrange(epoch):
         e, loss/count, str(datetime.now() - start)))
 
 ##############################################################################
+# start testing, and build Kaggle's submission file ##########################
+##############################################################################
+
+with open(submission, 'w') as outfile:
+    outfile.write('id,click\n')
+    for t, ID, x, y in data(test_site_0, D): #date, 
+        p = learner.predict(x)
+        outfile.write('%s,%s\n' % (ID, str(p)))
+    for t, ID, x, y in data(test_site_2, D): #date, 
+        p = learner2.predict(x)
+        outfile.write('%s,%s\n' % (ID, str(p)))
+    for t, ID, x, y in data(test_app_0, D): #date, 
+        p = learner3.predict(x)
+        outfile.write('%s,%s\n' % (ID, str(p)))
+
+        
+##############################################################################
 # start training #############################################################
 ##############################################################################
 
@@ -359,21 +376,12 @@ for e in xrange(epoch):
 
 with open(submission, 'w') as outfile:
     outfile.write('id,click\n')
-    for t, ID, x, y in data(train_site_0, D): #date, 
-        p = learner.predict(x)
-        outfile.write('%s,%s\n' % (ID, str(p)))
-    for t, ID, x, y in data(train_site_2, D): #date, 
-        p = learner2.predict(x)
-        outfile.write('%s,%s\n' % (ID, str(p)))
-    for t, ID, x, y in data(train_app_0, D): #date, 
-        p = learner3.predict(x)
-        outfile.write('%s,%s\n' % (ID, str(p)))
-    for t, ID, x, y in data(train_app_2, D): #date, 
+    for t, ID, x, y in data(test_app_2, D): #date, 
         p = learner4.predict(x)
         outfile.write('%s,%s\n' % (ID, str(p)))
-    for t, ID, x, y in data(train_app_3, D): #date, 
+    for t, ID, x, y in data(test_app_3, D): #date, 
         p = learner5.predict(x)
         outfile.write('%s,%s\n' % (ID, str(p)))
-    for t, ID, x, y in data(train_app_5, D): #date, 
+    for t, ID, x, y in data(test_app_5, D): #date, 
         p = learner6.predict(x)
         outfile.write('%s,%s\n' % (ID, str(p)))
