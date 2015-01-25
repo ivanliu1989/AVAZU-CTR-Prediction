@@ -14,8 +14,12 @@ test <- data.frame(fread('data/test_df_app_smooth.csv'))
 
 head(train)
 head(test)
-table(train$device_type)
-table(test$device_type)
+table(train$device_conn_type)
+table(test$device_conn_type)
+sum(is.na(train$device_conn_type))
+sum(is.na(test$device_conn_type))
+which(train$device_conn_type=='')
+which(test$device_conn_type=='')
 
 ### site
 #device_type

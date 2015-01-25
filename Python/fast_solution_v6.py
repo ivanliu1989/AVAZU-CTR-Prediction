@@ -23,7 +23,7 @@ test_app_3 = 'data/test_df_app_smooth_conn_3.csv'                 # path to test
 train_app_5 = 'data/train_df_app_smooth_conn_5.csv'               # path to training file
 test_app_5 = 'data/test_df_app_smooth_conn_5.csv'                 # path to testing file
 
-submission = 'submit_histogram.csv'  # path of to be outputted submission file
+submission = 'submit_0_2_3_5.csv'  # path of to be outputted submission file
 
 # B, model
 alpha_site = 0.13  # learning rate
@@ -37,14 +37,14 @@ L1_app = 1     # L1 regularization, larger value means more regularized
 L2_app = 1     # L2 regularization, larger value means more regularized
 
 # C, feature/hash trick
-D = 2 ** 28             # number of weights to use
+D = 2 ** 29             # number of weights to use
 interaction_app = False     # whether to enable poly2 feature interactions
 interaction_site = False     # whether to enable poly2 feature interactions
 
 # D, training/validation
 epoch = 1       # learn training data for N passes
 holdafter = None #28   # data after date N (exclusive) are used as validation
-holdout = 100 #None  # use every N training instance for holdout validation
+holdout = 10000 #None  # use every N training instance for holdout validation
 
 
 ##############################################################################
