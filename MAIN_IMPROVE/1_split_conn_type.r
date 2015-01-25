@@ -16,10 +16,11 @@ head(train)
 head(test)
 table(train$device_conn_type)
 table(test$device_conn_type)
+
 sum(is.na(train$device_conn_type))
 sum(is.na(test$device_conn_type))
-which(train$device_conn_type=='')
-which(test$device_conn_type=='')
+which(!(train$device_conn_type %in% c(0,2,3,5)))
+which(!(test$device_conn_type %in% c(0,2,3,5)))
 
 ### site
 #device_type
