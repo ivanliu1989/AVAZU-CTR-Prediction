@@ -243,7 +243,7 @@ for e in xrange(epoch):
 
     for t, ID, x, y in data(train_app_0, D): 
         
-        p = learner.predict(x)
+        p = learner3.predict(x)
 
         if (holdout and t % holdout == 0): 
         
@@ -251,7 +251,7 @@ for e in xrange(epoch):
             count += 1
         else:
             # step 2-2, update learner with label (click) information
-            learner.update(x, p, y)
+            learner3.update(x, p, y)
         
         if t % 2500000 == 0 and t > 1:
             print(' %s\tencountered: %d\tcurrent logloss: %f' % (
@@ -291,7 +291,7 @@ for e in xrange(epoch):
 
     for t, ID, x, y in data(train_app_2, D):  #
     
-        p = learner2.predict(x)
+        p = learner4.predict(x)
 
         if (holdout and t % holdout == 0): 
         
@@ -299,7 +299,7 @@ for e in xrange(epoch):
             count += 1
         else:
             
-            learner2.update(x, p, y)
+            learner4.update(x, p, y)
         
         if t % 2500000 == 0 and t > 1:
             print(' %s\tencountered: %d\tcurrent logloss: %f' % (
@@ -322,7 +322,7 @@ for e in xrange(epoch):
 
     for t, ID, x, y in data(train_app_3, D): 
         
-        p = learner.predict(x)
+        p = learner5.predict(x)
 
         if (holdout and t % holdout == 0): 
         
@@ -330,7 +330,7 @@ for e in xrange(epoch):
             count += 1
         else:
             # step 2-2, update learner with label (click) information
-            learner.update(x, p, y)
+            learner5.update(x, p, y)
         
         if t % 2500000 == 0 and t > 1:
             print(' %s\tencountered: %d\tcurrent logloss: %f' % (
@@ -353,7 +353,7 @@ for e in xrange(epoch):
 
     for t, ID, x, y in data(train_app_5, D):  #
     
-        p = learner2.predict(x)
+        p = learner6.predict(x)
 
         if (holdout and t % holdout == 0): 
         
@@ -361,7 +361,7 @@ for e in xrange(epoch):
             count += 1
         else:
             
-            learner2.update(x, p, y)
+            learner6.update(x, p, y)
         
         if t % 2500000 == 0 and t > 1:
             print(' %s\tencountered: %d\tcurrent logloss: %f' % (
