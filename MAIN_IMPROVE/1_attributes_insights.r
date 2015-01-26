@@ -1,5 +1,5 @@
 setwd('H:/Machine_Learning/VAZU/')
-
+setwd('/Users/ivan/Work_directory/VAZU/')
 gc(); rm(list=ls());
 require(data.table); 
 
@@ -40,27 +40,27 @@ banner_pos_train <- table(train$banner_pos)
 length(train$banner_pos);length(banner_pos_train);sum(is.na(train$banner_pos))
 banner_pos_test <- table(test$banner_pos)
 length(test$banner_pos);length(banner_pos_test);sum(is.na(test$banner_pos))
-# app_id
-app_id_train <- table(train$app_id)
-length(train$app_id);length(app_id_train);sum(is.na(train$app_id))
-length(table(train[-which(train$app_id %in% test$app_id),'app_id']))
-app_id_test <- table(test$app_id)
-length(test$app_id);length(app_id_test);sum(is.na(test$app_id)); 
-length(table(test[-which(test$app_id %in% train$app_id),'app_id']))
-# app_domain
-app_domain_train <- table(train$app_domain)
-length(train$app_domain);length(app_domain_train);sum(is.na(train$app_domain))
-length(table(train[-which(train$app_domain %in% test$app_domain),'app_domain']))
-app_domain_test <- table(test$app_domain)
-length(test$app_domain);length(app_domain_test);sum(is.na(test$app_domain)); 
-length(table(test[-which(test$app_domain %in% train$app_domain),'app_domain']))
-# app_category
-app_category_train <- table(train$app_category)
-length(train$app_category);length(app_category_train);sum(is.na(train$app_category))
-length(table(train[-which(train$app_category %in% test$app_category),'app_category']))
-app_category_test <- table(test$app_category)
-length(test$app_category);length(app_category_test);sum(is.na(test$app_category)); 
-length(table(test[-which(test$app_category %in% train$app_category),'app_category']))
+# site_id
+site_id_train <- table(train$site_id)
+length(train$site_id);length(site_id_train);sum(is.na(train$site_id))
+length(table(train[-which(train$site_id %in% test$site_id),'site_id']))
+site_id_test <- table(test$site_id)
+length(test$site_id);length(site_id_test);sum(is.na(test$site_id)); 
+length(table(test[-which(test$site_id %in% train$site_id),'site_id']))
+# site_domain
+site_domain_train <- table(train$site_domain)
+length(train$site_domain);length(site_domain_train);sum(is.na(train$site_domain))
+length(table(train[-which(train$site_domain %in% test$site_domain),'site_domain']))
+site_domain_test <- table(test$site_domain)
+length(test$site_domain);length(site_domain_test);sum(is.na(test$site_domain)); 
+length(table(test[-which(test$site_domain %in% train$site_domain),'site_domain']))
+# site_category
+site_category_train <- table(train$site_category)
+length(train$site_category);length(site_category_train);sum(is.na(train$site_category))
+length(table(train[-which(train$site_category %in% test$site_category),'site_category']))
+site_category_test <- table(test$site_category)
+length(test$site_category);length(site_category_test);sum(is.na(test$site_category)); 
+length(table(test[-which(test$site_category %in% train$site_category),'site_category']))
 # device_id
 device_id_train <- table(train$device_id)
 length(train$device_id);length(device_id_train);sum(is.na(train$device_id))
