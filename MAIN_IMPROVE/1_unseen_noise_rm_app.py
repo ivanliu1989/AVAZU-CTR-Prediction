@@ -13,7 +13,7 @@ import pandas as pd
 # -- load data --#
 ##################
 train = 'data/ex/train_df_app_complete.csv'               # path to training file
-test = 'data/ex/train_df_app_complete.csv'
+test = 'data/ex/test_df_app_complete.csv'
 test_df = pd.read_csv(test)
 train_df = pd.read_csv(train)
 
@@ -30,7 +30,7 @@ del test_df
 # -- modification -- #
 ######################
 df_col=list(train_df.columns.values)
-    
+'''  
 #app_id | site_id
 d = Counter(train_df[df_col[3]]) 
 st = d.most_common(100000000).index(('07a3c559', 1)) # ('572bf9b0', 5)
@@ -57,10 +57,10 @@ smooth_row = []
 for a in f_list:
     smooth_row.append(a[0])
 train_df.ix[train_df[df_col[5]].isin(smooth_row),df_col[5]] = -2
-
+'''
 #device_id
 d = Counter(train_df[df_col[6]]) #id dc575eb9 5
-st = d.most_common(100000000).index(('b4fc024f',1)) #('dc575eb9',5)
+st = d.most_common(100000000).index(('763a99e5',3)) #('dc575eb9',5)
 f_list = d.most_common(100000000)[st:] 
 smooth_row = []
 for a in f_list:
@@ -69,7 +69,7 @@ train_df.ix[train_df[df_col[6]].isin(smooth_row),df_col[6]] = -2
 
 #device_ip
 d = Counter(train_df[df_col[7]]) #id
-st = d.most_common(100000000).index(('90bc4eef',1)) #('ff6e5da4',5)
+st = d.most_common(100000000).index(('aa0d18b3',3)) #('ff6e5da4',5)
 f_list = d.most_common(100000000)[st:] 
 smooth_row = []
 for a in f_list:
@@ -132,8 +132,8 @@ train_df.ix[train_df[df_col[17]].isin(smooth_row),df_col[17]] = -2
 
 #C21
 #d = Counter(train_df[df_col[18]]) 
-'''
 
+'''
 ################
 # -- output -- #
 ################
@@ -149,5 +149,5 @@ del test_df['index']
 test_click_id = pd.DataFrame({'id':test_click_id})
 test_df = pd.merge(test_click_id, test_df, left_index=True, right_index=True)
 
-train_df.to_csv('other/train_df_app_smooth.csv',index=False)
-test_df.to_csv('other/test_df_app_smooth.csv',index=False)
+train_df.to_csv('data/train_df_app_complete.csv',index=False)
+test_df.to_csv('data/test_df_app_complete.csv',index=False)
