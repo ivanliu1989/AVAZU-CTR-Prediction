@@ -4,7 +4,7 @@ Created on Mon Jan 26 08:52:33 2015
 
 @author: Ivan
 """
-'''
+
 from collections import Counter
 import pandas as pd
 #from sklearn.preprocessing import OneHotEncoder
@@ -12,8 +12,8 @@ import pandas as pd
 ##################
 # -- load data --#
 ##################
-train = 'data/ex/train_df_app_smooth.csv'               # path to training file
-test = 'data/ex/test_df_app_smooth_ex.csv'
+train = 'data/ex/train_df_app_complete.csv'               # path to training file
+test = 'data/ex/train_df_app_complete.csv'
 test_df = pd.read_csv(test)
 train_df = pd.read_csv(train)
 
@@ -75,7 +75,7 @@ smooth_row = []
 for a in f_list:
     smooth_row.append(a[0])
 train_df.ix[train_df[df_col[7]].isin(smooth_row),df_col[7]] = -2
-
+'''
 #device_model
 d = Counter(train_df[df_col[8]])
 st = d.most_common(100000000).index(('a01422c4',1)) # ('5a33307b',5)
@@ -132,7 +132,7 @@ train_df.ix[train_df[df_col[17]].isin(smooth_row),df_col[17]] = -2
 
 #C21
 #d = Counter(train_df[df_col[18]]) 
-
+'''
 
 ################
 # -- output -- #
@@ -151,4 +151,3 @@ test_df = pd.merge(test_click_id, test_df, left_index=True, right_index=True)
 
 train_df.to_csv('other/train_df_app_smooth.csv',index=False)
 test_df.to_csv('other/test_df_app_smooth.csv',index=False)
-'''
