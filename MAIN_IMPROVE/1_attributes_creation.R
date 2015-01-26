@@ -16,3 +16,29 @@ for (i in seq(dim(test)[2])){
     test[which(test[[i]]==''),i] <- NaN   
 }
 head(train);head(test)
+
+# device_id
+device_id_train <- table(train$device_id)
+length(train$device_id);length(device_id_train);sum(is.na(train$device_id))
+length(table(train[-which(train$device_id %in% test$device_id),'device_id']))
+device_id_test <- table(test$device_id)
+length(test$device_id);length(device_id_test);sum(is.na(test$device_id)); 
+length(table(test[-which(test$device_id %in% train$device_id),'device_id']))
+
+device_id_train_trunc <- substr(device_id_train, 1, 4)
+device_id_test_trunc <- substr(device_id_test, 1, 4)
+device_id_train_trunc_tb <- table(device_id_train_trunc)
+device_id_test_trunc_tb <- table(device_id_test_trunc)
+length(device_id_train_trunc);length(device_id_train_trunc_tb);#length(table(train[-which(train$device_id %in% test$device_id),'device_id']))
+length(device_id_test_trunc);length(device_id_test_trunc_tb);
+
+# device_ip
+device_ip_train <- table(train$device_ip)
+length(train$device_ip);length(device_ip_train);sum(is.na(train$device_ip))
+length(table(train[-which(train$device_ip %in% test$device_ip),'device_ip']))
+device_ip_test <- table(test$device_ip)
+length(test$device_ip);length(device_ip_test);sum(is.na(test$device_ip)); 
+length(table(test[-which(test$device_ip %in% train$device_ip),'device_ip']))
+
+device_ip_train_trunc <- substr(device_ip_train, 1, 4)
+device_ip_test_trunc <- substr(device_ip_test, 1, 4)
