@@ -30,10 +30,10 @@ del test_df
 # -- modification -- #
 ######################
 df_col=list(train_df.columns.values)
-  '''
+'''
 #site_id | site_id
 d = Counter(train_df[df_col[3]]) 
-st = d.most_common(100000000).index(('07a3c559', 1)) # ('572bf9b0', 5)
+st = d.most_common(100000000).index(('47798116', 2)) # ('572bf9b0', 5)
 f_list = d.most_common(100000000)[st:] 
 smooth_row = []
 for a in f_list:
@@ -42,7 +42,7 @@ train_df.ix[train_df[df_col[3]].isin(smooth_row),df_col[3]] = -2 #hash('other') 
 
 #site_domain | site_domain
 d = Counter(train_df[df_col[4]]) 
-st = d.most_common(100000000).index(('4a4f8143',1)) # ('c91cbbb4',5)
+st = d.most_common(100000000).index(('d045a6bc',2)) # ('c91cbbb4',5)
 f_list = d.most_common(100000000)[st:] 
 smooth_row = []
 for a in f_list:
@@ -60,7 +60,7 @@ train_df.ix[train_df[df_col[5]].isin(smooth_row),df_col[5]] = -2
 '''
 #device_id
 d = Counter(train_df[df_col[6]]) #id dc575eb9 5
-st = d.most_common(100000000).index(('827db5a1',3)) #('dc575eb9',5)
+st = d.most_common(100000000).index(('ac352d50',5)) #('ac352d50',5)
 f_list = d.most_common(100000000)[st:] 
 smooth_row = []
 for a in f_list:
@@ -69,7 +69,7 @@ train_df.ix[train_df[df_col[6]].isin(smooth_row),df_col[6]] = -2
 
 #device_ip
 d = Counter(train_df[df_col[7]]) #id
-st = d.most_common(100000000).index(('3d97b194',3)) #('ff6e5da4',5)
+st = d.most_common(100000000).index(('e750d599',5)) #('e750d599',5)
 f_list = d.most_common(100000000)[st:] 
 smooth_row = []
 for a in f_list:
@@ -78,7 +78,7 @@ train_df.ix[train_df[df_col[7]].isin(smooth_row),df_col[7]] = -2
 '''
 #device_model
 d = Counter(train_df[df_col[8]])
-st = d.most_common(100000000).index(('a01422c4',1)) # ('5a33307b',5)
+st = d.most_common(100000000).index(('157d10e6',2)) # ('5a33307b',5)
 f_list = d.most_common(100000000)[st:] 
 smooth_row = []
 for a in f_list:
