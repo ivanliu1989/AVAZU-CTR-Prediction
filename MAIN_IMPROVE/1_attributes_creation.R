@@ -1,6 +1,6 @@
 setwd('H:/Machine_Learning/VAZU/')
 setwd('/Users/ivan/Work_directory/VAZU/')
-gc(); rm(list=ls());
+rm(list=ls());gc(); 
 require(data.table); 
 
 train <- data.frame(fread('other/train_df_site.csv'))
@@ -25,8 +25,8 @@ device_id_test <- table(test$device_id)
 length(test$device_id);length(device_id_test)
 length(table(test[-which(test$device_id %in% train$device_id),'device_id']))
 
-device_id_train_trunc <- substr(train$device_id, 1, 4) ### perfect matching (site)!!!
-device_id_test_trunc <- substr(test$device_id, 1, 4)
+device_id_train_trunc <- substr(train$device_id, 5, 8) ### perfect matching (site, 0)!!! 1-4; 5-8
+device_id_test_trunc <- substr(test$device_id, 5, 8) ### perfect matching (app, 0)!!! 1-4; 5-8
 device_id_train_trunc_tb <- table(device_id_train_trunc)
 device_id_test_trunc_tb <- table(device_id_test_trunc)
 length(device_id_train_trunc);length(device_id_train_trunc_tb);
@@ -42,8 +42,8 @@ device_ip_test <- table(test$device_ip)
 length(test$device_ip);length(device_ip_test);sum(is.na(test$device_ip)); 
 length(table(test[-which(test$device_ip %in% train$device_ip),'device_ip']))
 
-device_ip_train_trunc <- substr(train$device_ip, 1, 4) ### perfect matching (site)!!!
-device_ip_test_trunc <- substr(test$device_ip, 1, 4)
+device_ip_train_trunc <- substr(train$device_ip, 1, 4) ### perfect matching (site, 4250/471248)!!! 1-4; 5-8
+device_ip_test_trunc <- substr(test$device_ip, 1, 4) ### good matching (app, 20457/395724; 0/65491)!!! 1-4; 5-8
 device_ip_train_trunc_tb <- table(device_ip_train_trunc)
 device_ip_test_trunc_tb <- table(device_ip_test_trunc)
 length(device_ip_train_trunc);length(device_ip_train_trunc_tb);
