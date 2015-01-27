@@ -37,6 +37,12 @@ with open('other/train_df_site_split.csv',"wb") as outfile:
         device_conn_type = row['device_conn_type']
         C14 = row['C14']
         img_size = row['C15'] + '*' + row['C16']
+        if (img_size in ['320*480', '480*320']):
+            print img_size
+            img_size = '480*320'
+        if (img_size in ['768*1024', '1024*768']):
+            print img_size
+            img_size = '1024*768'
         C17 = row['C17']
         C18 = row['C18']
         C19 = row['C19']
