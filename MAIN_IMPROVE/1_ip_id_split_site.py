@@ -16,7 +16,7 @@ test = 'other/test_df_site.csv'
 
 start = datetime.now()
 with open('other/train_df_site_split.csv',"wb") as outfile:
-    outfile.write('id,click,hour,C1,banner_pos,site_id,site_domain,site_category,device_id_1,device_id_2,device_ip_1,device_ip_2,device_model,device_type,device_conn_type,C14,C15,C16,C17,C18,C19,C20,C21\n')
+    outfile.write('id,click,hour,C1,banner_pos,site_id,site_domain,site_category,device_id,device_ip,device_id_2,device_ip_2,device_id_3,device_ip_3,device_model,device_type,device_conn_type,C14,img_size,C17,C18,C19,C20,C21\n')
     for t, row in enumerate(DictReader(open(train))):
         # turn hour really into hour, it was originally YYMMDDHH
         
@@ -28,16 +28,17 @@ with open('other/train_df_site_split.csv',"wb") as outfile:
         site_id = row['site_id']
         site_domain = row['site_domain']
         site_category = row['site_category']
-        device_id_1 = row['device_id'][0:4]
-        device_ip_1 = row['device_ip'][0:4]
-        device_id_2 = row['device_id'][4:]
-        device_ip_2 = row['device_ip'][4:]
+        device_id = row['device_id']
+        device_ip = row['device_ip']
+        device_id_2 = row['device_id'][0:4]
+        device_ip_2 = row['device_ip'][0:4]
+        device_id_3 = row['device_id'][0:6]
+        device_ip_3 = row['device_ip'][0:6]
         device_model = row['device_model']
         device_type = row['device_type']
         device_conn_type = row['device_conn_type']
         C14 = row['C14']
-        C15 = row['C15']
-        C16 = row['C16']
+        img_size = row['C15'] + '*' + row['C16']
         C17 = row['C17']
         C18 = row['C18']
         C19 = row['C19']
@@ -45,7 +46,7 @@ with open('other/train_df_site_split.csv',"wb") as outfile:
         C21 = row['C21']
         
         
-        outfile.write('%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n' % (str(ID), str(click),str(hour),str(C1),str(banner_pos),str(site_id),str(site_domain),str(site_category),str(device_id_1),str(device_id_2),str(device_ip_1),str(device_ip_2),str(device_model),str(device_type),str(device_conn_type),str(C14),str(C15),str(C16),str(C17),str(C18),str(C19),str(C20),str(C21)))
+        outfile.write('%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n' % (str(ID), str(click),str(hour),str(C1),str(banner_pos),str(site_id),str(site_domain),str(site_category),str(device_id),str(device_ip),str(device_id_2),str(device_ip_2),str(device_id_3),str(device_ip_3),str(device_model),str(device_type),str(device_conn_type),str(C14),str(img_size),str(C17),str(C18),str(C19),str(C20),str(C21)))
         if t % 100000 == 0:
             print("%s\t%s"%(t, str(datetime.now() - start)))
         
@@ -53,7 +54,7 @@ with open('other/train_df_site_split.csv',"wb") as outfile:
  # -- test data -- #
 start = datetime.now()
 with open('other/test_df_site_split.csv',"wb") as outfile:
-    outfile.write('id,hour,C1,banner_pos,site_id,site_domain,site_category,device_id_1,device_id_2,device_ip_1,device_ip_2,device_model,device_type,device_conn_type,C14,C15,C16,C17,C18,C19,C20,C21\n')
+    outfile.write('id,hour,C1,banner_pos,site_id,site_domain,site_category,device_id,device_ip,device_id_2,device_ip_2,device_id_3,device_ip_3,device_model,device_type,device_conn_type,C14,img_size,C17,C18,C19,C20,C21\n')
     for t, row in enumerate(DictReader(open(test))):
         # turn hour really into hour, it was originally YYMMDDHH
         
@@ -64,16 +65,17 @@ with open('other/test_df_site_split.csv',"wb") as outfile:
         site_id = row['site_id']
         site_domain = row['site_domain']
         site_category = row['site_category']
-        device_id_1 = row['device_id'][0:4]
-        device_ip_1 = row['device_ip'][0:4]
-        device_id_2 = row['device_id'][4:]
-        device_ip_2 = row['device_ip'][4:]
+        device_id = row['device_id']
+        device_ip = row['device_ip']
+        device_id_2 = row['device_id'][0:4]
+        device_ip_2 = row['device_ip'][0:4]
+        device_id_3 = row['device_id'][0:6]
+        device_ip_3 = row['device_ip'][0:6]
         device_model = row['device_model']
         device_type = row['device_type']
         device_conn_type = row['device_conn_type']
         C14 = row['C14']
-        C15 = row['C15']
-        C16 = row['C16']
+        img_size = row['C15'] + '*' + row['C16']
         C17 = row['C17']
         C18 = row['C18']
         C19 = row['C19']
@@ -81,7 +83,7 @@ with open('other/test_df_site_split.csv',"wb") as outfile:
         C21 = row['C21']
         
         
-        outfile.write('%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n' % (str(ID),str(hour),str(C1),str(banner_pos),str(site_id),str(site_domain),str(site_category),str(device_id_1),str(device_id_2),str(device_ip_1),str(device_ip_2),str(device_model),str(device_type),str(device_conn_type),str(C14),str(C15),str(C16),str(C17),str(C18),str(C19),str(C20),str(C21)))
+        outfile.write('%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n' % (str(ID),str(hour),str(C1),str(banner_pos),str(site_id),str(site_domain),str(site_category),str(device_id),str(device_ip),str(device_id_2),str(device_ip_2),str(device_id_3),str(device_ip_3),str(device_model),str(device_type),str(device_conn_type),str(C14),str(img_size),str(C17),str(C18),str(C19),str(C20),str(C21)))
         if t % 100000 == 0:
             print("%s\t%s"%(t, str(datetime.now() - start)))
         

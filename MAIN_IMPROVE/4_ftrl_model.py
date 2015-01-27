@@ -10,11 +10,11 @@ from csv import DictReader
 from math import exp, log, sqrt
 
 # A, paths
-train = 'data/train_df_site_complete.csv'               # path to training file
-test = 'data/test_df_site_complete.csv'                 # path to testing file
-submission = 'ftrl_smooth_013_1_1_1_28_1.csv'  # path of to be outputted submission file
-train2 = 'data/train_df_app_complete.csv'               # path to training file
-test2 = 'data/test_df_app_complete.csv'                 # path to testing file
+train = 'data/train_df_site_split.csv'               # path to training file
+test = 'data/test_df_site_split.csv'                 # path to testing file
+submission = 'ftrl_split_app_id.csv'  # path of to be outputted submission file
+train2 = 'data/train_df_app_split.csv'               # path to training file
+test2 = 'data/test_df_app_split.csv'                 # path to testing file
 
 # B, model
 alpha_site = 0.13  # learning rate
@@ -33,7 +33,7 @@ interaction_app = False     # whether to enable poly2 feature interactions
 interaction_site = False     # whether to enable poly2 feature interactions
 
 # D, training/validation
-epoch = 2       # learn training data for N passes
+epoch = 1       # learn training data for N passes
 holdafter = None #28   # data after date N (exclusive) are used as validation
 holdout = 100 #None  # use every N training instance for holdout validation
 
