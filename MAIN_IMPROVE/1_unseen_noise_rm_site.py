@@ -12,8 +12,8 @@ import pandas as pd
 ##################
 # -- load data --#
 ##################
-train = 'data/ex/train_df_site_complete.csv'               # path to training file
-test = 'data/ex/test_df_site_complete.csv'
+train = 'other/train_df_site.csv'               # path to training file
+test = 'other/test_df_site.csv'
 test_df = pd.read_csv(test)
 train_df = pd.read_csv(train)
 
