@@ -11,8 +11,8 @@ import pandas as pd
 ##################
 # -- load data --#
 ##################
-train = 'other/train_df_app.csv'               # path to training file
-test = 'other/test_df_app.csv'
+train = 'data/train_df_app_split.csv'               # path to training file
+test = 'data/test_df_app_split.csv'
 test_df = pd.read_csv(test)
 train_df = pd.read_csv(train)
 
@@ -31,83 +31,86 @@ del test_df
 df_col=list(train_df.columns.values)
     
 #app_id | site_id
-d = Counter(train_df[df_col[4]]) 
-st = d.most_common(100000000).index(('07a3c559', 1)) # ('572bf9b0', 5)
+d = Counter(train_df[df_col[3]]) 
+st = d.most_common(100000000).index(('572bf9b0', 5)) # ('572bf9b0', 5)'07a3c559', 1
 f_list = d.most_common(100000000)[st:] 
 smooth_row = []
 for a in f_list:
     smooth_row.append(a[0])
-train_df.ix[train_df[df_col[4]].isin(smooth_row),df_col[4]] = -2 #hash('other') % (2**28)
+train_df.ix[train_df[df_col[3]].isin(smooth_row),df_col[3]] = -2 #hash('other') % (2**28)
 
 #app_domain | site_domain
-d = Counter(train_df[df_col[5]]) 
-st = d.most_common(100000000).index(('4a4f8143',1)) # ('c91cbbb4',5)
+d = Counter(train_df[df_col[4]]) 
+st = d.most_common(100000000).index(('c91cbbb4',5)) # ('c91cbbb4',5)'4a4f8143',1
+f_list = d.most_common(100000000)[st:] 
+smooth_row = []
+for a in f_list:
+    smooth_row.append(a[0])
+train_df.ix[train_df[df_col[4]].isin(smooth_row),df_col[4]] = -2
+
+#app_category | site_category
+d = Counter(train_df[df_col[5]])
+st = d.most_common(100000000).index(('71af18ce',5)) #('71af18ce',5)'52de74cf',1
 f_list = d.most_common(100000000)[st:] 
 smooth_row = []
 for a in f_list:
     smooth_row.append(a[0])
 train_df.ix[train_df[df_col[5]].isin(smooth_row),df_col[5]] = -2
 
-#app_category | site_category
-d = Counter(train_df[df_col[6]])
-st = d.most_common(100000000).index(('52de74cf',1)) #('71af18ce',5)
+#device_id
+d = Counter(train_df[df_col[6]]) #id dc575eb9 5
+st = d.most_common(100000000).index(('dc575eb9',5)) #('dc575eb9',5)'b4fc024f',1
 f_list = d.most_common(100000000)[st:] 
 smooth_row = []
 for a in f_list:
     smooth_row.append(a[0])
 train_df.ix[train_df[df_col[6]].isin(smooth_row),df_col[6]] = -2
 
-#device_id
-d = Counter(train_df[df_col[7]]) #id dc575eb9 5
-st = d.most_common(100000000).index(('b4fc024f',1)) #('dc575eb9',5)
+#device_ip
+d = Counter(train_df[df_col[7]]) #id
+st = d.most_common(100000000).index(('ff6e5da4',5)) #('ff6e5da4',5)'90bc4eef',1
 f_list = d.most_common(100000000)[st:] 
 smooth_row = []
 for a in f_list:
     smooth_row.append(a[0])
 train_df.ix[train_df[df_col[7]].isin(smooth_row),df_col[7]] = -2
 
-#device_ip
-d = Counter(train_df[df_col[8]]) #id
-st = d.most_common(100000000).index(('90bc4eef',1)) #('ff6e5da4',5)
-f_list = d.most_common(100000000)[st:] 
-smooth_row = []
-for a in f_list:
-    smooth_row.append(a[0])
-train_df.ix[train_df[df_col[8]].isin(smooth_row),df_col[8]] = -2
+#device_id2
+d = Counter(train_df[df_col[8]]) #id dc575eb9 5
+
+#device_ip2
+d = Counter(train_df[df_col[9]]) #id
 
 #device_model
-d = Counter(train_df[df_col[9]])
-st = d.most_common(100000000).index(('a01422c4',1)) # ('5a33307b',5)
+d = Counter(train_df[df_col[10]])
+st = d.most_common(100000000).index(('5a33307b',5)) # ('5a33307b',5)'a01422c4',1
 f_list = d.most_common(100000000)[st:] 
 smooth_row = []
 for a in f_list:
     smooth_row.append(a[0])
-train_df.ix[train_df[df_col[9]].isin(smooth_row),df_col[9]] = -2
+train_df.ix[train_df[df_col[10]].isin(smooth_row),df_col[10]] = -2
 
 #device_type
-#d = Counter(train_df[df_col[10]]) 
-
-#device_conn_type
 #d = Counter(train_df[df_col[11]]) 
 
+#device_conn_type
+#d = Counter(train_df[df_col[12]]) 
+
 #C14
-d = Counter(train_df[df_col[12]]) 
-st = d.most_common(100000000).index((17027,1)) #(18467,5)
+d = Counter(train_df[df_col[13]]) 
+st = d.most_common(100000000).index((18467,5)) #(18467,5)17027,1
 f_list = d.most_common(100000000)[st:] 
 smooth_row = []
 for a in f_list:
     smooth_row.append(a[0])
-train_df.ix[train_df[df_col[12]].isin(smooth_row),df_col[12]] = -2
+train_df.ix[train_df[df_col[13]].isin(smooth_row),df_col[13]] = -2
 
-#C15
-#d = Counter(train_df[df_col[13]]) 
-
-#C16
+#img_size
 #d = Counter(train_df[df_col[14]]) 
 
 #C17
 d = Counter(train_df[df_col[15]]) 
-st = d.most_common(100000000).index((2181,1))#(2206,5)
+st = d.most_common(100000000).index((2206,5))#(2206,5)2181,1
 f_list = d.most_common(100000000)[st:] 
 smooth_row = []
 for a in f_list:
@@ -122,7 +125,7 @@ train_df.ix[train_df[df_col[15]].isin(smooth_row),df_col[15]] = -2
 
 #C20
 d = Counter(train_df[df_col[18]]) 
-st = d.most_common(100000000).index((100198,1))#(100100,4)
+st = d.most_common(100000000).index((100100,4))#(100100,4)100198,1
 f_list = d.most_common(100000000)[st:] 
 smooth_row = []
 for a in f_list:
@@ -148,5 +151,5 @@ del test_df['index']
 test_click_id = pd.DataFrame({'id':test_click_id})
 test_df = pd.merge(test_click_id, test_df, left_index=True, right_index=True)
 
-train_df.to_csv('other/train_df_app_smooth.csv',index=False)
-test_df.to_csv('other/test_df_app_smooth.csv',index=False)
+train_df.to_csv('data/train_df_app_split_smooth.csv',index=False)
+test_df.to_csv('data/test_df_app_split_smooth.csv',index=False)
