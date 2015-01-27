@@ -7,8 +7,8 @@ Created on Tue Jan 27 23:26:28 2015
 from collections import Counter
 import pandas as pd
 
-train = 'other/train_df_site.csv'               # path to training file
-test = 'other/test_df_site.csv'
+train = 'other/train_df_app.csv'               # path to training file
+test = 'other/test_df_app.csv'
 test_df = pd.read_csv(test)
 train_df = pd.read_csv(train)
 
@@ -25,3 +25,4 @@ df_col=list(train_df.columns.values)
 
 d = Counter(train_df[df_col[19]]) 
 d.most_common(5)
+
