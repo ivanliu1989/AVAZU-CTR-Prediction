@@ -93,8 +93,8 @@ app_domain_test <- table(test$app_domain)
 length(test$app_domain);length(app_domain_test);sum(is.na(test$app_domain)); 
 length(table(test[-which(test$app_domain %in% train$app_domain),'app_domain']))
 
-app_domain_train_trunc <- substr(train$app_domain, 1, 2) ### perfect matching (app, 4250/471248)!!! 1-4; 5-8
-app_domain_test_trunc <- substr(test$app_domain, 1, 2) ### good matching (app, 20457/395724; 0/65491)!!! 1-4; 5-8
+app_domain_train_trunc <- substr(train$app_domain, 3, 6) ### perfect matching (app, 4250/471248)!!! 1-4; 5-8
+app_domain_test_trunc <- substr(test$app_domain, 3, 6) ### good matching (app, 20457/395724; 0/65491)!!! 1-4; 5-8
 app_domain_train_trunc_tb <- table(app_domain_train_trunc)
 app_domain_test_trunc_tb <- table(app_domain_test_trunc)
 length(app_domain_train_trunc);length(app_domain_train_trunc_tb);
@@ -110,8 +110,8 @@ app_id_test <- table(test$app_id)
 length(test$app_id);length(app_id_test);sum(is.na(test$app_id)); 
 length(table(test[-which(test$app_id %in% train$app_id),'app_id']))
 
-app_id_train_trunc <- substr(train$app_id, 1, 2) ### perfect matching (app, 4250/471248)!!! 1-4; 5-8
-app_id_test_trunc <- substr(test$app_id, 1, 2) ### good matching (app, 20457/395724; 0/65491)!!! 1-4; 5-8
+app_id_train_trunc <- substr(train$app_id, 3, 4) ### perfect matching (app, 4250/471248)!!! 1-4; 5-8
+app_id_test_trunc <- substr(test$app_id, 3, 4) ### good matching (app, 20457/395724; 0/65491)!!! 1-4; 5-8
 app_id_train_trunc_tb <- table(app_id_train_trunc)
 app_id_test_trunc_tb <- table(app_id_test_trunc)
 length(app_id_train_trunc);length(app_id_train_trunc_tb);
