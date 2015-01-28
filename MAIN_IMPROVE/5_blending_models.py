@@ -12,7 +12,7 @@ pred_file2 = 'pred/blending/libFM_0.4027643.csv'
 pred_file3 = 'pred/blending/nn_60_80_0.3957782.csv'  
 pred_file4 = 'pred/blending/xgboost_900_03_0.3931970.csv' 
 pred_file5 = 'pred/blending/vw_cubic_0.3957190.csv'   
-pred_file6 = 'pred/blending/MOA_naive_bayes.csv'   
+pred_file6 = 'pred/blending/submission_vw_name_split_ 0.3932844.csv'   
 
 pred_2 = {}
 for t, row in enumerate(DictReader(open(pred_file2))): # site/app
@@ -36,7 +36,7 @@ for t, row in enumerate(DictReader(open(pred_file6))): # site/app
 
 
 start = datetime.now()
-with open('Blending_models_FTRL_FM_XG_NN86_NB.csv',"wb") as outfile:
+with open('Blending_models_FTRL_FM_XG_NN86_vwftrl.csv',"wb") as outfile:
     outfile.write('id,click\n')
     for t, row in enumerate(DictReader(open(pred_file1))):
         

@@ -12,28 +12,28 @@ from math import exp, log, sqrt
 # A, paths
 train = 'data/train_df_site_split_smooth.csv'               # path to training file
 test = 'data/test_df_site_split_smooth.csv'                 # path to testing file
-submission = 'ftrl_split_app_id.csv'  # path of to be outputted submission file
+submission = 'ftrl_split_app_id_smooth.csv'  # path of to be outputted submission file
 train2 = 'data/train_df_app_split_smooth.csv'               # path to training file
 test2 = 'data/test_df_app_split_smooth.csv'                 # path to testing file
 
 # B, model
-alpha_site = 0.1  # learning rate
+alpha_site = 0.15  # learning rate
 beta_site = 1   # smoothing parameter for adaptive learning rate
-L1_site = 3     # L1 regularization, larger value means more regularized
+L1_site = 1     # L1 regularization, larger value means more regularized
 L2_site = 12     # L2 regularization, larger value means more regularized
 
-alpha_app = 0.1  # learning rate
+alpha_app = 0.15  # learning rate
 beta_app = 1   # smoothing parameter for adaptive learning rate
-L1_app = 3     # L1 regularization, larger value means more regularized
+L1_app = 1     # L1 regularization, larger value means more regularized
 L2_app = 12     # L2 regularization, larger value means more regularized
 
 # C, feature/hash trick
-D = 2 ** 29             # number of weights to use
+D = 2 ** 28             # number of weights to use
 interaction_app = True     # whether to enable poly2 feature interactions
 interaction_site = True     # whether to enable poly2 feature interactions
 
 # D, training/validation
-epoch = 6       # learn training data for N passes
+epoch = 1       # learn training data for N passes
 holdafter = None #28   # data after date N (exclusive) are used as validation
 holdout = 100 #None  # use every N training instance for holdout validation
 

@@ -3,7 +3,17 @@
 ##### testing
 	- vw sparse/test_df_site.vw -t -i sparse/model_site.vw -p avazu.preds.site.sparse.txt 
 	- vw test_df_app.vw -t -i model_app.vw -p avazu.preds.app.txt
+##### ftrl
+	- vw -d train_df_site.vw --loss_function logistic -b 28 -c -k --passes 1 -f model_site.vw --holdout_period 100 --l1 12e-08 --l2 6e-08 --decay_learning_rate 0.8 --ftrl --ftrl_alpha 0.15 --ftrl_beta 0.1
 
+	- vw -d train_df_site.vw --loss_function logistic -b 28 -c -k --passes 1 -f model_site.vw --holdout_period 100 --l1 6 --l2 14 --decay_learning_rate 0.8 --ftrl --ftrl_alpha 0.2 --ftrl_beta 1 -q sd -q ss -q dd -q cc -q ic
+
+	1/6: 0.438542/0.306634 | 0.3932844
+	12e-9/6e-9: 0.437691/0.304923 | 0.3935493
+	alpha 0.15/beta 0.1: 0.43649/0.301758 | 0.4017696
+	alpha 0.15/beta/-q/l1 1: 0.440245/0.304372 | 0.4069576
+	l1-3/l2-6/beta-1/alpha-0.5: 0.438659/0.305284 | 
+	l1-6/l2-14/beta-1/alpha-0.2/pair: | 
 ##### training
 1. Non-polynomial
 	- vw -d train_df_site.vw --loss_function logistic -b 28 -l 0.2 -c -k --passes 6 -f model_site.vw --holdout_period 10 --l1 12e-09 --l2 6e-09 --decay_learning_rate 0.8
