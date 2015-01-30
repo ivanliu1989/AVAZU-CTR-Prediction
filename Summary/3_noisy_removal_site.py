@@ -37,7 +37,7 @@ f_list = d.most_common(100000000)[st:]
 smooth_row = []
 for a in f_list:
     smooth_row.append(a[0])
-train_df.ix[train_df[df_col[3]].isin(smooth_row),df_col[3]] = -2 # hash('other') % (2**28)
+train_df.ix[train_df[df_col[3]].isin(smooth_row),df_col[3]] = 'other' # hash('other') % (2**28)
 
 #app_domain | site_domain
 d = Counter(train_df[df_col[4]]) 
@@ -46,7 +46,7 @@ f_list = d.most_common(100000000)[st:]
 smooth_row = []
 for a in f_list:
     smooth_row.append(a[0])
-train_df.ix[train_df[df_col[4]].isin(smooth_row),df_col[4]] = -2
+train_df.ix[train_df[df_col[4]].isin(smooth_row),df_col[4]] = 'other'
 
 #app_category | site_category
 d = Counter(train_df[df_col[5]])#no need
@@ -55,7 +55,7 @@ f_list = d.most_common(100000000)[st:]
 smooth_row = []
 for a in f_list:
     smooth_row.append(a[0])
-train_df.ix[train_df[df_col[5]].isin(smooth_row),df_col[5]] = -2
+train_df.ix[train_df[df_col[5]].isin(smooth_row),df_col[5]] = 'other'
 
 #device_id
 d = Counter(train_df[df_col[6]]) #id dc575eb9 5
@@ -64,16 +64,16 @@ f_list = d.most_common(100000000)[st:]
 smooth_row = []
 for a in f_list:
     smooth_row.append(a[0])
-train_df.ix[train_df[df_col[6]].isin(smooth_row),df_col[6]] = -2
+train_df.ix[train_df[df_col[6]].isin(smooth_row),df_col[6]] = 'other'
 
 #device_ip
-d = Counter(train_df[df_col[8]]) #id #site e750d599, 5
+d = Counter(train_df[df_col[7]]) #id #site e750d599, 5
 st = d.most_common(100000000).index(('e750d599',5)) #00007a97 '00001bf2',1
 f_list = d.most_common(100000000)[st:] 
 smooth_row = []
 for a in f_list:
     smooth_row.append(a[0])
-train_df.ix[train_df[df_col[8]].isin(smooth_row),df_col[8]] = -2
+train_df.ix[train_df[df_col[7]].isin(smooth_row),df_col[7]] = 'other'
 
 #device_id2
 #d = Counter(train_df[df_col[8]]) #id dc575eb9 5
@@ -82,13 +82,13 @@ train_df.ix[train_df[df_col[8]].isin(smooth_row),df_col[8]] = -2
 #d = Counter(train_df[df_col[9]]) #id
 
 #device_model
-d = Counter(train_df[df_col[10]])
+d = Counter(train_df[df_col[9]])
 st = d.most_common(100000000).index(('dec3afcc',5))#('dec3afcc',5)'23767ab6',1
 f_list = d.most_common(100000000)[st:] 
 smooth_row = []
 for a in f_list:
     smooth_row.append(a[0])
-train_df.ix[train_df[df_col[10]].isin(smooth_row),df_col[10]] = -2
+train_df.ix[train_df[df_col[9]].isin(smooth_row),df_col[9]] = 'other'
 
 #device_type
 #d = Counter(train_df[df_col[11]]) 
@@ -97,25 +97,25 @@ train_df.ix[train_df[df_col[10]].isin(smooth_row),df_col[10]] = -2
 #d = Counter(train_df[df_col[12]]) 
 
 #C14
-d = Counter(train_df[df_col[13]]) 
+d = Counter(train_df[df_col[12]]) 
 st = d.most_common(100000000).index((23576,5)) #(23576,5)7648,1
 f_list = d.most_common(100000000)[st:] 
 smooth_row = []
 for a in f_list:
     smooth_row.append(a[0])
-train_df.ix[train_df[df_col[13]].isin(smooth_row),df_col[13]] = -2
+train_df.ix[train_df[df_col[12]].isin(smooth_row),df_col[12]] = 'other'
 
 #img_size
 #d = Counter(train_df[df_col[14]]) 
 
 #C17
-d = Counter(train_df[df_col[15]]) 
+d = Counter(train_df[df_col[14]]) 
 st = d.most_common(100000000).index((2565,3))#(2565,3)2191,1
 f_list = d.most_common(100000000)[st:] 
 smooth_row = []
 for a in f_list:
     smooth_row.append(a[0])
-train_df.ix[train_df[df_col[15]].isin(smooth_row),df_col[15]] = -2
+train_df.ix[train_df[df_col[14]].isin(smooth_row),df_col[14]] = 'other'
 
 #C18
 #d = Counter(train_df[df_col[16]]) 
@@ -124,13 +124,13 @@ train_df.ix[train_df[df_col[15]].isin(smooth_row),df_col[15]] = -2
 #d = Counter(train_df[df_col[17]]) 
 
 #C20
-d = Counter(train_df[df_col[18]]) 
+d = Counter(train_df[df_col[17]]) 
 st = d.most_common(100000000).index((100006,5)) #(100006,5)100209,1
 f_list = d.most_common(100000000)[st:] 
 smooth_row = []
 for a in f_list:
     smooth_row.append(a[0])
-train_df.ix[train_df[df_col[18]].isin(smooth_row),df_col[18]] = -2
+train_df.ix[train_df[df_col[17]].isin(smooth_row),df_col[17]] = 'other'
 
 #C21
 #d = Counter(train_df[df_col[19]]) 
