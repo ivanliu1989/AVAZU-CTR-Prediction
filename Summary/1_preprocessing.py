@@ -62,7 +62,7 @@ with open('other/train_df_null.csv',"wb") as outfile:
         C20 = row['C20']
         C21 = row['C21']
         
-        '''
+        
         if ID in ['d41d8cd9']: 
             ID = ''
         if click in ['d41d8cd9']: 
@@ -75,15 +75,15 @@ with open('other/train_df_null.csv',"wb") as outfile:
             banner_pos = ''
         if site_id in ['d41d8cd9', '85f751fd']: 
             site_id = ''
-        if site_domain in ['d41d8cd9','c4e18dd6']: 
+        if site_domain in ['d41d8cd9']:# ,'c4e18dd6'
             site_domain = ''
-        if site_category in ['d41d8cd9','50e219e0']: 
+        if site_category in ['d41d8cd9']: #,'50e219e0'
             site_category = ''
         if app_id in ['d41d8cd9','ecad2386']: 
             app_id = ''
-        if app_domain in ['d41d8cd9','7801e8d9']: 
+        if app_domain in ['d41d8cd9']: #,'7801e8d9'
             app_domain = ''
-        if app_category in ['d41d8cd9','07d7df22']: 
+        if app_category in ['d41d8cd9']: #,'07d7df22'
             app_category = ''
         if device_id in ['d41d8cd9']: 
             device_id = ''
@@ -111,7 +111,7 @@ with open('other/train_df_null.csv',"wb") as outfile:
             C20 = ''
         if C21 in ['d41d8cd9']: 
             C21 = ''
-        '''       
+               
         outfile.write('%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n' % (str(ID), str(click),str(hour),str(C1),str(banner_pos),str(site_id),str(site_domain),str(site_category),str(app_id),str(app_domain),str(app_category),str(device_id),str(device_ip),str(device_model),str(device_type),str(device_conn_type),str(C14),str(C15),str(C16),str(C17),str(C18),str(C19),str(C20),str(C21)))
         if t % 100000 == 0:
             print("%s\t%s"%(t, str(datetime.now() - start)))
@@ -174,15 +174,15 @@ with open('other/test_df_null.csv',"wb") as outfile:
             banner_pos = ''
         if site_id in ['d41d8cd9', '85f751fd']: 
             site_id = ''
-        if site_domain in ['d41d8cd9','c4e18dd6']: 
+        if site_domain in ['d41d8cd9']: #,'c4e18dd6'
             site_domain = ''
-        if site_category in ['d41d8cd9','50e219e0']: 
+        if site_category in ['d41d8cd9']: #,'50e219e0'
             site_category = ''
         if app_id in ['d41d8cd9','ecad2386']: 
             app_id = ''
-        if app_domain in ['d41d8cd9','7801e8d9']: 
+        if app_domain in ['d41d8cd9']: #,'7801e8d9'
             app_domain = ''
-        if app_category in ['d41d8cd9','07d7df22']: 
+        if app_category in ['d41d8cd9']: #,'07d7df22'
             app_category = ''
         if device_id in ['d41d8cd9']: 
             device_id = ''
