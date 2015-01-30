@@ -20,20 +20,20 @@ test2 = 'data/test_df_app_split_smooth.csv'                 # path to testing fi
 alpha_site = 0.15  # learning rate
 beta_site = 1   # smoothing parameter for adaptive learning rate
 L1_site = 1     # L1 regularization, larger value means more regularized
-L2_site = 12     # L2 regularization, larger value means more regularized
+L2_site = 6     # L2 regularization, larger value means more regularized
 
 alpha_app = 0.15  # learning rate
 beta_app = 1   # smoothing parameter for adaptive learning rate
 L1_app = 1     # L1 regularization, larger value means more regularized
-L2_app = 12     # L2 regularization, larger value means more regularized
+L2_app = 6     # L2 regularization, larger value means more regularized
 
 # C, feature/hash trick
 D = 2 ** 28             # number of weights to use
-interaction_app = True     # whether to enable poly2 feature interactions
-interaction_site = True     # whether to enable poly2 feature interactions
+interaction_app = False     # whether to enable poly2 feature interactions
+interaction_site = False     # whether to enable poly2 feature interactions
 
 # D, training/validation
-epoch = 1       # learn training data for N passes
+epoch = 3       # learn training data for N passes
 holdafter = None #28   # data after date N (exclusive) are used as validation
 holdout = 100 #None  # use every N training instance for holdout validation
 
