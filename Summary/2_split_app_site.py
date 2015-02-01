@@ -19,7 +19,7 @@ with open(output_file_app,"wb") as outfile:
     outfile.write('id,click,hour,C1,banner_pos,site_id,site_domain,site_category,app_id,app_domain,app_category,device_id,device_ip,device_model,device_type,device_conn_type,C14,C15,C16,C17,C18,C19,C20,C21\n')
     for t, row in enumerate(DictReader(open(input_file))):
         
-        if row['site_id'] == '': #not in ['d41d8cd9','ecad2386']:
+        if row['app_id'] not in ['']: #not in ['d41d8cd9','ecad2386']:
             
             ID = row['id']
             click = row['click']
@@ -55,7 +55,7 @@ with open(output_file_site,"wb") as outfile:
     outfile.write('id,click,hour,C1,banner_pos,site_id,site_domain,site_category,app_id,app_domain,app_category,device_id,device_ip,device_model,device_type,device_conn_type,C14,C15,C16,C17,C18,C19,C20,C21\n')
     for t, row in enumerate(DictReader(open(input_file))):
         
-        if row['app_id'] == '': #not in ['d41d8cd9', '85f751fd']:
+        if row['site_id'] not in ['']:  #not in ['d41d8cd9', '85f751fd']:
             
             ID = row['id']
             click = row['click']
@@ -98,7 +98,7 @@ with open(output_file_app,"wb") as outfile:
     outfile.write('id,hour,C1,banner_pos,site_id,site_domain,site_category,app_id,app_domain,app_category,device_id,device_ip,device_model,device_type,device_conn_type,C14,C15,C16,C17,C18,C19,C20,C21\n')
     for t, row in enumerate(DictReader(open(input_file))):
         
-        if row['site_id'] == '': #not in ['d41d8cd9','ecad2386']:
+        if row['app_id'] not in ['']: #not in ['d41d8cd9','ecad2386']:
             
             ID = row['id']
             hour = row['hour']
@@ -130,7 +130,7 @@ with open(output_file_site,"wb") as outfile:
     outfile.write('id,hour,C1,banner_pos,site_id,site_domain,site_category,app_id,app_domain,app_category,device_id,device_ip,device_model,device_type,device_conn_type,C14,C15,C16,C17,C18,C19,C20,C21\n')
     for t, row in enumerate(DictReader(open(input_file))):
         
-        if row['app_id'] == '': #not in ['d41d8cd9', '85f751fd']:
+        if row['site_id'] not in ['']: #not in ['d41d8cd9', '85f751fd']:
             
             ID = row['id']
             hour = row['hour']
