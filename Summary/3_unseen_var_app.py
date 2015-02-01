@@ -44,17 +44,19 @@ del train_app; #del test_app
 
 ##-- test --##
 start = datetime.now()
-with open('data/test_df_app_smooth_ex.csv',"wb") as outfile:
+with open('data/test_df_site_smooth_ex.csv',"wb") as outfile:
     outfile.write('id,hour,C1,banner_pos,app_id,app_domain,app_category,device_id,device_ip,device_ip_2,device_model,device_type,device_conn_type,C14,img_size,C17,C18,C19,C20,C21\n')
-    for t, row in enumerate(DictReader(open(test_app_path))):
+    for t, row in enumerate(DictReader(open(test_site_path))):
         
         ID = row['id']
         hour = row['hour']
         C1 = row['C1']
         banner_pos = row['banner_pos']
+
         app_id = row['app_id']
         app_domain = row['app_domain']
         app_category = row['app_category']
+
         device_id = row['device_id']
         device_ip = row['device_ip']
         device_ip_2 = row['device_ip_2']
@@ -67,7 +69,7 @@ with open('data/test_df_app_smooth_ex.csv',"wb") as outfile:
         C18 = row['C18']
         C19 = row['C19']
         C20 = row['C20']
-        C21 = row['C21']
+        C21 = row['C21']        
         
         if str(app_id) not in app_id_train and str(app_id) != '':
             app_id = 'other'
