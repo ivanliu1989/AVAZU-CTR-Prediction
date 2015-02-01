@@ -2,11 +2,11 @@ setwd('C:/Users/Ivan.Liuyanfeng/Desktop/Data_Mining_Work_Space/VAZU')
 rm(list=ls()); gc()
 require(data.table)
 
-#train_app <- data.frame(fread('other/train_df_app_split.csv',colClasses='character',header=T)) # 14596137
-#test_app <- data.frame(fread('other/test_df_app_split.csv',colClasses='character',header=T)) # 1719304
+train_app <- data.frame(fread('other/train_df_app_split.csv',colClasses='character',header=T)) # 14596137
+test_app <- data.frame(fread('other/test_df_app_split.csv',colClasses='character',header=T)) # 1719304
 
-train_app <- data.frame(fread('other/train_df_site_split.csv',colClasses='character',header=T)) # 25832830
-test_app <- data.frame(fread('other/test_df_site_split.csv',colClasses='character',header=T)) # 2858160
+# train_app <- data.frame(fread('other/train_df_site_split.csv',colClasses='character',header=T)) # 25832830
+# test_app <- data.frame(fread('other/test_df_site_split.csv',colClasses='character',header=T)) # 2858160
 
 ls();gc()
 test_app$click <- 0
@@ -33,11 +33,11 @@ for (n in 3:length(colnames(train_app))){
 }
 
 dim(train_app)
-#test_app <- train_app[14596138:16315441 , -2]
-test_app <- train_app[25832831:28690990 , -2]
+test_app <- train_app[14596138:16315441 , -2]
+# test_app <- train_app[25832831:28690990 , -2]
 head(test_app);gc()
-#train_app <- train_app[-c(14596138:16315441),]
-train_app <- train_app[-c(25832831:28690990),]
+train_app <- train_app[-c(14596138:16315441),]
+# train_app <- train_app[-c(25832831:28690990),]
 head(train_app);gc()
 dim(train_app);dim(test_app)
 
