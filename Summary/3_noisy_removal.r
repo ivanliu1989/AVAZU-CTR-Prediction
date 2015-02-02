@@ -23,16 +23,16 @@ for (n in 3:length(colnames(train_app))){
     val_list <- table(train_app[,n])
     val_list <- which(val_list<=5)
 #     names(val_list)
-#     filter <- train_app[which(train_app[,n] %in% names(val_list)),]
-#     filter <- filter[which(filter$click == '1'),]
-#     val_list_op <- table(filter[,n])
-#     val_list_final <- names(val_list)[which(!names(val_list) %in% names(val_list_op))]
-#     train_app[which(train_app[,n] %in% val_list_final),n] <- 'other'
-    train_app[which(train_app[,n] %in% val_list),n] <- 'other'
+    filter <- train_app[which(train_app[,n] %in% names(val_list)),]
+    filter <- filter[which(filter$click == '1'),]
+    val_list_op <- table(filter[,n])
+    val_list_final <- names(val_list)[which(!names(val_list) %in% names(val_list_op))]
+    train_app[which(train_app[,n] %in% val_list_final),n] <- 'other'
+#     train_app[which(train_app[,n] %in% val_list),n] <- 'other'
    
     gc()
-#     print(paste('Feature',colnames(train_app)[n],'finished.', length(val_list_final), 'features removed!'))
-    print(paste('Feature',colnames(train_app)[n],'finished.', length(val_list), 'features removed!'))
+    print(paste('Feature',colnames(train_app)[n],'finished.', length(val_list_final), 'features removed!'))
+#     print(paste('Feature',colnames(train_app)[n],'finished.', length(val_list), 'features removed!'))
 }
 
 dim(train_app)
@@ -47,5 +47,5 @@ dim(train_app);dim(test_app)
 write.csv(train_app, file = 'data/train_df_app_split_smooth.csv', quote = F, row.names = F)
 write.csv(test_app, file = 'data/test_df_app_split_smooth.csv', quote = F, row.names = F)
 
-write.csv(train_app, file = 'data/train_df_site_split_smooth.csv', quote = F, row.names = F)
-write.csv(test_app, file = 'data/test_df_site_split_smooth.csv', quote = F, row.names = F)
+# write.csv(train_app, file = 'data/train_df_site_split_smooth.csv', quote = F, row.names = F)
+# write.csv(test_app, file = 'data/test_df_site_split_smooth.csv', quote = F, row.names = F)
