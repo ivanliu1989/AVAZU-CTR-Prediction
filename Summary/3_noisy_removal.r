@@ -21,18 +21,20 @@ rm(test_app);gc()
 for (n in 3:length(colnames(train_app))){
     
     val_list <- table(train_app[,n])
-    val_list <- which(val_list<=5)
-#     names(val_list)
-    filter <- train_app[which(train_app[,n] %in% names(val_list)),]
-    filter <- filter[which(filter$click == '1'),]
-    val_list_op <- table(filter[,n])
-    val_list_final <- names(val_list)[which(!names(val_list) %in% names(val_list_op))]
-    train_app[which(train_app[,n] %in% val_list_final),n] <- 'other'
-#     train_app[which(train_app[,n] %in% val_list),n] <- 'other'
-   
-    gc()
-    print(paste('Feature',colnames(train_app)[n],'finished.', length(val_list_final), 'features removed!'))
-#     print(paste('Feature',colnames(train_app)[n],'finished.', length(val_list), 'features removed!'))
+    if(length(val_list)>=1000){
+        val_list <- which(val_list<=5)
+        #     names(val_list)
+        filter <- train_app[which(train_app[,n] %in% names(val_list)),]
+        filter <- filter[which(filter$click == '1'),]
+        val_list_op <- table(filter[,n])
+        val_list_final <- names(val_list)[which(!names(val_list) %in% names(val_list_op))]
+        train_app[which(train_app[,n] %in% val_list_final),n] <- 'other'
+        #     train_app[which(train_app[,n] %in% val_list),n] <- 'other'
+        
+        gc()
+        print(paste('Feature',colnames(train_app)[n],'finished.', length(val_list_final), 'features removed!'))
+        #     print(paste('Feature',colnames(train_app)[n],'finished.', length(val_list), 'features removed!'))
+    }
 }
 
 dim(train_app)
