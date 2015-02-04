@@ -44,7 +44,7 @@ with open('other/train_df_app_split.csv',"wb") as outfile:
         C19 = row['C19']
         C20 = row['C20']
         C21 = row['C21']
-'''
+        '''
         if C1 in ['']:
             C1 = 'other'
         if banner_pos in ['']:
@@ -83,7 +83,7 @@ with open('other/train_df_app_split.csv',"wb") as outfile:
             C20 = 'other'
         if C21 in ['']:
             C21 = 'other'   
-'''
+        '''    
         outfile.write('%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n' % (str(ID), str(click),str(hour),str(C1),str(banner_pos),str(app_id),str(app_domain),str(app_category),str(device_id),str(device_ip),str(device_ip_2),str(device_model),str(device_type),str(device_conn_type),str(C14),str(15),str(16),str(C17),str(C18),str(C19),str(C20),str(C21)))
         if t % 100000 == 0:
             print("%s\t%s"%(t, str(datetime.now() - start)))
@@ -119,7 +119,7 @@ with open('other/test_df_app_split.csv',"wb") as outfile:
         C19 = row['C19']
         C20 = row['C20']
         C21 = row['C21']
-'''        
+        '''
         if C1 in ['']:
             C1 = 'other'
         if banner_pos in ['']:
@@ -158,7 +158,7 @@ with open('other/test_df_app_split.csv',"wb") as outfile:
             C20 = 'other'
         if C21 in ['']:
             C21 = 'other'  
-'''            
+        '''    
         outfile.write('%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n' % (str(ID),str(hour),str(C1),str(banner_pos),str(app_id),str(app_domain),str(app_category),str(device_id),str(device_ip),str(device_ip_2),str(device_model),str(device_type),str(device_conn_type),str(C14),str(C15),str(C16),str(C17),str(C18),str(C19),str(C20),str(C21)))
         if t % 100000 == 0:
             print("%s\t%s"%(t, str(datetime.now() - start)))
