@@ -54,10 +54,10 @@ dim(train_app);dim(test_app)
 #                    'i_device_ip_2','j_device_model','k_device_type','l_device_conn_type','m_C14','n_C15','o_C16','p_C17','q_C18','r_C19',
 #                    's_C20','t_C21')
 
-name(train_app)<-c('id','click','a_hour','b_C1','c_banner_pos','d_site_id','e_site_domain','f_site_category','g_device_id','h_device_ip',
+names(train_app)<-c('id','click','a_hour','b_C1','c_banner_pos','d_site_id','e_site_domain','f_site_category','g_device_id','h_device_ip',
                    'i_device_ip_2','j_device_model','k_device_type','l_device_conn_type','m_C14','n_C15','o_C16','p_C17','q_C18','r_C19',
                    's_C20','t_C21')
-name(test_app)<-c('id','a_hour','b_C1','c_banner_pos','d_site_id','e_site_domain','f_site_category','g_device_id','h_device_ip',
+names(test_app)<-c('id','a_hour','b_C1','c_banner_pos','d_site_id','e_site_domain','f_site_category','g_device_id','h_device_ip',
                   'i_device_ip_2','j_device_model','k_device_type','l_device_conn_type','m_C14','n_C15','o_C16','p_C17','q_C18','r_C19',
                   's_C20','t_C21')
 head(train_app);head(test_app);gc()

@@ -10,11 +10,11 @@ from csv import DictReader
 from math import exp, log, sqrt
 
 # A, paths
-train = 'data/train_df_site_split.csv'               # path to training file
-test = 'data/test_df_site_split.csv'                 # path to testing file
+train = 'data/train_df_site_split_smooth.csv'               # path to training file
+test = 'data/test_df_site_split_smooth.csv'                 # path to testing file
 submission = 'ftrl_split_app_id_smooth.csv'  # path of to be outputted submission file
-train2 = 'data/train_df_app_split.csv'               # path to training file
-test2 = 'data/test_df_app_split.csv'                 # path to testing file
+train2 = 'data/train_df_app_split_smooth.csv'               # path to training file
+test2 = 'data/test_df_app_split_smooth.csv'                 # path to testing file
 
 # B, model
 alpha_site = 0.13  # learning rate
