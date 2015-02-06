@@ -4,9 +4,9 @@
 	- vw sparse/test_df_site.vw -t -i sparse/model_site.vw -p avazu.preds.site.sparse.txt 
 	- vw test_df_app.vw -t -i model_app.vw -p avazu.preds.app.txt
 ##### ftrl
-	- vw -d train_df_site.vw --loss_function logistic -b 28 -c -k --passes 3 -f model_site.vw --holdout_period 100 --l1 1 --l2 6 --decay_learning_rate 0.8 --ftrl --ftrl_alpha 0.15 --ftrl_beta 1
-
-	- vw -d train_df_site.vw --loss_function logistic -b 28 -c -k --passes 3 -f model_site.vw --holdout_period 100 --l1 1 --l2 6 --decay_learning_rate 0.8 --ftrl --ftrl_alpha 0.15 --ftrl_beta 1 -q :: --cubic ::: sd -q ss -q dd -q cc -q ic
+	- vw -d train_df_site.vw --loss_function logistic -b 28 -c -k --passes 3 -f model_site.vw --holdout_after 17850000 --l1 1 --l2 6 --decay_learning_rate 0.8 --ftrl --ftrl_alpha 0.15 --ftrl_beta 1
+	114286000
+	- vw -d train_df_site.vw --loss_function logistic -b 28 -c -k --passes 3 -f model_site.vw --holdout_after 17850000 --l1 1 --l2 6 --decay_learning_rate 0.8 --ftrl --ftrl_alpha 0.15 --ftrl_beta 1 -q ki -q kj -q ij -q kl -q il -q jl -q ef -q ce -q cf -q ho
 
 	1/6: 0.438542/0.306634 | 0.3932844
 	12e-9/6e-9: 0.437691/0.304923 | 0.3935493
