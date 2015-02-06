@@ -22,7 +22,7 @@ for (n in 3:length(colnames(train_app))){
     
     val_list <- table(train_app[,n])
     
-    val_list <- which(val_list<=9) #9
+    val_list <- which(val_list<=5) #9
     if(length(val_list)>=2){
         #     names(val_list)
 #         filter <- train_app[which(train_app[,n] %in% names(val_list)),]
