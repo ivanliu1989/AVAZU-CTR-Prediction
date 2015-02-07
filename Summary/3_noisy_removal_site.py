@@ -109,13 +109,13 @@ train_df.ix[train_df[df_col[12]].isin(smooth_row),df_col[12]] = 'other'
 #d = Counter(train_df[df_col[14]]) 
 
 #C17
-d = Counter(train_df[df_col[14]]) 
+d = Counter(train_df[df_col[15]]) 
 st = d.most_common(100000000).index((2565,3))#(2565,3)2191,1
 f_list = d.most_common(100000000)[st:] 
 smooth_row = []
 for a in f_list:
     smooth_row.append(a[0])
-train_df.ix[train_df[df_col[14]].isin(smooth_row),df_col[14]] = 'other'
+train_df.ix[train_df[df_col[15]].isin(smooth_row),df_col[15]] = 'other'
 
 #C18
 #d = Counter(train_df[df_col[16]]) 
@@ -124,13 +124,13 @@ train_df.ix[train_df[df_col[14]].isin(smooth_row),df_col[14]] = 'other'
 #d = Counter(train_df[df_col[17]]) 
 
 #C20
-d = Counter(train_df[df_col[17]]) 
+d = Counter(train_df[df_col[18]]) 
 st = d.most_common(100000000).index((100006,5)) #(100006,5)100209,1
 f_list = d.most_common(100000000)[st:] 
 smooth_row = []
 for a in f_list:
     smooth_row.append(a[0])
-train_df.ix[train_df[df_col[17]].isin(smooth_row),df_col[17]] = 'other'
+train_df.ix[train_df[df_col[18]].isin(smooth_row),df_col[18]] = 'other'
 
 #C21
 #d = Counter(train_df[df_col[19]]) 
