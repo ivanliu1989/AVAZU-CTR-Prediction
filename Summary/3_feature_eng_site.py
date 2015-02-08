@@ -32,7 +32,7 @@ with open('other/train_df_site_split.csv',"wb") as outfile:
 
         device_id = row['device_id']
         device_ip = row['device_ip']
-        device_ip_2 = device_ip[0:4]
+        device_ip_2 = device_id[0:4]
         device_model = row['device_model']
         device_type = row['device_type']
         device_conn_type = row['device_conn_type']
@@ -107,7 +107,7 @@ with open('other/test_df_site_split.csv',"wb") as outfile:
         
         device_id = row['device_id']
         device_ip = row['device_ip']
-        device_ip_2 = device_ip[0:4]
+        device_ip_2 = device_id[0:4]
         device_model = row['device_model']
         device_type = row['device_type']
         device_conn_type = row['device_conn_type']
