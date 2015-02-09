@@ -67,13 +67,13 @@ for a in f_list:
 train_df.ix[train_df[df_col[6]].isin(smooth_row),df_col[6]] = 'other'
 
 #device_ip
-d = Counter(train_df[df_col[7]]) #id #site e750d599, 5
-st = d.most_common(100000000).index(('e750d599',5)) #00007a97 '00001bf2',1
-f_list = d.most_common(100000000)[st:] 
-smooth_row = []
-for a in f_list:
-    smooth_row.append(a[0])
-train_df.ix[train_df[df_col[7]].isin(smooth_row),df_col[7]] = 'other'
+#d = Counter(train_df[df_col[7]]) #id #site e750d599, 5
+#st = d.most_common(100000000).index(('e750d599',5)) #00007a97 '00001bf2',1
+#f_list = d.most_common(100000000)[st:] 
+#smooth_row = []
+#for a in f_list:
+#    smooth_row.append(a[0])
+#train_df.ix[train_df[df_col[7]].isin(smooth_row),df_col[7]] = 'other'
 
 #device_id2
 #d = Counter(train_df[df_col[8]]) #id dc575eb9 5
