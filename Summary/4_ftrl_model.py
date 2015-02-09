@@ -33,7 +33,7 @@ interaction_app = False     # whether to enable poly2 feature interactions
 interaction_site = False     # whether to enable poly2 feature interactions
 
 # D, training/validation
-epoch = 1       # learn training data for N passes
+epoch = 2       # learn training data for N passes
 holdafter = None #28   # data after date N (exclusive) are used as validation
 holdout = 100 #None  # use every N training instance for holdout validation
 
