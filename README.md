@@ -7,7 +7,8 @@ For this competition, we have provided 11 days worth of Avazu data to build and 
 
 #### Final solution:
 	1. folder: Summary / MAIN_IMPROVE
-	2. ranking: 55/1786
+	2. results: 0.3882
+	3. ranking: 55/1786
 
 
 #### Tips:
