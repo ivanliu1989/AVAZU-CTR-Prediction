@@ -5,6 +5,11 @@ In online advertising, click-through rate (CTR) is a very important metric for e
 
 For this competition, we have provided 11 days worth of Avazu data to build and test prediction models. Can you find a strategy that beats standard classification algorithms? The winning models from this competition will be released under an open-source license.
 
+#### Final solution:
+folder: Summary / IMPROVE
+ranking: 55/1786
+
+
 #### Tips:
 1. hour: 14-10-21-00 ~ 14-10-30-23 => hour, date => night, day, holiday, weekday
 2. unpreprocessed benchmark random forest
