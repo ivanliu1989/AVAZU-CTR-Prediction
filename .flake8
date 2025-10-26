@@ -1,0 +1,53 @@
+# Flake8 Configuration
+# ===================
+# Python linting configuration for code quality
+
+[flake8]
+max-line-length = 100
+max-complexity = 10
+exclude =
+    .git,
+    __pycache__,
+    build,
+    dist,
+    *.egg-info,
+    venv,
+    env,
+    .venv,
+    # Exclude legacy Python 2 code
+    Python/,
+    Summary/,
+    MAIN_IMPROVE/,
+    benchmark/,
+    R/
+
+# Error codes to ignore
+ignore =
+    E203,  # whitespace before ':'
+    E501,  # line too long (handled by max-line-length)
+    W503,  # line break before binary operator
+    W504,  # line break after binary operator
+
+# Error codes to always check
+select =
+    E,    # pycodestyle errors
+    W,    # pycodestyle warnings
+    F,    # pyflakes
+    C,    # mccabe complexity
+
+# Per-file ignores
+per-file-ignores =
+    __init__.py:F401,F403
+    config.py:E501
+
+# Show source code for errors
+show-source = True
+
+# Show pep8 code for errors
+show-pep8 = True
+
+# Count errors
+count = True
+
+# Print total number of errors
+statistics = True

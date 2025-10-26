@@ -1,0 +1,99 @@
+# AVAZU CTR Prediction - Git Ignore File
+# ========================================
+
+# Data Files
+data/
+raw/
+other/
+*.csv
+*.tsv
+*.dat
+*.txt
+
+# Model Files
+*.model
+*.vw
+*.fm
+*.pkl
+*.joblib
+*.h5
+*.hdf5
+
+# Prediction/Submission Files
+pred/
+submit/
+submission/
+*submission*.csv
+*pred*.csv
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+venv/
+ENV/
+env/
+.venv
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# R
+.Rhistory
+.RData
+.Rproj.user
+*.Rproj
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Excel files (model tuning spreadsheets - consider versioning these)
+# Uncomment if you want to track them:
+# !model_tune.xlsx
+# !Models-performance.xlsx
+# !model_perf.xlsx
+*.xlsx
+~$*.xlsx
+
+# XGBoost
+xgboost.buffer
+
+# Cache
+.cache/
+*.cache
+
+# OS
+Thumbs.db
