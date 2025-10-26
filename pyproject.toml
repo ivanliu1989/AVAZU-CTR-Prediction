@@ -1,0 +1,88 @@
+# Python Project Configuration
+# ============================
+
+[tool.black]
+line-length = 100
+target-version = ['py37', 'py38', 'py39', 'py310']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  | Python
+  | Summary
+  | MAIN_IMPROVE
+  | benchmark
+  | R
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 100
+skip_gitignore = true
+skip = ["Python", "Summary", "MAIN_IMPROVE", "benchmark", "R"]
+known_first_party = ["models", "utils", "config"]
+
+[tool.mypy]
+python_version = "3.7"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+check_untyped_defs = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+strict_optional = true
+
+# Exclude legacy code
+exclude = [
+    'Python/',
+    'Summary/',
+    'MAIN_IMPROVE/',
+    'benchmark/',
+    'R/'
+]
+
+[[tool.mypy.overrides]]
+module = "models.*"
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_functions = ["test_*"]
+addopts = "-v --cov=models --cov=utils --cov-report=html --cov-report=term"
+
+[tool.coverage.run]
+source = ["models", "utils"]
+omit = [
+    "*/tests/*",
+    "*/test_*.py",
+    "Python/*",
+    "Summary/*",
+    "MAIN_IMPROVE/*"
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if __name__ == .__main__.:",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if TYPE_CHECKING:",
+]
+
+[build-system]
+requires = ["setuptools>=45", "wheel", "setuptools_scm>=6.2"]
+build-backend = "setuptools.build_meta"
