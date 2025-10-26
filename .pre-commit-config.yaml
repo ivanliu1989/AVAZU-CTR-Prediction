@@ -1,0 +1,63 @@
+# Pre-commit hooks configuration
+# ===============================
+# Install: pip install pre-commit
+# Setup: pre-commit install
+# Run manually: pre-commit run --all-files
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: ^(Python/|Summary/|MAIN_IMPROVE/|benchmark/)
+      - id: end-of-file-fixer
+        exclude: ^(Python/|Summary/|MAIN_IMPROVE/|benchmark/)
+      - id: check-yaml
+      - id: check-added-large-files
+        args: ['--maxkb=10000']
+      - id: check-json
+      - id: check-toml
+      - id: check-merge-conflict
+      - id: debug-statements
+        exclude: ^(Python/|Summary/|MAIN_IMPROVE/|benchmark/)
+      - id: mixed-line-ending
+        exclude: ^(Python/|Summary/|MAIN_IMPROVE/|benchmark/)
+
+  - repo: https://github.com/psf/black
+    rev: 23.3.0
+    hooks:
+      - id: black
+        language_version: python3
+        files: ^(models/|utils/|config\.py|examples/|tests/)
+
+  - repo: https://github.com/PyCQA/flake8
+    rev: 6.0.0
+    hooks:
+      - id: flake8
+        args: ['--config=.flake8']
+        files: ^(models/|utils/|config\.py|examples/|tests/)
+
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.12.0
+    hooks:
+      - id: isort
+        args: ['--profile', 'black']
+        files: ^(models/|utils/|config\.py|examples/|tests/)
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.3.0
+    hooks:
+      - id: mypy
+        additional_dependencies: [types-all]
+        files: ^(models/|utils/|config\.py)
+        args: ['--ignore-missing-imports', '--no-strict-optional']
+
+  - repo: https://github.com/pycqa/pydocstyle
+    rev: 6.3.0
+    hooks:
+      - id: pydocstyle
+        files: ^(models/|utils/)
+        args: ['--ignore=D100,D104,D203,D213']
+
+# Exclude legacy Python 2 code
+exclude: '^(Python/|Summary/|MAIN_IMPROVE/|benchmark/|R/)'
